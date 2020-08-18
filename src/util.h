@@ -31,7 +31,7 @@
 #include <boost/thread/exceptions.hpp>
 #include <boost/thread/condition_variable.hpp> // for boost::thread_interrupted
 
-//CLR only features
+//UCR only features
 
 extern bool fMasterNode;
 extern bool fLiteMode;

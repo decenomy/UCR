@@ -103,7 +103,7 @@ void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
     widget->setFont(bitcoinAddressFont());
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a CLR address (e.g. %1)").arg("CXjuRNVUwGVxsjraBsAL65YVrx5ouoa6ga"));
+    widget->setPlaceholderText(QObject::tr("Enter a UCR address (e.g. %1)").arg("CXjuRNVUwGVxsjraBsAL65YVrx5ouoa6ga"));
     widget->setValidator(new BitcoinAddressEntryValidator(parent));
     widget->setCheckValidator(new BitcoinAddressCheckValidator(parent));
 }
@@ -150,7 +150,7 @@ bool parseBitcoinURI(const QUrl& uri, SendCoinsRecipient* out)
             fShouldReturnFalse = false;
         } else if (i->first == "amount") {
             if (!i->second.isEmpty()) {
-                if (!BitcoinUnits::parse(BitcoinUnits::CLR, i->second, &rv.amount)) {
+                if (!BitcoinUnits::parse(BitcoinUnits::UCR, i->second, &rv.amount)) {
                     return false;
                 }
             }
@@ -185,7 +185,7 @@ QString formatBitcoinURI(const SendCoinsRecipient& info)
     int paramCount = 0;
 
     if (info.amount) {
-        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::CLR, info.amount, false, BitcoinUnits::separatorNever));
+        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::UCR, info.amount, false, BitcoinUnits::separatorNever));
         paramCount++;
     }
 
@@ -571,7 +571,7 @@ bool DHMSTableWidgetItem::operator<(QTableWidgetItem const& item) const
 #ifdef WIN32
 boost::filesystem::path static StartupShortcutPath()
 {
-    return GetSpecialFolderPath(CSIDL_STARTUP) / "CLR.lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / "UCR.lnk";
 }
 
 bool GetStartOnSystemStartup()
@@ -689,7 +689,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         // Write a clr.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
-        optionFile << "Name=CLR\n";
+        optionFile << "Name=UCR\n";
         optionFile << "Exec=" << pszExePath << " -min\n";
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";

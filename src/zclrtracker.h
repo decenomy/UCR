@@ -3,16 +3,16 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_ZCLRTRACKER_H
-#define CLR_ZCLRTRACKER_H
+#ifndef UCR_ZUCRTRACKER_H
+#define UCR_ZUCRTRACKER_H
 
 #include "primitives/zerocoin.h"
 #include <list>
 
 class CDeterministicMint;
-class CzCLRWallet;
+class CzUCRWallet;
 
-class CzCLRTracker
+class CzUCRTracker
 {
 private:
     bool fInitialized;
@@ -21,9 +21,9 @@ private:
     std::map<uint256, uint256> mapPendingSpends; //serialhash, txid of spend
     bool UpdateStatusInternal(const std::set<uint256>& setMempool, CMintMeta& mint);
 public:
-    CzCLRTracker(std::string strWalletFile);
-    ~CzCLRTracker();
-    void Add(const CDeterministicMint& dMint, bool isNew = false, bool isArchived = false, CzCLRWallet* zCLRWallet = NULL);
+    CzUCRTracker(std::string strWalletFile);
+    ~CzUCRTracker();
+    void Add(const CDeterministicMint& dMint, bool isNew = false, bool isArchived = false, CzUCRWallet* zUCRWallet = NULL);
     void Add(const CZerocoinMint& mint, bool isNew = false, bool isArchived = false);
     bool Archive(CMintMeta& meta);
     bool HasPubcoin(const CBigNum& bnValue) const;
@@ -50,4 +50,4 @@ public:
     void Clear();
 };
 
-#endif //CLR_ZCLRTRACKER_H
+#endif //UCR_ZUCRTRACKER_H

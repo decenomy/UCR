@@ -345,9 +345,9 @@ QString TransactionTableModel::formatTxType(const TransactionRecord* wtx) const
     case TransactionRecord::SendToSelf:
         return tr("Payment to yourself");
     case TransactionRecord::StakeMint:
-        return tr("CLR Stake");
-    case TransactionRecord::StakeZCLR:
-        return tr("zCLR Stake");
+        return tr("UCR Stake");
+    case TransactionRecord::StakeZUCR:
+        return tr("zUCR Stake");
     case TransactionRecord::Generated:
         return tr("Mined");
     case TransactionRecord::ObfuscationDenominate:
@@ -361,15 +361,15 @@ QString TransactionTableModel::formatTxType(const TransactionRecord* wtx) const
     case TransactionRecord::Obfuscated:
         return tr("Obfuscated");
     case TransactionRecord::ZerocoinMint:
-        return tr("Converted CLR to zCLR");
+        return tr("Converted UCR to zUCR");
     case TransactionRecord::ZerocoinSpend:
-        return tr("Spent zCLR");
+        return tr("Spent zUCR");
     case TransactionRecord::RecvFromZerocoinSpend:
-        return tr("Received CLR from zCLR");
+        return tr("Received UCR from zUCR");
     case TransactionRecord::ZerocoinSpend_Change_zClr:
-        return tr("Minted Change as zCLR from zCLR Spend");
+        return tr("Minted Change as zUCR from zUCR Spend");
     case TransactionRecord::ZerocoinSpend_FromMe:
-        return tr("Converted zCLR to CLR");
+        return tr("Converted zUCR to UCR");
 
     default:
         return QString();
@@ -381,7 +381,7 @@ QVariant TransactionTableModel::txAddressDecoration(const TransactionRecord* wtx
     switch (wtx->type) {
     case TransactionRecord::Generated:
     case TransactionRecord::StakeMint:
-    case TransactionRecord::StakeZCLR:
+    case TransactionRecord::StakeZUCR:
     case TransactionRecord::MNReward:
         return QIcon(":/icons/tx_mined");
     case TransactionRecord::RecvWithObfuscation:
@@ -425,9 +425,9 @@ QString TransactionTableModel::formatTxToAddress(const TransactionRecord* wtx, b
         return QString::fromStdString(wtx->address) + watchAddress;
     case TransactionRecord::ZerocoinMint:
     case TransactionRecord::ZerocoinSpend_Change_zClr:
-        return tr("Anonymous (zCLR Transaction)");
-    case TransactionRecord::StakeZCLR:
-        return tr("Anonymous (zCLR Stake)");
+        return tr("Anonymous (zUCR Transaction)");
+    case TransactionRecord::StakeZUCR:
+        return tr("Anonymous (zUCR Stake)");
     case TransactionRecord::SendToSelf:
     default:
         return tr("(n/a)") + watchAddress;
@@ -576,7 +576,7 @@ QVariant TransactionTableModel::data(const QModelIndex& index, int role) const
     case Qt::ForegroundRole:
         // Minted
         if (rec->type == TransactionRecord::Generated || rec->type == TransactionRecord::StakeMint ||
-                rec->type == TransactionRecord::StakeZCLR || rec->type == TransactionRecord::MNReward) {
+                rec->type == TransactionRecord::StakeZUCR || rec->type == TransactionRecord::MNReward) {
             if (rec->status.status == TransactionStatus::Conflicted || rec->status.status == TransactionStatus::NotAccepted)
                 return COLOR_ORPHAN;
             else

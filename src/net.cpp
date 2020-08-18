@@ -1161,7 +1161,7 @@ void ThreadMapPort()
             }
         }
 
-        string strDesc = "CLR " + FormatFullVersion();
+        string strDesc = "UCR " + FormatFullVersion();
 
         try {
             while (true) {

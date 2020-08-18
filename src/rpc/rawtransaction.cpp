@@ -263,7 +263,7 @@ UniValue listunspent(const UniValue& params, bool fHelp)
             const UniValue& input = inputs[inx];
             CBitcoinAddress address(input.get_str());
             if (!address.IsValid())
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid CLR address: ") + input.get_str());
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid UCR address: ") + input.get_str());
             if (setAddress.count(address))
                 throw JSONRPCError(RPC_INVALID_PARAMETER, string("Invalid parameter, duplicated address: ") + input.get_str());
             setAddress.insert(address);
@@ -411,7 +411,7 @@ UniValue createrawtransaction(const UniValue& params, bool fHelp)
     for(const string& name_: addrList) {
         CBitcoinAddress address(name_);
         if (!address.IsValid())
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid CLR address: ")+name_);
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid UCR address: ")+name_);
 
         if (setAddress.count(address))
             throw JSONRPCError(RPC_INVALID_PARAMETER, string("Invalid parameter, duplicated address: ")+name_);
@@ -916,7 +916,7 @@ UniValue createrawzerocoinstake(const UniValue& params, bool fHelp)
     if (fHelp || params.size() != 1)
         throw runtime_error(
             "createrawzerocoinstake mint_input \n"
-            "\nCreates raw zCLR coinstakes (without MN output).\n" +
+            "\nCreates raw zUCR coinstakes (without MN output).\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
@@ -937,7 +937,7 @@ UniValue createrawzerocoinstake(const UniValue& params, bool fHelp)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     if(GetAdjustedTime() > GetSporkValue(SPORK_16_ZEROCOIN_MAINTENANCE_MODE))
-        throw JSONRPCError(RPC_WALLET_ERROR, "zCLR is currently disabled due to maintenance.");
+        throw JSONRPCError(RPC_WALLET_ERROR, "zUCR is currently disabled due to maintenance.");
 
     std::string serial_hash = params[0].get_str();
     if (!IsHex(serial_hash))
@@ -954,7 +954,7 @@ UniValue createrawzerocoinstake(const UniValue& params, bool fHelp)
 
     CMutableTransaction coinstake_tx;
 
-    // create the zerocoinmint output (one spent denom + three 1-zCLR denom)
+    // create the zerocoinmint output (one spent denom + three 1-zUCR denom)
     libzerocoin::CoinDenomination staked_denom = input_mint.GetDenomination();
     std::vector<CTxOut> vOutMint(5);
     // Mark coin stake transaction
@@ -962,11 +962,11 @@ UniValue createrawzerocoinstake(const UniValue& params, bool fHelp)
     scriptEmpty.clear();
     vOutMint[0] = CTxOut(0, scriptEmpty);
     CDeterministicMint dMint;
-    if (!pwalletMain->CreateZCLROutPut(staked_denom, vOutMint[1], dMint))
+    if (!pwalletMain->CreateZUCROutPut(staked_denom, vOutMint[1], dMint))
         throw JSONRPCError(RPC_WALLET_ERROR, "failed to create new zclr output");
 
     for (int i=2; i<5; i++) {
-        if (!pwalletMain->CreateZCLROutPut(libzerocoin::ZQ_ONE, vOutMint[i], dMint))
+        if (!pwalletMain->CreateZUCROutPut(libzerocoin::ZQ_ONE, vOutMint[i], dMint))
             throw JSONRPCError(RPC_WALLET_ERROR, "failed to create new zclr output");
     }
     coinstake_tx.vout = vOutMint;

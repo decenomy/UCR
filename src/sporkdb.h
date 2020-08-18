@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_CSPORKDB_H
-#define CLR_CSPORKDB_H
+#ifndef UCR_CSPORKDB_H
+#define UCR_CSPORKDB_H
 
 #include <boost/filesystem/path.hpp>
 #include "leveldbwrapper.h"
@@ -26,4 +26,4 @@ public:
 };
 
 
-#endif //CLR_CSPORKDB_H
+#endif //UCR_CSPORKDB_H

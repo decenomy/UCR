@@ -1,11 +1,11 @@
-// Copyright (c) 2018 CLR
+// Copyright (c) 2018 UCR
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
 
-#ifndef CLR_INVALID_SERIALS_JSON_H
-#define CLR_INVALID_SERIALS_JSON_H
+#ifndef UCR_INVALID_SERIALS_JSON_H
+#define UCR_INVALID_SERIALS_JSON_H
 
 #include <string>
 
@@ -1189,4 +1189,4 @@ std::string LoadInvalidSerials()
     return str;
 }
 
-#endif //CLR_INVALID_SERIALS_JSON_H
+#endif //UCR_INVALID_SERIALS_JSON_H

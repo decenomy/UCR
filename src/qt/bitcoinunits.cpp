@@ -20,18 +20,18 @@ BitcoinUnits::BitcoinUnits(QObject* parent) : QAbstractListModel(parent),
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(CLR);
-    unitlist.append(mCLR);
-    unitlist.append(uCLR);
+    unitlist.append(UCR);
+    unitlist.append(mUCR);
+    unitlist.append(uUCR);
     return unitlist;
 }
 
 bool BitcoinUnits::valid(int unit)
 {
     switch (unit) {
-    case CLR:
-    case mCLR:
-    case uCLR:
+    case UCR:
+    case mUCR:
+    case uUCR:
         return true;
     default:
         return false;
@@ -41,11 +41,11 @@ bool BitcoinUnits::valid(int unit)
 QString BitcoinUnits::id(int unit)
 {
     switch (unit) {
-    case CLR:
+    case UCR:
         return QString("clr");
-    case mCLR:
+    case mUCR:
         return QString("mclr");
-    case uCLR:
+    case uUCR:
         return QString::fromUtf8("uclr");
     default:
         return QString("???");
@@ -56,23 +56,23 @@ QString BitcoinUnits::name(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case CLR:
-            return QString("CLR");
-        case mCLR:
-            return QString("mCLR");
-        case uCLR:
-            return QString::fromUtf8("μCLR");
+        case UCR:
+            return QString("UCR");
+        case mUCR:
+            return QString("mUCR");
+        case uUCR:
+            return QString::fromUtf8("μUCR");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case CLR:
-            return QString("tCLR");
-        case mCLR:
-            return QString("mtCLR");
-        case uCLR:
-            return QString::fromUtf8("μtCLR");
+        case UCR:
+            return QString("tUCR");
+        case mUCR:
+            return QString("mtUCR");
+        case uUCR:
+            return QString::fromUtf8("μtUCR");
         default:
             return QString("???");
         }
@@ -83,23 +83,23 @@ QString BitcoinUnits::description(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case CLR:
-            return QString("CLR");
-        case mCLR:
-            return QString("Milli-CLR (1 / 1" THIN_SP_UTF8 "000)");
-        case uCLR:
-            return QString("Micro-CLR (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case UCR:
+            return QString("UCR");
+        case mUCR:
+            return QString("Milli-UCR (1 / 1" THIN_SP_UTF8 "000)");
+        case uUCR:
+            return QString("Micro-UCR (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case CLR:
-            return QString("TestCLRs");
-        case mCLR:
-            return QString("Milli-TestCLR (1 / 1" THIN_SP_UTF8 "000)");
-        case uCLR:
-            return QString("Micro-TestCLR (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case UCR:
+            return QString("TestUCRs");
+        case mUCR:
+            return QString("Milli-TestUCR (1 / 1" THIN_SP_UTF8 "000)");
+        case uUCR:
+            return QString("Micro-TestUCR (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
@@ -109,11 +109,11 @@ QString BitcoinUnits::description(int unit)
 qint64 BitcoinUnits::factor(int unit)
 {
     switch (unit) {
-    case CLR:
+    case UCR:
         return 100000000;
-    case mCLR:
+    case mUCR:
         return 100000;
-    case uCLR:
+    case uUCR:
         return 100;
     default:
         return 100000000;
@@ -123,11 +123,11 @@ qint64 BitcoinUnits::factor(int unit)
 int BitcoinUnits::decimals(int unit)
 {
     switch (unit) {
-    case CLR:
+    case UCR:
         return 8;
-    case mCLR:
+    case mUCR:
         return 5;
-    case uCLR:
+    case uUCR:
         return 2;
     default:
         return 0;

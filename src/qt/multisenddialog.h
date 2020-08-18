@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_QT_MULTISENDDIALOG_H
-#define CLR_QT_MULTISENDDIALOG_H
+#ifndef UCR_QT_MULTISENDDIALOG_H
+#define UCR_QT_MULTISENDDIALOG_H
 
 #include <QDialog>
 
@@ -39,4 +39,4 @@ private:
     WalletModel* model;
 };
 
-#endif // CLR_QT_MULTISENDDIALOG_H
+#endif // UCR_QT_MULTISENDDIALOG_H

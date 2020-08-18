@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_QT_PROPOSALFRAME_H
-#define CLR_QT_PROPOSALFRAME_H
+#ifndef UCR_QT_PROPOSALFRAME_H
+#define UCR_QT_PROPOSALFRAME_H
 
 #include <QFrame>
 #include <QLabel>
@@ -52,4 +52,4 @@ private Q_SLOTS:
     void proposalLink_clicked(const QString &link);
 };
 
-#endif //CLR_QT_PROPOSALFRAME_H
+#endif //UCR_QT_PROPOSALFRAME_H

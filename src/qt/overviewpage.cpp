@@ -36,7 +36,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate() : QAbstractItemDelegate(), unit(BitcoinUnits::CLR)
+    TxViewDelegate() : QAbstractItemDelegate(), unit(BitcoinUnits::UCR)
     {
     }
 
@@ -151,7 +151,7 @@ OverviewPage::~OverviewPage()
     delete ui;
 }
 
-void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBalance, QString& sCLRPercentage, QString& szCLRPercentage)
+void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBalance, QString& sUCRPercentage, QString& szUCRPercentage)
 {
     int nPrecision = 2;
     double dzPercentage = 0.0;
@@ -170,8 +170,8 @@ void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBala
 
     double dPercentage = 100.0 - dzPercentage;
 
-    szCLRPercentage = "(" + QLocale(QLocale::system()).toString(dzPercentage, 'f', nPrecision) + " %)";
-    sCLRPercentage = "(" + QLocale(QLocale::system()).toString(dPercentage, 'f', nPrecision) + " %)";
+    szUCRPercentage = "(" + QLocale(QLocale::system()).toString(dzPercentage, 'f', nPrecision) + " %)";
+    sUCRPercentage = "(" + QLocale(QLocale::system()).toString(dPercentage, 'f', nPrecision) + " %)";
 
 }
 
@@ -201,16 +201,16 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
         nWatchOnlyLockedBalance = pwalletMain->GetLockedWatchOnlyBalance();
     }
 
-    // CLR Balance
+    // UCR Balance
     CAmount nTotalBalance = balance + unconfirmedBalance;
     CAmount clrAvailableBalance = balance - immatureBalance - nLockedBalance;
     CAmount nUnlockedBalance = nTotalBalance - nLockedBalance;
 
-    // CLR Watch-Only Balance
+    // UCR Watch-Only Balance
     CAmount nTotalWatchBalance = watchOnlyBalance + watchUnconfBalance;
     CAmount nAvailableWatchBalance = watchOnlyBalance - watchImmatureBalance - nWatchOnlyLockedBalance;
 
-    // zCLR Balance
+    // zUCR Balance
     CAmount matureZerocoinBalance = zerocoinBalance - unconfirmedZerocoinBalance - immatureZerocoinBalance;
 
     // Percentages
@@ -221,7 +221,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     CAmount availableTotalBalance = clrAvailableBalance + matureZerocoinBalance;
     CAmount sumTotalBalance = nTotalBalance + zerocoinBalance;
 
-    // CLR labels
+    // UCR labels
     ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, clrAvailableBalance, false, BitcoinUnits::separatorAlways));
     ui->labelUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedBalance, false, BitcoinUnits::separatorAlways));
     ui->labelImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureBalance, false, BitcoinUnits::separatorAlways));
@@ -245,7 +245,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelStakeRewards->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, stakeEarnings, false, BitcoinUnits::separatorAlways));
 
     // Adjust bubble-help according to AutoMint settings
-    QString automintHelp = tr("Current percentage of zCLR.\nIf AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).\n");
+    QString automintHelp = tr("Current percentage of zUCR.\nIf AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).\n");
     bool fEnableZeromint = GetBoolArg("-enablezeromint", Params().ZeroCoinEnabled());
     int nZeromintPercentage = GetArg("-zeromintpercentage", 10);
     if (fEnableZeromint) {
@@ -266,33 +266,33 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
 
     bool showWatchOnly = nTotalWatchBalance != 0;
 
-    // CLR Available
-    bool showCLRAvailable = settingShowAllBalances || clrAvailableBalance != nTotalBalance;
-    bool showWatchOnlyCLRAvailable = showCLRAvailable || nAvailableWatchBalance != nTotalWatchBalance;
-    ui->labelBalanceText->setVisible(showCLRAvailable || showWatchOnlyCLRAvailable);
-    ui->labelBalance->setVisible(showCLRAvailable || showWatchOnlyCLRAvailable);
-    ui->labelWatchAvailable->setVisible(showWatchOnlyCLRAvailable && showWatchOnly);
+    // UCR Available
+    bool showUCRAvailable = settingShowAllBalances || clrAvailableBalance != nTotalBalance;
+    bool showWatchOnlyUCRAvailable = showUCRAvailable || nAvailableWatchBalance != nTotalWatchBalance;
+    ui->labelBalanceText->setVisible(showUCRAvailable || showWatchOnlyUCRAvailable);
+    ui->labelBalance->setVisible(showUCRAvailable || showWatchOnlyUCRAvailable);
+    ui->labelWatchAvailable->setVisible(showWatchOnlyUCRAvailable && showWatchOnly);
 
-    // CLR Pending
-    bool showCLRPending = settingShowAllBalances || unconfirmedBalance != 0;
-    bool showWatchOnlyCLRPending = showCLRPending || watchUnconfBalance != 0;
-    ui->labelPendingText->setVisible(showCLRPending || showWatchOnlyCLRPending);
-    ui->labelUnconfirmed->setVisible(showCLRPending || showWatchOnlyCLRPending);
-    ui->labelWatchPending->setVisible(showWatchOnlyCLRPending && showWatchOnly);
+    // UCR Pending
+    bool showUCRPending = settingShowAllBalances || unconfirmedBalance != 0;
+    bool showWatchOnlyUCRPending = showUCRPending || watchUnconfBalance != 0;
+    ui->labelPendingText->setVisible(showUCRPending || showWatchOnlyUCRPending);
+    ui->labelUnconfirmed->setVisible(showUCRPending || showWatchOnlyUCRPending);
+    ui->labelWatchPending->setVisible(showWatchOnlyUCRPending && showWatchOnly);
 
-    // CLR Immature
-    bool showCLRImmature = settingShowAllBalances || immatureBalance != 0;
-    bool showWatchOnlyImmature = showCLRImmature || watchImmatureBalance != 0;
-    ui->labelImmatureText->setVisible(showCLRImmature || showWatchOnlyImmature);
-    ui->labelImmature->setVisible(showCLRImmature || showWatchOnlyImmature); // for symmetry reasons also show immature label when the watch-only one is shown
+    // UCR Immature
+    bool showUCRImmature = settingShowAllBalances || immatureBalance != 0;
+    bool showWatchOnlyImmature = showUCRImmature || watchImmatureBalance != 0;
+    ui->labelImmatureText->setVisible(showUCRImmature || showWatchOnlyImmature);
+    ui->labelImmature->setVisible(showUCRImmature || showWatchOnlyImmature); // for symmetry reasons also show immature label when the watch-only one is shown
     ui->labelWatchImmature->setVisible(showWatchOnlyImmature && showWatchOnly); // show watch-only immature balance
 
-    // CLR Locked
-    bool showCLRLocked = settingShowAllBalances || nLockedBalance != 0;
-    bool showWatchOnlyCLRLocked = showCLRLocked || nWatchOnlyLockedBalance != 0;
-    ui->labelLockedBalanceText->setVisible(showCLRLocked || showWatchOnlyCLRLocked);
-    ui->labelLockedBalance->setVisible(showCLRLocked || showWatchOnlyCLRLocked);
-    ui->labelWatchLocked->setVisible(showWatchOnlyCLRLocked && showWatchOnly);
+    // UCR Locked
+    bool showUCRLocked = settingShowAllBalances || nLockedBalance != 0;
+    bool showWatchOnlyUCRLocked = showUCRLocked || nWatchOnlyLockedBalance != 0;
+    ui->labelLockedBalanceText->setVisible(showUCRLocked || showWatchOnlyUCRLocked);
+    ui->labelLockedBalance->setVisible(showUCRLocked || showWatchOnlyUCRLocked);
+    ui->labelWatchLocked->setVisible(showWatchOnlyUCRLocked && showWatchOnly);
 
     // Masternode and Stake Earnings.
     ui->labelStakeRewards->setVisible(false);
@@ -302,8 +302,8 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
 
     // Percent split
     //bool showPercentages = ! (zerocoinBalance == 0 && nTotalBalance == 0);
-    ui->labelCLRPercent->setVisible(false);
-    ui->labelzCLRPercent->setVisible(false);
+    ui->labelUCRPercent->setVisible(false);
+    ui->labelzUCRPercent->setVisible(false);
 
     static int cachedTxLocks = 0;
 
@@ -376,7 +376,7 @@ void OverviewPage::setWalletModel(WalletModel* model)
         connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
-    // update the display unit, to not use the default ("CLR")
+    // update the display unit, to not use the default ("UCR")
     updateDisplayUnit();
 
     // Hide orphans

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_ACCUMULATORMAP_H
-#define CLR_ACCUMULATORMAP_H
+#ifndef UCR_ACCUMULATORMAP_H
+#define UCR_ACCUMULATORMAP_H
 
 #include "libzerocoin/Accumulator.h"
 #include "libzerocoin/Coin.h"
@@ -26,4 +26,4 @@ public:
     void Reset();
     void Reset(libzerocoin::ZerocoinParams* params2);
 };
-#endif //CLR_ACCUMULATORMAP_H
+#endif //UCR_ACCUMULATORMAP_H

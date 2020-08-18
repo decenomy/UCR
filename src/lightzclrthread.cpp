@@ -10,7 +10,7 @@
 #include "main.h"
 
 /****** Thread ********/
-void CLightWorker::ThreadLightZCLRSimplified() {
+void CLightWorker::ThreadLightZUCRSimplified() {
     RenameThread("clr-light-thread");
     isWorkerRunning = true;
     while (true) {
@@ -63,7 +63,7 @@ void CLightWorker::ThreadLightZCLRSimplified() {
                         );
 
                     } catch (NotEnoughMintsException e) {
-                        LogPrintStr(std::string("ThreadLightZCLRSimplified: ") + e.message + "\n");
+                        LogPrintStr(std::string("ThreadLightZUCRSimplified: ") + e.message + "\n");
                         rejectWork(genWit, blockHeight, NOT_ENOUGH_MINTS);
                         continue;
                     }

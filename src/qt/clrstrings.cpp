@@ -50,7 +50,7 @@ QT_TRANSLATE_NOOP("clr-core", ""
 "Delete all zerocoin spends and mints that have been recorded to the "
 "blockchain database and reindex them (0-1, default: %u)"),
 QT_TRANSLATE_NOOP("clr-core", ""
-"Disable all CLR specific functionality (Masternodes, Zerocoin, SwiftX, "
+"Disable all UCR specific functionality (Masternodes, Zerocoin, SwiftX, "
 "Budgeting) (0-1, default: %u)"),
 QT_TRANSLATE_NOOP("clr-core", ""
 "Distributed under the MIT software license, see the accompanying file "
@@ -58,12 +58,12 @@ QT_TRANSLATE_NOOP("clr-core", ""
 QT_TRANSLATE_NOOP("clr-core", ""
 "Enable SwiftX, show confirmations for locked transactions (bool, default: %s)"),
 QT_TRANSLATE_NOOP("clr-core", ""
-"Enable automatic wallet backups triggered after each zCLR minting (0-1, "
+"Enable automatic wallet backups triggered after each zUCR minting (0-1, "
 "default: %u)"),
 QT_TRANSLATE_NOOP("clr-core", ""
-"Enable or disable staking functionality for CLR inputs (0-1, default: %u)"),
+"Enable or disable staking functionality for UCR inputs (0-1, default: %u)"),
 QT_TRANSLATE_NOOP("clr-core", ""
-"Enable or disable staking functionality for zCLR inputs (0-1, default: %u)"),
+"Enable or disable staking functionality for zUCR inputs (0-1, default: %u)"),
 QT_TRANSLATE_NOOP("clr-core", ""
 "Enable spork administration functionality with the appropriate private key."),
 QT_TRANSLATE_NOOP("clr-core", ""
@@ -100,10 +100,10 @@ QT_TRANSLATE_NOOP("clr-core", ""
 QT_TRANSLATE_NOOP("clr-core", ""
 "Failed to find coin set amongst held coins with less than maxNumber of Spends"),
 QT_TRANSLATE_NOOP("clr-core", ""
-"Fees (in CLR/Kb) smaller than this are considered zero fee for relaying "
+"Fees (in UCR/Kb) smaller than this are considered zero fee for relaying "
 "(default: %s)"),
 QT_TRANSLATE_NOOP("clr-core", ""
-"Fees (in CLR/Kb) smaller than this are considered zero fee for transaction "
+"Fees (in UCR/Kb) smaller than this are considered zero fee for transaction "
 "creation (default: %s)"),
 QT_TRANSLATE_NOOP("clr-core", ""
 "Flush database activity from memory pool to disk log every <n> megabytes "
@@ -171,7 +171,7 @@ QT_TRANSLATE_NOOP("clr-core", ""
 "Show N confirmations for a successfully locked transaction (0-9999, default: "
 "%u)"),
 QT_TRANSLATE_NOOP("clr-core", ""
-"Specify custom backup path to add a copy of any automatic zCLR backup. If "
+"Specify custom backup path to add a copy of any automatic zUCR backup. If "
 "set as dir, every backup generates a timestamped file. If set as file, will "
 "rewrite to that file every backup. If backuppath is set as well, 4 backups "
 "will happen"),
@@ -200,10 +200,10 @@ QT_TRANSLATE_NOOP("clr-core", ""
 "Unable to locate enough Obfuscation denominated funds for this transaction."),
 QT_TRANSLATE_NOOP("clr-core", ""
 "Unable to locate enough Obfuscation non-denominated funds for this "
-"transaction that are not equal 10000 CLR."),
+"transaction that are not equal 10000 UCR."),
 QT_TRANSLATE_NOOP("clr-core", ""
 "Unable to locate enough funds for this transaction that are not equal 10000 "
-"CLR."),
+"UCR."),
 QT_TRANSLATE_NOOP("clr-core", ""
 "Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: "
 "%s)"),
@@ -325,7 +325,7 @@ QT_TRANSLATE_NOOP("clr-core", "Failed to read block"),
 QT_TRANSLATE_NOOP("clr-core", "Failed to select a zerocoin"),
 QT_TRANSLATE_NOOP("clr-core", "Failed to wipe zerocoinDB"),
 QT_TRANSLATE_NOOP("clr-core", "Failed to write coin serial number into wallet"),
-QT_TRANSLATE_NOOP("clr-core", "Fee (in CLR/kB) to add to transactions you send (default: %s)"),
+QT_TRANSLATE_NOOP("clr-core", "Fee (in UCR/kB) to add to transactions you send (default: %s)"),
 QT_TRANSLATE_NOOP("clr-core", "Finalizing transaction."),
 QT_TRANSLATE_NOOP("clr-core", "Force safe mode (default: %u)"),
 QT_TRANSLATE_NOOP("clr-core", "Found enough users, signing ( waiting %s )"),
@@ -414,7 +414,7 @@ QT_TRANSLATE_NOOP("clr-core", "Randomly drop 1 of every <n> network messages"),
 QT_TRANSLATE_NOOP("clr-core", "Randomly fuzz 1 of every <n> network messages"),
 QT_TRANSLATE_NOOP("clr-core", "Rebuild block chain index from current blk000??.dat files"),
 QT_TRANSLATE_NOOP("clr-core", "Receive and display P2P network alerts (default: %u)"),
-QT_TRANSLATE_NOOP("clr-core", "Reindex the CLR and zCLR money supply statistics"),
+QT_TRANSLATE_NOOP("clr-core", "Reindex the UCR and zUCR money supply statistics"),
 QT_TRANSLATE_NOOP("clr-core", "Reindex the accumulator database"),
 QT_TRANSLATE_NOOP("clr-core", "Reindexing zerocoin database..."),
 QT_TRANSLATE_NOOP("clr-core", "Reindexing zerocoin failed"),
@@ -466,7 +466,7 @@ QT_TRANSLATE_NOOP("clr-core", "Synchronizing budgets..."),
 QT_TRANSLATE_NOOP("clr-core", "Synchronizing masternode winners..."),
 QT_TRANSLATE_NOOP("clr-core", "Synchronizing masternodes..."),
 QT_TRANSLATE_NOOP("clr-core", "Synchronizing sporks..."),
-QT_TRANSLATE_NOOP("clr-core", "Syncing CLR wallet..."),
+QT_TRANSLATE_NOOP("clr-core", "Syncing UCR wallet..."),
 QT_TRANSLATE_NOOP("clr-core", "The coin spend has been used"),
 QT_TRANSLATE_NOOP("clr-core", "The new spend coin transaction did not verify"),
 QT_TRANSLATE_NOOP("clr-core", "The selected mint coin is an invalid coin"),
@@ -504,11 +504,11 @@ QT_TRANSLATE_NOOP("clr-core", "Use a custom max chain reorganization depth (defa
 QT_TRANSLATE_NOOP("clr-core", "Use the test network"),
 QT_TRANSLATE_NOOP("clr-core", "User Agent comment (%s) contains unsafe characters."),
 QT_TRANSLATE_NOOP("clr-core", "Username for JSON-RPC connections"),
-QT_TRANSLATE_NOOP("clr-core", "Value is below the smallest available denomination (= 1) of zCLR"),
+QT_TRANSLATE_NOOP("clr-core", "Value is below the smallest available denomination (= 1) of zUCR"),
 QT_TRANSLATE_NOOP("clr-core", "Value more than Obfuscation pool maximum allows."),
 QT_TRANSLATE_NOOP("clr-core", "Verifying blocks..."),
 QT_TRANSLATE_NOOP("clr-core", "Verifying wallet..."),
-QT_TRANSLATE_NOOP("clr-core", "Version 1 zCLR require a security level of 100 to successfully spend."),
+QT_TRANSLATE_NOOP("clr-core", "Version 1 zUCR require a security level of 100 to successfully spend."),
 QT_TRANSLATE_NOOP("clr-core", "Wallet %s resides outside data directory %s"),
 QT_TRANSLATE_NOOP("clr-core", "Wallet is locked."),
 QT_TRANSLATE_NOOP("clr-core", "Wallet needed to be rewritten: restart ClearCoin Core to complete"),

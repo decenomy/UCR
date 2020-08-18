@@ -54,7 +54,7 @@ using namespace std;
 using namespace libzerocoin;
 
 #if defined(NDEBUG)
-#error "CLR cannot be compiled without assertions."
+#error "UCR cannot be compiled without assertions."
 #endif
 
 /**
@@ -994,7 +994,7 @@ bool ContextualCheckZerocoinSpend(const CTransaction& tx, const CoinSpend& spend
     //Reject serial's that are already in the blockchain
     int nHeightTx = 0;
     if (IsSerialInBlockchain(spend.getCoinSerialNumber(), nHeightTx))
-        return error("%s : zCLR spend with serial %s is already in block %d\n", __func__,
+        return error("%s : zUCR spend with serial %s is already in block %d\n", __func__,
                      spend.getCoinSerialNumber().GetHex(), nHeightTx);
 
     return true;
@@ -1002,16 +1002,16 @@ bool ContextualCheckZerocoinSpend(const CTransaction& tx, const CoinSpend& spend
 
 bool ContextualCheckZerocoinSpendNoSerialCheck(const CTransaction& tx, const CoinSpend& spend, CBlockIndex* pindex, const uint256& hashBlock)
 {
-    //Check to see if the zCLR is properly signed
+    //Check to see if the zUCR is properly signed
     if (pindex->nHeight >= Params().Zerocoin_Block_V2_Start()) {
         if (!spend.HasValidSignature())
-            return error("%s: V2 zCLR spend does not have a valid signature", __func__);
+            return error("%s: V2 zUCR spend does not have a valid signature", __func__);
 
         libzerocoin::SpendType expectedType = libzerocoin::SpendType::SPEND;
         if (tx.IsCoinStake())
             expectedType = libzerocoin::SpendType::STAKE;
         if (spend.getSpendType() != expectedType) {
-            return error("%s: trying to spend zCLR without the correct spend type. txid=%s", __func__,
+            return error("%s: trying to spend zUCR without the correct spend type. txid=%s", __func__,
                          tx.GetHash().GetHex());
         }
     }
@@ -1020,7 +1020,7 @@ bool ContextualCheckZerocoinSpendNoSerialCheck(const CTransaction& tx, const Coi
     bool fUseV1Params = spend.getVersion() < libzerocoin::PrivateCoin::PUBKEY_VERSION;
     if (pindex->nHeight > Params().Zerocoin_Block_EnforceSerialRange() &&
         !spend.HasValidSerial(Params().Zerocoin_Params(fUseV1Params)))
-        return error("%s : zCLR spend with serial %s from tx %s is not in valid range\n", __func__,
+        return error("%s : zUCR spend with serial %s from tx %s is not in valid range\n", __func__,
                      spend.getCoinSerialNumber().GetHex(), tx.GetHash().GetHex());
 
     return true;
@@ -1334,7 +1334,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
             //Check that txid is not already in the chain
             int nHeightTx = 0;
             if (IsTransactionInChain(tx.GetHash(), nHeightTx))
-                return state.Invalid(error("AcceptToMemoryPool : zCLR spend tx %s already in block %d",
+                return state.Invalid(error("AcceptToMemoryPool : zUCR spend tx %s already in block %d",
                                            tx.GetHash().GetHex(), nHeightTx), REJECT_DUPLICATE, "bad-txns-inputs-spent");
 
             //Check for double spending of serial #'s
@@ -1372,7 +1372,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
                 }
             }
 
-            // Check that zCLR mints are not already known
+            // Check that zUCR mints are not already known
             for (auto& out : tx.vout) {
                 if (!out.IsZerocoinMint())
                     continue;
@@ -1946,7 +1946,7 @@ int64_t GetBlockValue(int nHeight)
 }
 
 
-int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCount, bool isZCLRStake)
+int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCount, bool isZUCRStake)
 {
     int64_t ret = 0;
 
@@ -2484,7 +2484,7 @@ void ThreadScriptCheck()
     scriptcheckqueue.Thread();
 }
 
-void RecalculateZCLRMinted()
+void RecalculateZUCRMinted()
 {
     CBlockIndex *pindex = chainActive[Params().Zerocoin_StartHeight()];
     int nHeightEnd = chainActive.Height();
@@ -2511,14 +2511,14 @@ void RecalculateZCLRMinted()
     }
 }
 
-void RecalculateZCLRSpent()
+void RecalculateZUCRSpent()
 {
     CBlockIndex* pindex = chainActive[Params().Zerocoin_StartHeight()];
     while (true) {
         if (pindex->nHeight % 1000 == 0)
             LogPrintf("%s : block %d...\n", __func__, pindex->nHeight);
 
-        //Rewrite zCLR supply
+        //Rewrite zUCR supply
         CBlock block;
         assert(ReadBlockFromDisk(block, pindex));
 
@@ -2527,13 +2527,13 @@ void RecalculateZCLRSpent()
         //Reset the supply to previous block
         pindex->mapZerocoinSupply = pindex->pprev->mapZerocoinSupply;
 
-        //Add mints to zCLR supply
+        //Add mints to zUCR supply
         for (auto denom : libzerocoin::zerocoinDenomList) {
             long nDenomAdded = count(pindex->vMintDenominationsInBlock.begin(), pindex->vMintDenominationsInBlock.end(), denom);
             pindex->mapZerocoinSupply.at(denom) += nDenomAdded;
         }
 
-        //Remove spends from zCLR supply
+        //Remove spends from zUCR supply
         for (auto denom : listDenomsSpent)
             pindex->mapZerocoinSupply.at(denom)--;
 
@@ -2547,7 +2547,7 @@ void RecalculateZCLRSpent()
     }
 }
 
-bool RecalculateCLRSupply(int nHeightStart)
+bool RecalculateUCRSupply(int nHeightStart)
 {
     if (nHeightStart > chainActive.Height())
         return false;
@@ -2667,7 +2667,7 @@ bool ReindexAccumulators(list<uint256>& listMissingCheckpoints, string& strError
     return true;
 }
 
-bool UpdateZCLRSupply(const CBlock& block, CBlockIndex* pindex, bool fJustCheck)
+bool UpdateZUCRSupply(const CBlock& block, CBlockIndex* pindex, bool fJustCheck)
 {
     std::list<CZerocoinMint> listMints;
     bool fFilterInvalid = pindex->nHeight >= Params().Zerocoin_Block_RecalculateAccumulators();
@@ -2852,7 +2852,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                     return state.DoS(100, error("%s: failed to add block %s with invalid zerocoinspend", __func__, tx.GetHash().GetHex()), REJECT_INVALID);
             }
 
-            // Check that zCLR mints are not already known
+            // Check that zUCR mints are not already known
             if (tx.HasZerocoinMintOutputs()) {
                 for (auto& out : tx.vout) {
                     if (!out.IsZerocoinMint())
@@ -2881,7 +2881,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                 }
             }
 
-            // Check that zCLR mints are not already known
+            // Check that zUCR mints are not already known
             if (tx.HasZerocoinMintOutputs()) {
                 for (auto& out : tx.vout) {
                     if (!out.IsZerocoinMint())
@@ -2932,14 +2932,14 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
 
     //A one-time event where money supply counts were off and recalculated on a certain block.
     if (pindex->nHeight == Params().Zerocoin_Block_RecalculateAccumulators() + 1) {
-        RecalculateZCLRMinted();
-        RecalculateZCLRSpent();
-        RecalculateCLRSupply(Params().Zerocoin_StartHeight());
+        RecalculateZUCRMinted();
+        RecalculateZUCRSpent();
+        RecalculateUCRSupply(Params().Zerocoin_StartHeight());
     }
 
-    //Track zCLR money supply in the block index
-    if (!UpdateZCLRSupply(block, pindex, fJustCheck))
-        return state.DoS(100, error("%s: Failed to calculate new zCLR supply for block=%s height=%d", __func__,
+    //Track zUCR money supply in the block index
+    if (!UpdateZUCRSupply(block, pindex, fJustCheck))
+        return state.DoS(100, error("%s: Failed to calculate new zUCR supply for block=%s height=%d", __func__,
                                     block.GetHash().GetHex(), pindex->nHeight), REJECT_INVALID);
 
     // track money supply and mint amount info
@@ -3014,7 +3014,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         setDirtyBlockIndex.insert(pindex);
     }
 
-    //Record zCLR serials
+    //Record zUCR serials
     if (pwalletMain) {
         std::set<uint256> setAddedTx;
         for (std::pair<CoinSpend, uint256> pSpend : vSpends) {
@@ -3180,7 +3180,7 @@ void static UpdateTip(CBlockIndex* pindexNew)
     /*
      *
 #ifdef ENABLE_WALLET
-    // If turned on AutoZeromint will automatically convert CLR to zCLR
+    // If turned on AutoZeromint will automatically convert UCR to zUCR
     if (pwalletMain && pwalletMain->isZeromintEnabled())
         pwalletMain->AutoZeromint();
 #endif // ENABLE_WALLET
@@ -4048,13 +4048,13 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
         if (!CheckTransaction(tx, fZerocoinActive, chainActive.Height() + 1 >= Params().Zerocoin_Block_EnforceSerialRange(), state))
             return error("CheckBlock() : CheckTransaction failed");
 
-        // double check that there are no double spent zCLR spends in this block
+        // double check that there are no double spent zUCR spends in this block
         if (tx.HasZerocoinSpendInputs()) {
             for (const CTxIn& txIn : tx.vin) {
                 if (txIn.scriptSig.IsZerocoinSpend()) {
                     libzerocoin::CoinSpend spend = TxInToZerocoinSpend(txIn);
                     if (count(vBlockSerials.begin(), vBlockSerials.end(), spend.getCoinSerialNumber()))
-                        return state.DoS(100, error("%s : Double spending of zCLR serial %s in block\n Block: %s",
+                        return state.DoS(100, error("%s : Double spending of zUCR serial %s in block\n Block: %s",
                                                     __func__, spend.getCoinSerialNumber().GetHex(), block.ToString()));
                     vBlockSerials.emplace_back(spend.getCoinSerialNumber());
                 }
@@ -4360,17 +4360,17 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
 
         // Inputs
         std::vector<CTxIn> clrInputs;
-        std::vector<CTxIn> zCLRInputs;
+        std::vector<CTxIn> zUCRInputs;
 
         for (const CTxIn& stakeIn : stakeTxIn.vin) {
             if(stakeIn.IsZerocoinSpend()){
-                zCLRInputs.push_back(stakeIn);
+                zUCRInputs.push_back(stakeIn);
             }else{
                 clrInputs.push_back(stakeIn);
             }
         }
-        const bool hasCLRInputs = !clrInputs.empty();
-        const bool hasZCLRInputs = !zCLRInputs.empty();
+        const bool hasUCRInputs = !clrInputs.empty();
+        const bool hasZUCRInputs = !zUCRInputs.empty();
 
         // ZC started after PoS.
         // Check for serial double spent on the same block, TODO: Move this to the proper method..
@@ -4390,7 +4390,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                     }
                 }
                 if(tx.IsCoinStake()) continue;
-                if(hasCLRInputs)
+                if(hasUCRInputs)
                     // Check if coinstake input is double spent inside the same block
                     for (const CTxIn& clrIn : clrInputs){
                         if(clrIn.prevout == in.prevout){
@@ -4433,7 +4433,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                             // if it's already spent
 
                             // First regular staking check
-                            if(hasCLRInputs) {
+                            if(hasUCRInputs) {
                                 if (stakeIn.prevout == in.prevout) {
                                     return state.DoS(100, error("%s: input already spent on a previous block",
                                                                 __func__));
@@ -4458,9 +4458,9 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
             // Split height
             splitHeight = prev->nHeight;
 
-            // Now that this loop if completed. Check if we have zCLR inputs.
-            if(hasZCLRInputs){
-                for (const CTxIn& zClrInput : zCLRInputs) {
+            // Now that this loop if completed. Check if we have zUCR inputs.
+            if(hasZUCRInputs){
+                for (const CTxIn& zClrInput : zUCRInputs) {
                     CoinSpend spend = TxInToZerocoinSpend(zClrInput);
 
                     // First check if the serials were not already spent on the forked blocks.
@@ -4536,7 +4536,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
             }
         } else {
             if(!isBlockFromFork)
-                for (const CTxIn& zClrInput : zCLRInputs) {
+                for (const CTxIn& zClrInput : zUCRInputs) {
                         CoinSpend spend = TxInToZerocoinSpend(zClrInput);
                         if (!ContextualCheckZerocoinSpend(stakeTxIn, spend, pindex, 0))
                             return state.DoS(100,error("%s: main chain ContextualCheckZerocoinSpend failed for tx %s", __func__,
@@ -4649,7 +4649,7 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
         }
     }
     if (nMints || nSpends)
-        LogPrintf("%s : block contains %d zCLR mints and %d zCLR spends\n", __func__, nMints, nSpends);
+        LogPrintf("%s : block contains %d zUCR mints and %d zUCR spends\n", __func__, nMints, nSpends);
 
     if (!CheckBlockSignature(*pblock))
         return error("ProcessNewBlock() : bad proof-of-stake block signature");

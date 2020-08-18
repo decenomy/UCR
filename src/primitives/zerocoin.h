@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_ZEROCOIN_H
-#define CLR_ZEROCOIN_H
+#ifndef UCR_ZEROCOIN_H
+#define UCR_ZEROCOIN_H
 
 #include <amount.h>
 #include <limits.h>
@@ -249,4 +249,4 @@ public:
     int GetNeededSpends();
 };
 
-#endif //CLR_ZEROCOIN_H
+#endif //UCR_ZEROCOIN_H

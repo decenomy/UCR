@@ -5,8 +5,8 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //
 
-#ifndef CLR_LIGHTZCLRTHREAD_H
-#define CLR_LIGHTZCLRTHREAD_H
+#ifndef UCR_LIGHTZUCRTHREAD_H
+#define UCR_LIGHTZUCRTHREAD_H
 
 #include <atomic>
 #include "genwit.h"
@@ -53,7 +53,7 @@ public:
 
     void StartLightZclrThread(boost::thread_group& threadGroup) {
         LogPrintf("%s thread start\n", "clr-light-thread");
-        threadIns = boost::thread(boost::bind(&CLightWorker::ThreadLightZCLRSimplified, this));
+        threadIns = boost::thread(boost::bind(&CLightWorker::ThreadLightZUCRSimplified, this));
     }
 
     void StopLightZclrThread() {
@@ -63,10 +63,10 @@ public:
 
 private:
 
-    void ThreadLightZCLRSimplified();
+    void ThreadLightZUCRSimplified();
 
     void rejectWork(CGenWit& wit, int blockHeight, uint32_t errorNumber);
 
 };
 
-#endif //CLR_LIGHTZCLRTHREAD_H
+#endif //UCR_LIGHTZUCRTHREAD_H

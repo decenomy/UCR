@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_MINTPOOL_H
-#define CLR_MINTPOOL_H
+#ifndef UCR_MINTPOOL_H
+#define UCR_MINTPOOL_H
 
 #include <map>
 #include <list>
@@ -51,4 +51,4 @@ public:
 };
 
 
-#endif //CLR_MINTPOOL_H
+#endif //UCR_MINTPOOL_H

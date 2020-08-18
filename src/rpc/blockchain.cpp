@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 CLR
+// Copyright (c) 2015-2018 The Pivx Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -181,17 +181,17 @@ UniValue getchecksumblock(const UniValue& params, bool fHelp)
             "  \"previousblockhash\" : \"hash\",  (string) The hash of the previous block\n"
             "  \"nextblockhash\" : \"hash\"       (string) The hash of the next block\n"
             "  \"moneysupply\" : \"supply\"       (numeric) The money supply when this block was added to the blockchain\n"
-            "  \"zCLRsupply\" :\n"
+            "  \"zUCRsupply\" :\n"
             "  {\n"
-            "     \"1\" : n,            (numeric) supply of 1 zCLR denomination\n"
-            "     \"5\" : n,            (numeric) supply of 5 zCLR denomination\n"
-            "     \"10\" : n,           (numeric) supply of 10 zCLR denomination\n"
-            "     \"50\" : n,           (numeric) supply of 50 zCLR denomination\n"
-            "     \"100\" : n,          (numeric) supply of 100 zCLR denomination\n"
-            "     \"500\" : n,          (numeric) supply of 500 zCLR denomination\n"
-            "     \"1000\" : n,         (numeric) supply of 1000 zCLR denomination\n"
-            "     \"5000\" : n,         (numeric) supply of 5000 zCLR denomination\n"
-            "     \"total\" : n,        (numeric) The total supply of all zCLR denominations\n"
+            "     \"1\" : n,            (numeric) supply of 1 zUCR denomination\n"
+            "     \"5\" : n,            (numeric) supply of 5 zUCR denomination\n"
+            "     \"10\" : n,           (numeric) supply of 10 zUCR denomination\n"
+            "     \"50\" : n,           (numeric) supply of 50 zUCR denomination\n"
+            "     \"100\" : n,          (numeric) supply of 100 zUCR denomination\n"
+            "     \"500\" : n,          (numeric) supply of 500 zUCR denomination\n"
+            "     \"1000\" : n,         (numeric) supply of 1000 zUCR denomination\n"
+            "     \"5000\" : n,         (numeric) supply of 5000 zUCR denomination\n"
+            "     \"total\" : n,        (numeric) The total supply of all zUCR denominations\n"
             "  }\n"
             "}\n"
 
@@ -1290,7 +1290,7 @@ UniValue getaccumulatorwitness(const UniValue& params, bool fHelp)
     int nMintsAdded = 0;
     CZerocoinSpendReceipt receipt;
     if (!GenerateAccumulatorWitness(pubCoin, accumulator, witness, 100, nMintsAdded, strFailReason)) {
-        receipt.SetStatus(_(strFailReason.c_str()), ZCLR_FAILED_ACCUMULATOR_INITIALIZATION);
+        receipt.SetStatus(_(strFailReason.c_str()), ZUCR_FAILED_ACCUMULATOR_INITIALIZATION);
         throw JSONRPCError(RPC_DATABASE_ERROR, receipt.GetStatusMessage());
     }
 

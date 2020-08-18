@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_GENWIT_H
-#define CLR_GENWIT_H
+#ifndef UCR_GENWIT_H
+#define UCR_GENWIT_H
 
 
 #include <iostream>
@@ -59,4 +59,4 @@ private:
 };
 
 
-#endif //CLR_GENWIT_H
+#endif //UCR_GENWIT_H

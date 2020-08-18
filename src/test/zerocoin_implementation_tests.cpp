@@ -514,7 +514,7 @@ BOOST_AUTO_TEST_CASE(deterministic_tests)
     CWalletDB walletdb(strWalletFile, "cr+");
 
     CWallet wallet(strWalletFile);
-    CzCLRWallet zWallet(wallet.strWalletFile);
+    CzUCRWallet zWallet(wallet.strWalletFile);
     zWallet.SetMasterSeed(seedMaster);
     wallet.setZWallet(&zWallet);
 
@@ -526,7 +526,7 @@ BOOST_AUTO_TEST_CASE(deterministic_tests)
     for (int i = 0; i < nTests; i++) {
         PrivateCoin coin(Params().Zerocoin_Params(false), denom, false);
         CDeterministicMint dMint;
-        zWallet.GenerateDeterministicZCLR(denom, coin, dMint);
+        zWallet.GenerateDeterministicZUCR(denom, coin, dMint);
         vCoins.emplace_back(coin);
     }
 

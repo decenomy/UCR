@@ -309,7 +309,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send"), this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a CLR address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a UCR address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -343,7 +343,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 
     if (Params().ZeroCoinEnabled()) {
         privacyAction = new QAction(QIcon(":/icons/privacy"), tr("&Privacy"), this);
-        privacyAction->setStatusTip(tr("Privacy Actions for zCLR"));
+        privacyAction->setStatusTip(tr("Privacy Actions for zUCR"));
         privacyAction->setToolTip(privacyAction->statusTip());
         privacyAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -414,7 +414,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
-    optionsAction->setStatusTip(tr("Modify configuration options for CLR"));
+    optionsAction->setStatusTip(tr("Modify configuration options for UCR"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     toggleHideAction = new QAction(networkStyle->getAppIcon(), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
@@ -430,9 +430,9 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
     lockWalletAction = new QAction(tr("&Lock Wallet"), this);
     signMessageAction = new QAction(QIcon(":/icons/edit"), tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your CLR addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your UCR addresses to prove you own them"));
     verifyMessageAction = new QAction(QIcon(":/icons/transaction_0"), tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified CLR addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified UCR addresses"));
     bip38ToolAction = new QAction(QIcon(":/icons/key"), tr("&BIP38 tool"), this);
     bip38ToolAction->setToolTip(tr("Encrypt and decrypt private keys using a passphrase"));
     multiSendAction = new QAction(QIcon(":/icons/edit"), tr("&MultiSend"), this);
@@ -469,13 +469,13 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     multisigSignAction->setStatusTip(tr("Sign with a multisignature address"));
 
     openAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_FileIcon), tr("Open &URI..."), this);
-    openAction->setStatusTip(tr("Open a CLR: URI or payment request"));
+    openAction->setStatusTip(tr("Open a UCR: URI or payment request"));
     openBlockExplorerAction = new QAction(QIcon(":/icons/explorer"), tr("&Blockchain explorer"), this);
     openBlockExplorerAction->setStatusTip(tr("Block explorer window"));
 
     showHelpMessageAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
-    showHelpMessageAction->setStatusTip(tr("Show the ClearCoin Core help message to get a list with possible CLR command-line options"));
+    showHelpMessageAction->setStatusTip(tr("Show the ClearCoin Core help message to get a list with possible UCR command-line options"));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -942,7 +942,7 @@ void BitcoinGUI::setNumConnections(int count)
     }
     QIcon connectionItem = QIcon(icon).pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE);
     labelConnectionsIcon->setIcon(connectionItem);
-    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to CLR network", "", count));
+    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to UCR network", "", count));
 }
 
 void BitcoinGUI::setNumBlocks(int count)

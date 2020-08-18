@@ -92,7 +92,7 @@
 
 using namespace std;
 
-// CLR only features
+// UCR only features
 // Masternode
 bool fMasterNode = false;
 string strMasterNodePrivKey = "";
@@ -225,7 +225,7 @@ bool LogAcceptCategory(const char* category)
             const vector<string>& categories = mapMultiArgs["-debug"];
             ptrCategory.reset(new set<string>(categories.begin(), categories.end()));
             // thread_specific_ptr automatically deletes the set when the thread ends.
-            // "clr" is a composite category enabling all CLR-related debug output
+            // "clr" is a composite category enabling all UCR-related debug output
             if (ptrCategory->count(string("clr"))) {
                 ptrCategory->insert(string("obfuscation"));
                 ptrCategory->insert(string("swiftx"));
@@ -412,13 +412,13 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-// Windows < Vista: C:\Documents and Settings\Username\Application Data\CLR
-// Windows >= Vista: C:\Users\Username\AppData\Roaming\CLR
-// Mac: ~/Library/Application Support/CLR
+// Windows < Vista: C:\Documents and Settings\Username\Application Data\UCR
+// Windows >= Vista: C:\Users\Username\AppData\Roaming\UCR
+// Mac: ~/Library/Application Support/UCR
 // Unix: ~/.clr
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "CLR";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "UCR";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -430,7 +430,7 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectory(pathRet);
-    return pathRet / "CLR";
+    return pathRet / "UCR";
 #else
     // Unix
     return pathRet / ".clr";

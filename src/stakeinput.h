@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2018 CLR
+// Copyright (c) 2017-2018 The PIVX Developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_STAKEINPUT_H
-#define CLR_STAKEINPUT_H
+#ifndef UCR_STAKEINPUT_H
+#define UCR_STAKEINPUT_H
 
 class CKeyStore;
 class CWallet;
@@ -22,12 +22,12 @@ public:
     virtual CAmount GetValue() = 0;
     virtual bool CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal) = 0;
     virtual bool GetModifier(uint64_t& nStakeModifier) = 0;
-    virtual bool IsZCLR() = 0;
+    virtual bool IsZUCR() = 0;
     virtual CDataStream GetUniqueness() = 0;
 };
 
 
-// zCLRStake can take two forms
+// zUCRStake can take two forms
 // 1) the stake candidate, which is a zcmint that is attempted to be staked
 // 2) a staked zclr, which is a zcspend that has successfully staked
 class CZClrStake : public CStakeInput
@@ -57,7 +57,7 @@ public:
     bool CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut = 0) override;
     bool CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal) override;
     bool MarkSpent(CWallet* pwallet, const uint256& txid);
-    bool IsZCLR() override { return true; }
+    bool IsZUCR() override { return true; }
     int GetChecksumHeightFromMint();
     int GetChecksumHeightFromSpend();
     uint32_t GetChecksum();
@@ -83,8 +83,8 @@ public:
     CDataStream GetUniqueness() override;
     bool CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut = 0) override;
     bool CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal) override;
-    bool IsZCLR() override { return false; }
+    bool IsZUCR() override { return false; }
 };
 
 
-#endif //CLR_STAKEINPUT_H
+#endif //UCR_STAKEINPUT_H

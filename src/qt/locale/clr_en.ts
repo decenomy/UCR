@@ -80,12 +80,12 @@
     </message>
     <message>
         <location line="+7"/>
-        <source>These are your CLR addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your UCR addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>These are your CLR addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your UCR addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -221,7 +221,7 @@
     </message>
     <message>
         <location line="+9"/>
-        <source>CLR will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CLRs from being stolen by malware infecting your computer.</source>
+        <source>UCR will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your UCRs from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -231,7 +231,7 @@
     </message>
     <message>
         <location line="+0"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR CLR&lt;/b&gt;!</source>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR UCR&lt;/b&gt;!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -326,12 +326,12 @@
     </message>
     <message>
         <location line="-424"/>
-        <source>Enter a CLR Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <source>Enter a UCR Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+31"/>
-        <source>The CLR address to encrypt</source>
+        <source>The UCR address to encrypt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -375,7 +375,7 @@
     </message>
     <message>
         <location line="+18"/>
-        <source>Encrypt the private key for this CLR address</source>
+        <source>Encrypt the private key for this UCR address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -557,7 +557,7 @@
     </message>
     <message>
         <location line="+11"/>
-        <source>Privacy Actions for zCLR</source>
+        <source>Privacy Actions for zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -836,7 +836,7 @@
     </message>
     <message>
         <location line="-722"/>
-        <source>Send coins to a CLR address</source>
+        <source>Send coins to a UCR address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -871,17 +871,17 @@
     </message>
     <message>
         <location line="+6"/>
-        <source>Modify configuration options for CLR</source>
+        <source>Modify configuration options for UCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>Sign messages with your CLR addresses to prove you own them</source>
+        <source>Sign messages with your UCR addresses to prove you own them</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Verify messages to ensure they were signed with specified CLR addresses</source>
+        <source>Verify messages to ensure they were signed with specified UCR addresses</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -921,7 +921,7 @@
     </message>
     <message>
         <location line="+17"/>
-        <source>Open a CLR: URI or payment request</source>
+        <source>Open a UCR: URI or payment request</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -936,7 +936,7 @@
     </message>
     <message>
         <location line="+4"/>
-        <source>Show the ClearCoin Core help message to get a list with possible CLR command-line options</source>
+        <source>Show the ClearCoin Core help message to get a list with possible UCR command-line options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -946,7 +946,7 @@
     </message>
     <message numerus="yes">
         <location line="+212"/>
-        <source>%n active connection(s) to CLR network</source>
+        <source>%n active connection(s) to UCR network</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
@@ -1521,7 +1521,7 @@ Address: %4
     </message>
     <message>
         <location line="+67"/>
-        <source>The entered address &quot;%1&quot; is not a valid CLR address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid UCR address.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1656,7 +1656,7 @@ Address: %4
     </message>
     <message>
         <location line="+10"/>
-        <source>ClearCoin Core will download and store a copy of the CLR block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <source>ClearCoin Core will download and store a copy of the UCR block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1847,8 +1847,8 @@ Address: %4
     </message>
     <message>
         <location line="-106"/>
-        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other CLR addresses after it matures.
-To Add: enter percentage to give and CLR address to add to the MultiSend vector.
+        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other UCR addresses after it matures.
+To Add: enter percentage to give and UCR address to add to the MultiSend vector.
 To Delete: Enter address to delete and press delete.
 MultiSend will not be activated unless you have clicked Activate</source>
         <translation type="unfinished"></translation>
@@ -2169,7 +2169,7 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <location line="+13"/>
-        <source>Add destinations to send CLR to</source>
+        <source>Add destinations to send UCR to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2292,12 +2292,12 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 2 separate masternodes to mix funds up to 10000 CLR</source>
+        <source>Use 2 separate masternodes to mix funds up to 10000 UCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 8 separate masternodes to mix funds up to 10000 CLR</source>
+        <source>Use 8 separate masternodes to mix funds up to 10000 UCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2307,12 +2307,12 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <location line="+13"/>
-        <source>This option is the quickest and will cost about ~0.025 CLR to anonymize 10000 CLR</source>
+        <source>This option is the quickest and will cost about ~0.025 UCR to anonymize 10000 UCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>This option is moderately fast and will cost about 0.05 CLR to anonymize 10000 CLR</source>
+        <source>This option is moderately fast and will cost about 0.05 UCR to anonymize 10000 UCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2322,7 +2322,7 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <location line="+13"/>
-        <source>0.1 CLR per 10000 CLR you anonymize.</source>
+        <source>0.1 UCR per 10000 UCR you anonymize.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2334,17 +2334,17 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <location line="-27"/>
-        <source>Obfuscation was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening CLR&apos;s configuration screen.</source>
+        <source>Obfuscation was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening UCR&apos;s configuration screen.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+14"/>
-        <source>Obfuscation was successfully set to high (%1 and 8 rounds). You can change this at any time by opening CLR&apos;s configuration screen.</source>
+        <source>Obfuscation was successfully set to high (%1 and 8 rounds). You can change this at any time by opening UCR&apos;s configuration screen.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+14"/>
-        <source>Obfuscation was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening CLR&apos;s configuration screen.</source>
+        <source>Obfuscation was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening UCR&apos;s configuration screen.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2420,7 +2420,7 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <location line="+33"/>
-        <source>Automatically open the CLR client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <source>Automatically open the UCR client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2445,12 +2445,12 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <location line="-210"/>
-        <source>Automatically start CLR after logging in to the system.</source>
+        <source>Automatically start UCR after logging in to the system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start CLR on system login</source>
+        <source>&amp;Start UCR on system login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2485,7 +2485,7 @@ Please be patient after clicking import.</source>
     </message>
     <message>
         <location line="+192"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting CLR.</source>
+        <source>The user interface language can be set here. This setting will take effect after restarting UCR.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2501,33 +2501,33 @@ https://www.transifex.com/ClearNode/Clearcore-Project-translations</source>
     </message>
     <message>
         <location line="-169"/>
-        <source>Enable automatic minting of CLR units to zCLR</source>
+        <source>Enable automatic minting of UCR units to zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>Enable zCLR Automint</source>
+        <source>Enable zUCR Automint</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>Percentage of incoming CLR which get automatically converted to zCLR via Zerocoin Protocol (min: 10%)</source>
+        <source>Percentage of incoming UCR which get automatically converted to zUCR via Zerocoin Protocol (min: 10%)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Percentage of autominted zCLR</source>
+        <source>Percentage of autominted zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+30"/>
         <location line="+16"/>
-        <source>Wait with automatic conversion to Zerocoin until enough CLR for this denomination is available</source>
+        <source>Wait with automatic conversion to Zerocoin until enough UCR for this denomination is available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-13"/>
-        <source>Preferred Automint zCLR Denomination</source>
+        <source>Preferred Automint zUCR Denomination</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2537,7 +2537,7 @@ https://www.transifex.com/ClearNode/Clearcore-Project-translations</source>
     </message>
     <message>
         <location line="+98"/>
-        <source>Connect to the CLR network through a SOCKS5 proxy.</source>
+        <source>Connect to the UCR network through a SOCKS5 proxy.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2746,7 +2746,7 @@ https://www.transifex.com/ClearNode/Clearcore-Project-translations</source>
     </message>
     <message>
         <location line="+71"/>
-        <source>CLR Balance</source>
+        <source>UCR Balance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2778,19 +2778,19 @@ https://www.transifex.com/ClearNode/Clearcore-Project-translations</source>
     <message>
         <location line="+16"/>
         <location line="+19"/>
-        <source>Your current CLR balance, unconfirmed and immature transactions included</source>
+        <source>Your current UCR balance, unconfirmed and immature transactions included</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+96"/>
-        <source>CLR Rewards</source>
+        <source>UCR Rewards</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+53"/>
         <location line="+17"/>
         <source>Mature: more than 20 confirmation and more than 1 mint of the same denomination after it was minted.
-These zCLR are spendable.</source>
+These zUCR are spendable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2805,7 +2805,7 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
     <message>
         <location line="-725"/>
         <location line="+852"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the CLR network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the UCR network after a connection is established, but this process has not completed yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2863,7 +2863,7 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
     <message>
         <location line="+191"/>
         <location line="+19"/>
-        <source>Locked CLR or Masternode collaterals. These are excluded from zCLR minting.</source>
+        <source>Locked UCR or Masternode collaterals. These are excluded from zUCR minting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2879,7 +2879,7 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
     <message>
         <location line="+58"/>
         <location line="+19"/>
-        <source>Your current zCLR balance, unconfirmed and immature zCLR included.</source>
+        <source>Your current zUCR balance, unconfirmed and immature zUCR included.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2895,7 +2895,7 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
     </message>
     <message>
         <location line="+111"/>
-        <source>Current percentage of zCLR.
+        <source>Current percentage of zUCR.
 If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).
 </source>
         <translation type="unfinished"></translation>
@@ -2958,7 +2958,7 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+110"/>
-        <source>URI cannot be parsed! This can be caused by an invalid CLR address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid UCR address or malformed URI parameters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3066,7 +3066,7 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+10"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the CLR network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the UCR network after a connection is established, but this process has not completed yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3086,7 +3086,7 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     <message>
         <location line="-371"/>
         <location line="+651"/>
-        <source>zCLR</source>
+        <source>zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3101,7 +3101,7 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+19"/>
-        <source>0.000 000 00 CLR</source>
+        <source>0.000 000 00 UCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3152,17 +3152,17 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     <message>
         <location line="+308"/>
         <location line="+52"/>
-        <source>Enter an amount of CLR to convert to zCLR</source>
+        <source>Enter an amount of UCR to convert to zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+301"/>
-        <source>zCLR Control</source>
+        <source>zUCR Control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>zCLR Selected:</source>
+        <source>zUCR Selected:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3190,7 +3190,7 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+7"/>
-        <source>Available (mature and spendable) zCLR for spending</source>
+        <source>Available (mature and spendable) zUCR for spending</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3200,9 +3200,9 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+16"/>
-        <source>Available (mature and spendable) zCLR for spending
+        <source>Available (mature and spendable) zUCR for spending
 
-zCLR are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
+zUCR are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3219,7 +3219,7 @@ zCLR are mature when they have more than 20 confirmations AND more than 2 mints 
         <location line="+31"/>
         <location line="+31"/>
         <location line="+31"/>
-        <source>0 zCLR</source>
+        <source>0 zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3244,7 +3244,7 @@ zCLR are mature when they have more than 20 confirmations AND more than 2 mints 
     </message>
     <message>
         <location line="+27"/>
-        <source>The CLR address to send the payment to. Creates local payment to yourself when empty.</source>
+        <source>The UCR address to send the payment to. Creates local payment to yourself when empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3312,7 +3312,7 @@ zCLR are mature when they have more than 20 confirmations AND more than 2 mints 
         <location line="+25"/>
         <location line="+936"/>
         <location line="+38"/>
-        <source>Total Balance including unconfirmed and immature zCLR</source>
+        <source>Total Balance including unconfirmed and immature zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3346,14 +3346,14 @@ Immature: confirmed, but less than 1 mint of the same denomination after it was 
     </message>
     <message>
         <location line="+40"/>
-        <source>Show the current status of automatic zCLR minting.
+        <source>Show the current status of automatic zUCR minting.
 
 To change the status (restart required):
 - enable: add &apos;enablezeromint=1&apos; to clr.conf
 - disable: add &apos;enablezeromint=0&apos; to clr.conf
 
 To change the percentage (no restart required):
-- menu Settings-&gt;Options-&gt;Percentage of autominted zCLR
+- menu Settings-&gt;Options-&gt;Percentage of autominted zUCR
 
 </source>
         <translation type="unfinished"></translation>
@@ -3423,7 +3423,7 @@ To change the percentage (no restart required):
     </message>
     <message>
         <location line="-1324"/>
-        <source>Show zCLR denominations list</source>
+        <source>Show zUCR denominations list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3622,12 +3622,12 @@ Maximum allowed: </source>
     </message>
     <message>
         <location line="+34"/>
-        <source>zCLR Spend #: </source>
+        <source>zUCR Spend #: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>zCLR Mint</source>
+        <source>zUCR Mint</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3648,13 +3648,13 @@ Maximum allowed: </source>
     <message>
         <location line="+12"/>
         <location line="+4"/>
-        <source>zCLR is currently disabled due to maintenance.</source>
+        <source>zUCR is currently disabled due to maintenance.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-666"/>
         <location line="+112"/>
-        <source>zCLR is currently undergoing maintenance.</source>
+        <source>zUCR is currently undergoing maintenance.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3765,7 +3765,7 @@ Maximum allowed: </source>
     </message>
     <message>
         <location line="+0"/>
-        <source> zCLR in </source>
+        <source> zUCR in </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3842,13 +3842,13 @@ Maximum allowed: </source>
     <message>
         <location line="+24"/>
         <location line="+32"/>
-        <source>Version 1 zCLR require a security level of 100 to successfully spend.</source>
+        <source>Version 1 zUCR require a security level of 100 to successfully spend.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="-31"/>
         <location line="+32"/>
-        <source>Failed to spend zCLR</source>
+        <source>Failed to spend zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3876,7 +3876,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <message numerus="yes">
         <location line="+362"/>
         <source>PrivacyDialog</source>
-        <comment>Enter an amount of CLR to convert to zCLR</comment>
+        <comment>Enter an amount of UCR to convert to zUCR</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
@@ -3932,7 +3932,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location filename="../guiutil.cpp" line="+105"/>
-        <source>Enter a CLR address (e.g. %1)</source>
+        <source>Enter a UCR address (e.g. %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4135,7 +4135,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+79"/>
-        <source>Open the CLR debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <source>Open the UCR debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4307,7 +4307,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+29"/>
-        <source>Custom zCLR Backup Path:</source>
+        <source>Custom zUCR Backup Path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4407,7 +4407,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="-39"/>
-        <source>Welcome to the CLR RPC console.</source>
+        <source>Welcome to the UCR RPC console.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4592,7 +4592,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+26"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the CLR network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the UCR network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4602,7 +4602,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+191"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the CLR network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the UCR network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4900,12 +4900,12 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+7"/>
-        <source>0 CLR</source>
+        <source>0 UCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+167"/>
-        <source>SwiftX technology allows for near instant transactions - A flat fee of 0.01 CLR applies</source>
+        <source>SwiftX technology allows for near instant transactions - A flat fee of 0.01 UCR applies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4975,18 +4975,18 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1062"/>
-        <source>If the custom fee is set to 1000 uCLRs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uCLRs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uCLRs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uUCRs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uUCRs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uUCRs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>If the custom fee is set to 1000 uCLRs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uCLRs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uCLRs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uUCRs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uUCRs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uUCRs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+33"/>
         <location line="+13"/>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for CLR transactions than the network can process.</source>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for UCR transactions than the network can process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5046,7 +5046,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+35"/>
-        <source>Anonymized CLR</source>
+        <source>Anonymized UCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5106,7 +5106,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+653"/>
-        <source>Warning: Invalid CLR address</source>
+        <source>Warning: Invalid UCR address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5245,7 +5245,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+18"/>
-        <source>The CLR address to send the payment to</source>
+        <source>The UCR address to send the payment to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5299,7 +5299,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+10"/>
-        <source>A message that was attached to the CLR: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the CLR network.</source>
+        <source>A message that was attached to the UCR: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the UCR network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5362,7 +5362,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+15"/>
-        <source>The CLR address to sign the message with</source>
+        <source>The UCR address to sign the message with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5404,17 +5404,17 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+18"/>
-        <source>Sign the message to prove you own this CLR address</source>
+        <source>Sign the message to prove you own this UCR address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+103"/>
-        <source>The CLR address the message was signed with</source>
+        <source>The UCR address the message was signed with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+34"/>
-        <source>Verify the message to ensure it was signed with the specified CLR address</source>
+        <source>Verify the message to ensure it was signed with the specified UCR address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5926,12 +5926,12 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+7"/>
-        <source>CLR Stake</source>
+        <source>UCR Stake</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>zCLR Stake</source>
+        <source>zUCR Stake</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5956,37 +5956,37 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+4"/>
-        <source>Converted CLR to zCLR</source>
+        <source>Converted UCR to zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Spent zCLR</source>
+        <source>Spent zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Received CLR from zCLR</source>
+        <source>Received UCR from zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Minted Change as zCLR from zCLR Spend</source>
+        <source>Minted Change as zUCR from zUCR Spend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Converted zCLR to CLR</source>
+        <source>Converted zUCR to UCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+56"/>
-        <source>Anonymous (zCLR Transaction)</source>
+        <source>Anonymous (zUCR Transaction)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Anonymous (zCLR Stake)</source>
+        <source>Anonymous (zUCR Stake)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6255,12 +6255,12 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="-310"/>
-        <source>Received CLR from zCLR</source>
+        <source>Received UCR from zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Zerocoin Spend, Change in zCLR</source>
+        <source>Zerocoin Spend, Change in zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6307,7 +6307,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <message>
         <location line="-18"/>
         <location line="+9"/>
-        <source>SwiftX doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 CLR.</source>
+        <source>SwiftX doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 UCR.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6348,7 +6348,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <name>ZClrControlDialog</name>
     <message>
         <location filename="../forms/zclrcontroldialog.ui" line="+20"/>
-        <source>Select zCLR to Spend</source>
+        <source>Select zUCR to Spend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6364,7 +6364,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="-7"/>
-        <source>zCLR</source>
+        <source>zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6447,17 +6447,17 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+5"/>
-        <source>Enable automatic wallet backups triggered after each zCLR minting (0-1, default: %u)</source>
+        <source>Enable automatic wallet backups triggered after each zUCR minting (0-1, default: %u)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Enable or disable staking functionality for CLR inputs (0-1, default: %u)</source>
+        <source>Enable or disable staking functionality for UCR inputs (0-1, default: %u)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Enable or disable staking functionality for zCLR inputs (0-1, default: %u)</source>
+        <source>Enable or disable staking functionality for zUCR inputs (0-1, default: %u)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6502,12 +6502,12 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+8"/>
-        <source>Fees (in CLR/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <source>Fees (in UCR/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Fees (in CLR/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <source>Fees (in UCR/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6647,12 +6647,12 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+2"/>
-        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 CLR.</source>
+        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 UCR.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Unable to locate enough funds for this transaction that are not equal 10000 CLR.</source>
+        <source>Unable to locate enough funds for this transaction that are not equal 10000 UCR.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7057,7 +7057,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+4"/>
-        <source>Fee (in CLR/kB) to add to transactions you send (default: %s)</source>
+        <source>Fee (in UCR/kB) to add to transactions you send (default: %s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7222,7 +7222,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+9"/>
-        <source>Reindex the CLR and zCLR money supply statistics</source>
+        <source>Reindex the UCR and zUCR money supply statistics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7269,7 +7269,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+38"/>
-        <source>Disable all CLR specific functionality (Masternodes, Zerocoin, SwiftX, Budgeting) (0-1, default: %u)</source>
+        <source>Disable all UCR specific functionality (Masternodes, Zerocoin, SwiftX, Budgeting) (0-1, default: %u)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7314,7 +7314,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+24"/>
-        <source>Specify custom backup path to add a copy of any automatic zCLR backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
+        <source>Specify custom backup path to add a copy of any automatic zUCR backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7939,7 +7939,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>Syncing CLR wallet...</source>
+        <source>Syncing UCR wallet...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -8129,7 +8129,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>Value is below the smallest available denomination (= 1) of zCLR</source>
+        <source>Value is below the smallest available denomination (= 1) of zUCR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -8149,7 +8149,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>Version 1 zCLR require a security level of 100 to successfully spend.</source>
+        <source>Version 1 zUCR require a security level of 100 to successfully spend.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

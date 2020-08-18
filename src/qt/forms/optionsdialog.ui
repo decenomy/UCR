@@ -135,20 +135,20 @@
          <item>
           <widget class="QCheckBox" name="checkBoxZeromintEnable">
            <property name="toolTip">
-            <string>Enable automatic minting of CLR units to zCLR</string>
+            <string>Enable automatic minting of UCR units to zUCR</string>
            </property>
            <property name="layoutDirection">
             <enum>Qt::LeftToRight</enum>
            </property>
            <property name="text">
-            <string>Enable zCLR Automint</string>
+            <string>Enable zUCR Automint</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="checkBoxZeromintAddresses">
            <property name="toolTip">
-            <string>Enable automatic zCLR minting from specific addresses</string>
+            <string>Enable automatic zUCR minting from specific addresses</string>
            </property>
            <property name="layoutDirection">
             <enum>Qt::LeftToRight</enum>
@@ -165,10 +165,10 @@
          <item>
           <widget class="QLabel" name="percentage_label">
            <property name="toolTip">
-            <string>Percentage of incoming CLR which get automatically converted to zCLR via Zerocoin Protocol (min: 10%)</string>
+            <string>Percentage of incoming UCR which get automatically converted to zUCR via Zerocoin Protocol (min: 10%)</string>
            </property>
            <property name="text">
-            <string>Percentage of autominted zCLR</string>
+            <string>Percentage of autominted zUCR</string>
            </property>
           </widget>
          </item>
@@ -198,10 +198,10 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>Wait with automatic conversion to Zerocoin until enough CLR for this denomination is available</string>
+            <string>Wait with automatic conversion to Zerocoin until enough UCR for this denomination is available</string>
            </property>
            <property name="text">
-            <string>Preferred Automint zCLR Denomination</string>
+            <string>Preferred Automint zUCR Denomination</string>
            </property>
           </widget>
          </item>
@@ -214,7 +214,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>Wait with automatic conversion to Zerocoin until enough CLR for this denomination is available</string>
+            <string>Wait with automatic conversion to Zerocoin until enough UCR for this denomination is available</string>
            </property>
            <property name="maxVisibleItems">
             <number>9</number>

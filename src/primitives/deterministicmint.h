@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_DETERMINISTICMINT_H
-#define CLR_DETERMINISTICMINT_H
+#ifndef UCR_DETERMINISTICMINT_H
+#define UCR_DETERMINISTICMINT_H
 
 #include <libzerocoin/Denominations.h>
 #include <uint256.h>
@@ -65,4 +65,4 @@ public:
     };
 };
 
-#endif //CLR_DETERMINISTICMINT_H
+#endif //UCR_DETERMINISTICMINT_H

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_CONCURRENTQUEUE_H
-#define CLR_CONCURRENTQUEUE_H
+#ifndef UCR_CONCURRENTQUEUE_H
+#define UCR_CONCURRENTQUEUE_H
 
 
 #include <mutex>
@@ -49,4 +49,4 @@ public:
     }
 };
 
-#endif //CLR_CONCURRENTQUEUE_H
+#endif //UCR_CONCURRENTQUEUE_H

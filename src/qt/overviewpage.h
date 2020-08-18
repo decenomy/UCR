@@ -66,7 +66,7 @@ private:
     CAmount currentMasternodeEarnings;
     CAmount currentStakeEarnings;
     int nDisplayUnit;
-    void getPercentage(CAmount nTotalBalance, CAmount nZerocoinBalance, QString& sCLRPercentage, QString& szCLRPercentage);
+    void getPercentage(CAmount nTotalBalance, CAmount nZerocoinBalance, QString& sUCRPercentage, QString& szUCRPercentage);
 
     TxViewDelegate* txdelegate;
     TransactionFilterProxy* filter;

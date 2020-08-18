@@ -269,11 +269,11 @@ UniValue stop(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop CLR server.");
+            "\nStop UCR server.");
     // Event loop will exit after current HTTP requests have been handled, so
     // this reply will get back to the client.
     StartShutdown();
-    return "CLR server stopping";
+    return "UCR server stopping";
 }
 
 
@@ -360,7 +360,7 @@ static const CRPCCommand vRPCCommands[] =
         { "hidden",             "waitforblock",           &waitforblock,           true,  true,  false  },
         { "hidden",             "waitforblockheight",     &waitforblockheight,     true,  true,  false  },
 
-        /* CLR features */
+        /* UCR features */
         {"clr", "masternode", &masternode, true, true, false},
         {"clr", "listmasternodes", &listmasternodes, true, true, false},
         {"clr", "getmasternodecount", &getmasternodecount, true, true, false},

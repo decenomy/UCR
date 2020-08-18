@@ -744,13 +744,13 @@ QWidget#PrivacyDialog QLabel {
 border:0px solid #000;
 }
 
-QWidget#PrivacyDialog QLabel#zCLRLabel {
+QWidget#PrivacyDialog QLabel#zUCRLabel {
 font-size:14px;
 color:#ffffff;
 background-color:#1fa0fa;
 }
 
-QWidget#PrivacyDialog QLabel#oCLRLabel {
+QWidget#PrivacyDialog QLabel#oUCRLabel {
 font-size:14px;
 color:#ffffff;
 background-color:#1fa0fa;
@@ -921,7 +921,7 @@ background-image: url(':/images/clr_logo_horizontal');
 background-repeat: no-repeat;
 }
 
-QWidget .QFrame#frame_Header { /* Header with Page-Title and CLR-image */
+QWidget .QFrame#frame_Header { /* Header with Page-Title and UCR-image */
 min-width:400px;
 background-color:#ffffff;
 }
@@ -969,7 +969,7 @@ font-weight:normal;
 /* min-height:30px; */
 }
 
-QWidget .QFrame#frame_Balances .QLabel#label_5 { /* CLR Balances Label */
+QWidget .QFrame#frame_Balances .QLabel#label_5 { /* UCR Balances Label */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 min-width:160px;
 background-color:transparent;
@@ -1093,7 +1093,7 @@ font-size:12px;
 margin-left:16px;
 }
 
-QWidget .QFrame#frame_Balances .QLabel#labelLockedBalanceText { /* Available zCLR Label */
+QWidget .QFrame#frame_Balances .QLabel#labelLockedBalanceText { /* Available zUCR Label */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 min-width:160px;
 color:#0096ff;
@@ -1103,7 +1103,7 @@ font-weight:bold;
 font-size:12px;
 }
 
-QWidget .QFrame#frame_Balances .QLabel#labelLockedBalance { /* Available zCLR Balance */
+QWidget .QFrame#frame_Balances .QLabel#labelLockedBalance { /* Available zUCR Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:12px;
 font-weight:bold;
@@ -1111,7 +1111,7 @@ color:#1fa0fa;
 margin-left:0px;
 }
 
-QWidget .QFrame#frame_Balances .QLabel#labelWatchLocked { /* Available zCLR Balance */
+QWidget .QFrame#frame_Balances .QLabel#labelWatchLocked { /* Available zUCR Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:12px;
 margin-left:16px;
@@ -1130,7 +1130,7 @@ margin-right:5px;
 padding-right:5px;
 }
 
-QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceText { /* Available zCLR Label */
+QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceText { /* Available zUCR Label */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 min-width:160px;
 color:#0096ff;
@@ -1140,7 +1140,7 @@ font-weight:bold;
 font-size:12px;
 }
 
-QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalance { /* Available zCLR Balance */
+QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalance { /* Available zUCR Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:12px;
 font-weight:bold;
@@ -1148,7 +1148,7 @@ color:#1fa0fa;
 margin-left:0px;
 }
 
-QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelMasternodeRewardsText { /* Unconfirmed zCLR Label */
+QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelMasternodeRewardsText { /* Unconfirmed zUCR Label */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 min-width:160px;
 color:#0096ff;
@@ -1158,7 +1158,7 @@ font-weight:bold;
 font-size:12px;
 }
 
-QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelMasternodeRewards { /* Unconfirmed zCLR Balance */
+QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelMasternodeRewards { /* Unconfirmed zUCR Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:12px;
 font-weight:bold;
@@ -1166,7 +1166,7 @@ color:#1fa0fa;
 margin-left:0px;
 }
 
-QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelStakeRewardsText { /* Mature zCLR Label */
+QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelStakeRewardsText { /* Mature zUCR Label */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 min-width:160px;
 color:#0096ff;
@@ -1176,7 +1176,7 @@ font-weight:bold;
 font-size:12px;
 }
 
-QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelStakeRewards { /* Mature zCLR Balance */
+QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelStakeRewards { /* Mature zUCR Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:12px;
 font-weight:bold;
@@ -1184,7 +1184,7 @@ color:#1fa0fa;
 margin-left:0px;
 }
 
-QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceImmatureText { /* Immature zCLR Label */
+QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceImmatureText { /* Immature zUCR Label */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 min-width:160px;
 color:#0096ff;
@@ -1194,7 +1194,7 @@ font-weight:bold;
 font-size:12px;
 }
 
-QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceImmature { /* Immature zCLR Balance */
+QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceImmature { /* Immature zUCR Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:12px;
 font-weight:bold;
@@ -1213,7 +1213,7 @@ margin-right:5px;
 padding-right:5px;
 }
 
-QWidget .QFrame#frame_CombinedBalances .QLabel#labelBalanceTextz { /* Available CLR Label */
+QWidget .QFrame#frame_CombinedBalances .QLabel#labelBalanceTextz { /* Available UCR Label */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 min-width:160px;
 color:#0096ff;
@@ -1223,14 +1223,14 @@ font-weight:bold;
 font-size:12px;
 }
 
-QWidget .QFrame#frame_CombinedBalances .QLabel#labelBalancez { /* Available CLR Balance */
+QWidget .QFrame#frame_CombinedBalances .QLabel#labelBalancez { /* Available UCR Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:26px;
 font-weight:normal;
 color:#0096ff;
 }
 
-QWidget .QFrame#frame_CombinedBalances .QLabel#labelzBalanceTextz { /* Available zCLR Label */
+QWidget .QFrame#frame_CombinedBalances .QLabel#labelzBalanceTextz { /* Available zUCR Label */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 min-width:160px;
 color:#0096ff;
@@ -1240,7 +1240,7 @@ font-weight:bold;
 font-size:12px;
 }
 
-QWidget .QFrame#frame_CombinedBalances .QLabel#labelzBalancez { /* Available zCLR Balance */
+QWidget .QFrame#frame_CombinedBalances .QLabel#labelzBalancez { /* Available zUCR Balance */
 qproperty-alignment: 'AlignVCenter | AlignLeft';
 font-size:12px;
 font-weight:bold;
@@ -1560,7 +1560,7 @@ QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::indicator { /* Coin
 
 }
 
-QDialog#ZClrControlDialog .QTreeWidget#treeWidget { /* zCLR Control Widget Container */
+QDialog#ZClrControlDialog .QTreeWidget#treeWidget { /* zUCR Control Widget Container */
 outline:0;
 background-color:#ffffff;
 border:1px solid #333;

@@ -130,7 +130,7 @@ public:
 };
 
 /**
- * CLR RPC command dispatcher.
+ * UCR RPC command dispatcher.
  */
 class CRPCTable
 {

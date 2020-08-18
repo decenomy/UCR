@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2018 CLR
+// Copyright (c) 2017-2018 The PIVX Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ZCLRCONTROLDIALOG_H
-#define ZCLRCONTROLDIALOG_H
+#ifndef ZUCRCONTROLDIALOG_H
+#define ZUCRCONTROLDIALOG_H
 
 #include <QDialog>
 #include <QTreeWidgetItem>

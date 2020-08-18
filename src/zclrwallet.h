@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_ZCLRWALLET_H
-#define CLR_ZCLRWALLET_H
+#ifndef UCR_ZUCRWALLET_H
+#define UCR_ZUCRWALLET_H
 
 #include <map>
 #include "libzerocoin/Coin.h"
@@ -14,7 +14,7 @@
 
 class CDeterministicMint;
 
-class CzCLRWallet
+class CzUCRWallet
 {
 private:
     uint256 seedMaster;
@@ -23,13 +23,13 @@ private:
     CMintPool mintPool;
 
 public:
-    CzCLRWallet(std::string strWalletFile);
+    CzUCRWallet(std::string strWalletFile);
 
     void AddToMintPool(const std::pair<uint256, uint32_t>& pMint, bool fVerbose);
     bool SetMasterSeed(const uint256& seedMaster, bool fResetCount = false);
     uint256 GetMasterSeed() { return seedMaster; }
     void SyncWithChain(bool fGenerateMintPool = true);
-    void GenerateDeterministicZCLR(libzerocoin::CoinDenomination denom, libzerocoin::PrivateCoin& coin, CDeterministicMint& dMint, bool fGenerateOnly = false);
+    void GenerateDeterministicZUCR(libzerocoin::CoinDenomination denom, libzerocoin::PrivateCoin& coin, CDeterministicMint& dMint, bool fGenerateOnly = false);
     void GenerateMint(const uint32_t& nCount, const libzerocoin::CoinDenomination denom, libzerocoin::PrivateCoin& coin, CDeterministicMint& dMint);
     void GetState(int& nCount, int& nLastGenerated);
     bool RegenerateMint(const CDeterministicMint& dMint, CZerocoinMint& mint);
@@ -40,11 +40,11 @@ public:
     bool IsInMintPool(const CBigNum& bnValue) { return mintPool.Has(bnValue); }
     void UpdateCount();
     void Lock();
-    void SeedToZCLR(const uint512& seed, CBigNum& bnValue, CBigNum& bnSerial, CBigNum& bnRandomness, CKey& key);
+    void SeedToZUCR(const uint512& seed, CBigNum& bnValue, CBigNum& bnSerial, CBigNum& bnRandomness, CKey& key);
     bool CheckSeed(const CDeterministicMint& dMint);
 
 private:
     uint512 GetZerocoinSeed(uint32_t n);
 };
 
-#endif //CLR_ZCLRWALLET_H
+#endif //UCR_ZUCRWALLET_H

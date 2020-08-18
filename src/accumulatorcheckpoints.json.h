@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_ACCUMULATORCHECKPOINTS_JSON_H
-#define CLR_ACCUMULATORCHECKPOINTS_JSON_H
+#ifndef UCR_ACCUMULATORCHECKPOINTS_JSON_H
+#define UCR_ACCUMULATORCHECKPOINTS_JSON_H
 
 #include <string>
 std::string GetMainCheckpoints() {
@@ -476,4 +476,4 @@ std::string GetRegTestCheckpoints() {
     return strRegTestCheckpoints;
 }
 
-#endif //CLR_ACCUMULATORCHECKPOINTS_JSON_H
+#endif //UCR_ACCUMULATORCHECKPOINTS_JSON_H

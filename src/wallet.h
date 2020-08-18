@@ -87,30 +87,30 @@ enum AvailableCoinsType {
     ALL_COINS = 1,
     ONLY_DENOMINATED = 2,
     ONLY_NOT10000IFMN = 3,
-    ONLY_NONDENOMINATED_NOT10000IFMN = 4, // ONLY_NONDENOMINATED and not 10000 CLR at the same time
+    ONLY_NONDENOMINATED_NOT10000IFMN = 4, // ONLY_NONDENOMINATED and not 10000 UCR at the same time
     ONLY_10000 = 5,                        // find masternode outputs including locked ones (use with caution)
     STAKABLE_COINS = 6                          // UTXO's that are valid for staking
 };
 
-// Possible states for zCLR send
+// Possible states for zUCR send
 enum ZerocoinSpendStatus {
-    ZCLR_SPEND_OKAY = 0,                            // No error
-    ZCLR_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
-    ZCLR_WALLET_LOCKED = 2,                         // Wallet was locked
-    ZCLR_COMMIT_FAILED = 3,                         // Commit failed, reset status
-    ZCLR_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
-    ZCLR_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
-    ZCLR_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
-    ZCLR_TRX_CREATE = 7,                            // Everything related to create the transaction
-    ZCLR_TRX_CHANGE = 8,                            // Everything related to transaction change
-    ZCLR_TXMINT_GENERAL = 9,                        // General errors in MintToTxIn
-    ZCLR_INVALID_COIN = 10,                         // Selected mint coin is not valid
-    ZCLR_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
-    ZCLR_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
-    ZCLR_BAD_SERIALIZATION = 13,                    // Transaction verification failed
-    ZCLR_SPENT_USED_ZCLR = 14,                      // Coin has already been spend
-    ZCLR_TX_TOO_LARGE = 15,                          // The transaction is larger than the max tx size
-    ZCLR_SPEND_V1_SEC_LEVEL                         // Spend is V1 and security level is not set to 100
+    ZUCR_SPEND_OKAY = 0,                            // No error
+    ZUCR_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
+    ZUCR_WALLET_LOCKED = 2,                         // Wallet was locked
+    ZUCR_COMMIT_FAILED = 3,                         // Commit failed, reset status
+    ZUCR_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
+    ZUCR_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
+    ZUCR_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
+    ZUCR_TRX_CREATE = 7,                            // Everything related to create the transaction
+    ZUCR_TRX_CHANGE = 8,                            // Everything related to transaction change
+    ZUCR_TXMINT_GENERAL = 9,                        // General errors in MintToTxIn
+    ZUCR_INVALID_COIN = 10,                         // Selected mint coin is not valid
+    ZUCR_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
+    ZUCR_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
+    ZUCR_BAD_SERIALIZATION = 13,                    // Transaction verification failed
+    ZUCR_SPENT_USED_ZUCR = 14,                      // Coin has already been spend
+    ZUCR_TX_TOO_LARGE = 15,                          // The transaction is larger than the max tx size
+    ZUCR_SPEND_V1_SEC_LEVEL                         // Spend is V1 and security level is not set to 100
 };
 
 struct CompactTallyItem {
@@ -218,7 +218,7 @@ public:
     void ReconsiderZerocoins(std::list<CZerocoinMint>& listMintsRestored, std::list<CDeterministicMint>& listDMintsRestored);
     void ZClrBackupWallet();
     bool GetZerocoinKey(const CBigNum& bnSerial, CKey& key);
-    bool CreateZCLROutPut(libzerocoin::CoinDenomination denomination, CTxOut& outMint, CDeterministicMint& dMint);
+    bool CreateZUCROutPut(libzerocoin::CoinDenomination denomination, CTxOut& outMint, CDeterministicMint& dMint);
     bool GetMint(const uint256& hashSerial, CZerocoinMint& mint);
     bool GetMintFromStakeHash(const uint256& hashStake, CZerocoinMint& mint);
     bool DatabaseMint(CDeterministicMint& dMint);
@@ -241,7 +241,7 @@ public:
      */
     mutable CCriticalSection cs_wallet;
 
-    CzCLRWallet* zwalletMain;
+    CzUCRWallet* zwalletMain;
 
     std::set<CBitcoinAddress> setAutoConvertAddresses;
 
@@ -249,7 +249,7 @@ public:
     bool fWalletUnlockAnonymizeOnly;
     std::string strWalletFile;
     bool fBackupMints;
-    std::unique_ptr<CzCLRTracker> zclrTracker;
+    std::unique_ptr<CzUCRTracker> zclrTracker;
 
     std::set<int64_t> setKeyPool;
     std::map<CKeyID, CKeyMetadata> mapKeyMetadata;
@@ -334,13 +334,13 @@ public:
         return nZeromintPercentage;
     }
 
-    void setZWallet(CzCLRWallet* zwallet)
+    void setZWallet(CzUCRWallet* zwallet)
     {
         zwalletMain = zwallet;
-        zclrTracker = std::unique_ptr<CzCLRTracker>(new CzCLRTracker(strWalletFile));
+        zclrTracker = std::unique_ptr<CzUCRTracker>(new CzUCRTracker(strWalletFile));
     }
 
-    CzCLRWallet* getZWallet() { return zwalletMain; }
+    CzUCRWallet* getZWallet() { return zwalletMain; }
 
     bool isZeromintEnabled()
     {
@@ -681,8 +681,8 @@ public:
     /** MultiSig address added */
     boost::signals2::signal<void(bool fHaveMultiSig)> NotifyMultiSigChanged;
 
-    /** zCLR reset */
-    boost::signals2::signal<void()> NotifyzCLRReset;
+    /** zUCR reset */
+    boost::signals2::signal<void()> NotifyzUCRReset;
 
     /** notify wallet file backed up */
     boost::signals2::signal<void (const bool& fSuccess, const std::string& filename)> NotifyWalletBacked;

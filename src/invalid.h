@@ -3,10 +3,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CLR_INVALID_H
-#define CLR_INVALID_H
+#ifndef UCR_INVALID_H
+#define UCR_INVALID_H
 
-#endif //CLR_INVALID_H
+#endif //UCR_INVALID_H
 
 #include <libzerocoin/bignum.h>
 #include <univalue/include/univalue.h>

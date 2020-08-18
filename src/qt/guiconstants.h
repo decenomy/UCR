@@ -54,9 +54,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 35
 
-#define QAPP_ORG_NAME "CLR"
+#define QAPP_ORG_NAME "UCR"
 #define QAPP_ORG_DOMAIN "clearnodes.com"
-#define QAPP_APP_NAME_DEFAULT "CLR-Qt"
-#define QAPP_APP_NAME_TESTNET "CLR-Qt-testnet"
+#define QAPP_APP_NAME_DEFAULT "UCR-Qt"
+#define QAPP_APP_NAME_TESTNET "UCR-Qt-testnet"
 
 #endif // BITCOIN_QT_GUICONSTANTS_H
