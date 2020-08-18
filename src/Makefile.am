@@ -427,6 +427,7 @@ libbitcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_cli_a_SOURCES = \
   rpc/client.cpp \
+  timedata.cpp \
   $(BITCOIN_CORE_H)
 
 nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
@@ -477,7 +478,9 @@ clr_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
 # clr-tx binary #
-clr_tx_SOURCES = clr-tx.cpp
+clr_tx_SOURCES = \
+  clr-tx.cpp \
+  timedata.cpp
 clr_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 clr_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 clr_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)

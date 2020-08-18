@@ -11,6 +11,7 @@
 #include "random.h"
 #include "util.h"
 #include "utilstrencodings.h"
+#include "timedata.h"
 
 #include <assert.h>
 
@@ -145,8 +146,8 @@ public:
         nBlockEnforceInvalidUTXO = std::numeric_limits<int>::max(); //Start enforcing the invalid UTXO's
         nInvalidAmountFiltered = 0 * COIN; //Amount of invalid coins filtered through exchanges, that should be considered valid
         nBlockZerocoinV2 = std::numeric_limits<int>::max(); //!> The block that zerocoin v2 becomes active - roughly Tuesday, May 8, 2018 4:00:00 AM GMT
-        nEnforceNewSporkKey = 1553421600; //!> Sporks signed after (GMT): Sunday, Mar 24, 2019 10:00:00 AM GMT must use the new spork key
-        nRejectOldSporkKey = 1553594400; //!> Fully reject old spork key after (GMT): Mar 26, 2019 10:00:00 AM GMT
+        nEnforceNewSporkKey = 1599033600; //!> Sporks signed after (GMT): 09/02/2020 @ 8:00am (UTC) must use the new spork key
+        nRejectOldSporkKey = 1599206400; //!> Fully reject old spork key after (GMT): 09/04/2020 @ 8:00am (UTC)
 
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
@@ -177,17 +178,25 @@ public:
         assert(hashGenesisBlock == uint256("0x0000086d20056b2feb29fb638fe1086ac017b481bf52f0cc1cca297385a91f44"));
         assert(genesis.hashMerkleRoot == uint256("0x57614ebefbc1a26b6cee7cd4bc94d060baaadf1ad2551a81153a588fd75b471c"));
 
-//        vSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "clr.seed.fuzzbawls.pw"));     // Primary DNS Seeder from Fuzzbawls
-//        vSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "clr.seed2.fuzzbawls.pw"));    // Secondary DNS Seeder from Fuzzbawls
-//        vSeeds.push_back(CDNSSeedData("coin-server.com", "coin-server.com"));         // Single node address
-//        vSeeds.push_back(CDNSSeedData("s3v3nh4cks.ddns.net", "s3v3nh4cks.ddns.net")); // Single node address
-//        vSeeds.push_back(CDNSSeedData("178.254.23.111", "178.254.23.111"));           // Single node address
-        vSeeds.push_back(CDNSSeedData("explorer.clearnodes.com", "explorer.clearnodes.com"));
-        vSeeds.push_back(CDNSSeedData("seed1.clearnodes.com", "seed1.clearnodes.com"));
-        vSeeds.push_back(CDNSSeedData("seed2.clearnodes.com", "seed2.clearnodes.com"));
-        vSeeds.push_back(CDNSSeedData("seed3.clearnodes.com", "seed3.clearnodes.com"));
-        vSeeds.push_back(CDNSSeedData("seed4.clearnodes.com", "seed4.clearnodes.com"));
-        vSeeds.push_back(CDNSSeedData("seed5.clearnodes.com", "seed5.clearnodes.com"));
+        if(GetAdjustedTime() < 1599206400) { //!> Fully ignore these seed servers after (GMT): 09/04/2020 @ 8:00am (UTC)
+            vSeeds.push_back(CDNSSeedData("explorer.clearnodes.com", "explorer.clearnodes.com"));
+            vSeeds.push_back(CDNSSeedData("seed1.clearnodes.com", "seed1.clearnodes.com"));
+            vSeeds.push_back(CDNSSeedData("seed2.clearnodes.com", "seed2.clearnodes.com"));
+            vSeeds.push_back(CDNSSeedData("seed3.clearnodes.com", "seed3.clearnodes.com"));
+            vSeeds.push_back(CDNSSeedData("seed4.clearnodes.com", "seed4.clearnodes.com"));
+            vSeeds.push_back(CDNSSeedData("seed5.clearnodes.com", "seed5.clearnodes.com"));
+        }
+
+        vSeeds.push_back(CDNSSeedData("seed1.sappcoin.com", "seed1.sappcoin.com"));
+        vSeeds.push_back(CDNSSeedData("seed2.sappcoin.com", "seed2.sappcoin.com"));
+        vSeeds.push_back(CDNSSeedData("seed3.sappcoin.com", "seed3.sappcoin.com"));
+        vSeeds.push_back(CDNSSeedData("seed4.sappcoin.com", "seed4.sappcoin.com"));
+        vSeeds.push_back(CDNSSeedData("seed5.sappcoin.com", "seed5.sappcoin.com"));
+        vSeeds.push_back(CDNSSeedData("seed6.sappcoin.com", "seed1.sappcoin.com"));
+        vSeeds.push_back(CDNSSeedData("seed7.sappcoin.com", "seed2.sappcoin.com"));
+        vSeeds.push_back(CDNSSeedData("seed8.sappcoin.com", "seed3.sappcoin.com"));
+        vSeeds.push_back(CDNSSeedData("seed9.sappcoin.com", "seed4.sappcoin.com"));
+        vSeeds.push_back(CDNSSeedData("seed10.sappcoin.com", "seed5.sappcoin.com"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 28);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 31);
@@ -210,8 +219,8 @@ public:
         fZeroCoinEnabled = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "0476959408a6ea4d27531e06179dc940ff01e340dda28074e0e232858f49a937b8e62b069c97447d3f7b8dbd8d22c9fedefc7fc0d92e520cd54c943c5d12fa5323";
-        strSporkKeyOld = "04d62a8eeb0218a37e9f1f87bdbf4f7804fb7810c71071af974f292a8afcc3ccd3360062a3be4e4fb20b79b86abead657104879ef254d9bc35512320e928566a09";
+        strSporkKey = "04d45416e4a64b1b051e2a2ebd80ced5efe148cf5fbcb70e56860957675a2da1a21fd522c42c1ed18a1ec42641589a09cf3f58678d213825dc21798183a005a984";
+        strSporkKeyOld = "0476959408a6ea4d27531e06179dc940ff01e340dda28074e0e232858f49a937b8e62b069c97447d3f7b8dbd8d22c9fedefc7fc0d92e520cd54c943c5d12fa5323";
         strObfuscationPoolDummyAddress = "CPXvKDwCXKLETiMgpuNq5ioFBUgiSSvTdW";
         nStartMasternodePayments = 1550372857; //Sun, 17 Feb 2019 03:07:37 GMT
 
