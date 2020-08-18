@@ -86,6 +86,22 @@
         <file alias="splash_testnet">res/images/splash_testnet.png</file>
         <file alias="splash_regtest">res/images/splash_regtest.png</file>
     </qresource>
+    <qresource prefix="/font">
+        <file alias="Nunito-Black.ttf">res/font/Nunito-Black.ttf</file>
+        <file alias="Nunito-BlackItalic.ttf">res/font/Nunito-BlackItalic.ttf</file>
+        <file alias="Nunito-Bold.ttf">res/font/Nunito-Bold.ttf</file>
+        <file alias="Nunito-BoldItalic.ttf">res/font/Nunito-BoldItalic.ttf</file>
+        <file alias="Nunito-ExtraBold.ttf">res/font/Nunito-ExtraBold.ttf</file>
+        <file alias="Nunito-ExtraBoldItalic.ttf">res/font/Nunito-ExtraBoldItalic.ttf</file>
+        <file alias="Nunito-ExtraLight.ttf">res/font/Nunito-ExtraLight.ttf</file>
+        <file alias="Nunito-ExtraLightItalic.ttf">res/font/Nunito-ExtraLightItalic.ttf</file>
+        <file alias="Nunito-Italic.ttf">res/font/Nunito-Italic.ttf</file>
+        <file alias="Nunito-Light.ttf">res/font/Nunito-Light.ttf</file>
+        <file alias="Nunito-LightItalic.ttf">res/font/Nunito-LightItalic.ttf</file>
+        <file alias="Nunito-Regular.ttf">res/font/Nunito-Regular.ttf</file>
+        <file alias="Nunito-SemiBold.ttf">res/font/Nunito-SemiBold.ttf</file>
+        <file alias="Nunito-SemiBoldItalic.ttf">res/font/Nunito-SemiBoldItalic.ttf</file>
+    </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/spinner-000.png</file>
         <file alias="spinner-001">res/movies/spinner-001.png</file>
