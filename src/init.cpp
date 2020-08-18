@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2019 The CLEARCOIN developers
+// Copyright (c) 2019 The ClearCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -614,7 +614,11 @@ std::string LicenseInfo()
            "\n" +
            FormatParagraph(strprintf(_("Copyright (C) 2014-%i The Dash Core Developers"), COPYRIGHT_YEAR)) + "\n" +
            "\n" +
-           FormatParagraph(strprintf(_("Copyright (C) 2015-%i The ClearCoin Core Developers"), COPYRIGHT_YEAR)) + "\n" +
+           FormatParagraph(strprintf(_("Copyright (C) 2015-%i The PIVX Core Developers"), COPYRIGHT_YEAR)) + "\n" +
+           "\n" +
+           FormatParagraph(strprintf(_("Copyright (C) 2019-%i The ClearCoin Core Developers"), COPYRIGHT_YEAR)) + "\n" +
+           "\n" +
+           FormatParagraph(strprintf(_("Copyright (C) 2020-%i The UltraClear Core Developers"), COPYRIGHT_YEAR)) + "\n" +
            "\n" +
            FormatParagraph(_("This is experimental software.")) + "\n" +
            "\n" +
@@ -1029,7 +1033,7 @@ bool AppInit2()
 
     // Sanity check
     if (!InitSanityCheck())
-        return InitError(_("Initialization sanity check failed. ClearCoin Core is shutting down."));
+        return InitError(_("Initialization sanity check failed. UltraClear Core is shutting down."));
 
     std::string strDataDir = GetDataDir().string();
 #ifdef ENABLE_WALLET
@@ -1045,7 +1049,7 @@ bool AppInit2()
 
     // Wait maximum 10 seconds if an old wallet is still running. Avoids lockup during restart
     if (!lock.timed_lock(boost::get_system_time() + boost::posix_time::seconds(10)))
-        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. ClearCoin Core is probably already running."), strDataDir));
+        return InitError(strprintf(_("Cannot obtain a lock on data directory %s. UltraClear Core is probably already running."), strDataDir));
 
 #ifndef WIN32
     CreatePidFile(GetPidFile(), getpid());
@@ -1646,9 +1650,9 @@ bool AppInit2()
                              " or address book entries might be missing or incorrect."));
                 InitWarning(msg);
             } else if (nLoadWalletRet == DB_TOO_NEW)
-                strErrors << _("Error loading wallet.dat: Wallet requires newer version of ClearCoin Core") << "\n";
+                strErrors << _("Error loading wallet.dat: Wallet requires newer version of UltraClear Core") << "\n";
             else if (nLoadWalletRet == DB_NEED_REWRITE) {
-                strErrors << _("Wallet needed to be rewritten: restart ClearCoin Core to complete") << "\n";
+                strErrors << _("Wallet needed to be rewritten: restart UltraClear Core to complete") << "\n";
                 LogPrintf("%s", strErrors.str());
                 return InitError(strErrors.str());
             } else
@@ -1891,7 +1895,7 @@ bool AppInit2()
     }
 
 // XX42 Remove/refactor code below. Until then provide safe defaults
-    nAnonymizeClearCoinAmount = 2;
+    nAnonymizeUltraClearAmount = 2;
 
 //    nLiquidityProvider = GetArg("-liquidityprovider", 0); //0-100
 //    if (nLiquidityProvider != 0) {
@@ -1900,9 +1904,9 @@ bool AppInit2()
 //        nZeromintPercentage = 99999;
 //    }
 //
-//    nAnonymizeClearCoinAmount = GetArg("-anonymizeclramount", 0);
-//    if (nAnonymizeClearCoinAmount > 999999) nAnonymizeClearCoinAmount = 999999;
-//    if (nAnonymizeClearCoinAmount < 2) nAnonymizeClearCoinAmount = 2;
+//    nAnonymizeUltraClearAmount = GetArg("-anonymizeclramount", 0);
+//    if (nAnonymizeUltraClearAmount > 999999) nAnonymizeUltraClearAmount = 999999;
+//    if (nAnonymizeUltraClearAmount < 2) nAnonymizeUltraClearAmount = 2;
 
     fEnableSwiftTX = GetBoolArg("-enableswifttx", fEnableSwiftTX);
     nSwiftTXDepth = GetArg("-swifttxdepth", nSwiftTXDepth);
@@ -1916,7 +1920,7 @@ bool AppInit2()
 
     LogPrintf("fLiteMode %d\n", fLiteMode);
     LogPrintf("nSwiftTXDepth %d\n", nSwiftTXDepth);
-    LogPrintf("Anonymize UCR Amount %d\n", nAnonymizeClearCoinAmount);
+    LogPrintf("Anonymize UCR Amount %d\n", nAnonymizeUltraClearAmount);
     LogPrintf("Budget Mode %s\n", strBudgetMode.c_str());
 
     /* Denominations

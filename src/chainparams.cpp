@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2019 The CLEARCOIN developers
+// Copyright (c) 2019 The ClearCoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -126,8 +126,8 @@ public:
         nRejectBlockOutdatedMajority = 10260; // 95%
         nToCheckBlockUpgradeMajority = 10800; // Approximate expected amount of blocks in 7 days (1440*7.5)
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // ClearCoin: 1 day
-        nTargetSpacing = 1 * 60;  // ClearCoin: 1 minute
+        nTargetTimespan = 1 * 60; // UltraClear: 1 day
+        nTargetSpacing = 1 * 60;  // UltraClear: 1 minute
         nMaturity = 100;
         nMasternodeCountDrift = 20;
         nMaxMoneyOut = 1000000000 * COIN;
@@ -271,8 +271,8 @@ public:
         nRejectBlockOutdatedMajority = 5472; // 95%
         nToCheckBlockUpgradeMajority = 5760; // 4 days
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // ClearCoin: 1 day
-        nTargetSpacing = 1 * 60;  // ClearCoin: 1 minute
+        nTargetTimespan = 1 * 60; // UltraClear: 1 day
+        nTargetSpacing = 1 * 60;  // UltraClear: 1 minute
         nLastPOWBlock = 200;
         nMaturity = 15;
         nMasternodeCountDrift = 4;

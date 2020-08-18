@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2019 The CLEARCOIN developers
+// Copyright (c) 2019 The ClearCoin Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -98,10 +98,10 @@ void OptionsModel::Init()
         settings.setValue("nPreferredDenom", 0);
     nPreferredDenom = settings.value("nPreferredDenom", "0").toLongLong();
 
-    if (!settings.contains("nAnonymizeClearCoinAmount"))
-        settings.setValue("nAnonymizeClearCoinAmount", 1000);
+    if (!settings.contains("nAnonymizeUltraClearAmount"))
+        settings.setValue("nAnonymizeUltraClearAmount", 1000);
 
-    nAnonymizeClearCoinAmount = settings.value("nAnonymizeClearCoinAmount").toLongLong();
+    nAnonymizeUltraClearAmount = settings.value("nAnonymizeUltraClearAmount").toLongLong();
 
     if (!settings.contains("fShowMasternodesTab"))
         settings.setValue("fShowMasternodesTab", masternodeConfig.getCount());
@@ -177,8 +177,8 @@ void OptionsModel::Init()
         SoftSetArg("-zeromintpercentage", settings.value("nZeromintPercentage").toString().toStdString());
     if (settings.contains("nPreferredDenom"))
         SoftSetArg("-preferredDenom", settings.value("nPreferredDenom").toString().toStdString());
-    if (settings.contains("nAnonymizeClearCoinAmount"))
-        SoftSetArg("-anonymizeclramount", settings.value("nAnonymizeClearCoinAmount").toString().toStdString());
+    if (settings.contains("nAnonymizeUltraClearAmount"))
+        SoftSetArg("-anonymizeclramount", settings.value("nAnonymizeUltraClearAmount").toString().toStdString());
 
     language = settings.value("language").toString();
 }
@@ -274,7 +274,7 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
         case ZeromintPrefDenom:
             return QVariant(nPreferredDenom);
         case AnonymizeClrAmount:
-            return QVariant(nAnonymizeClearCoinAmount);
+            return QVariant(nAnonymizeUltraClearAmount);
         case Listen:
             return settings.value("fListen");
         default:
@@ -412,9 +412,9 @@ bool OptionsModel::setData(const QModelIndex& index, const QVariant& value, int 
             emit hideOrphansChanged(fHideOrphans);
             break;
         case AnonymizeClrAmount:
-            nAnonymizeClearCoinAmount = value.toInt();
-            settings.setValue("nAnonymizeClearCoinAmount", nAnonymizeClearCoinAmount);
-            emit anonymizeClrAmountChanged(nAnonymizeClearCoinAmount);
+            nAnonymizeUltraClearAmount = value.toInt();
+            settings.setValue("nAnonymizeUltraClearAmount", nAnonymizeUltraClearAmount);
+            emit anonymizeClrAmountChanged(nAnonymizeUltraClearAmount);
             break;
         case CoinControlFeatures:
             fCoinControlFeatures = value.toBool();

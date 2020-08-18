@@ -831,7 +831,7 @@
     <message>
         <location line="-436"/>
         <location line="+918"/>
-        <source>ClearCoin Core</source>
+        <source>UltraClear Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -861,12 +861,12 @@
     </message>
     <message>
         <location line="+31"/>
-        <source>&amp;About ClearCoin Core</source>
+        <source>&amp;About UltraClear Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Show information about ClearCoin Core</source>
+        <source>Show information about UltraClear Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -936,12 +936,12 @@
     </message>
     <message>
         <location line="+4"/>
-        <source>Show the ClearCoin Core help message to get a list with possible UCR command-line options</source>
+        <source>Show the UltraClear Core help message to get a list with possible UCR command-line options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+233"/>
-        <source>ClearCoin Core client</source>
+        <source>UltraClear Core client</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
@@ -1577,7 +1577,7 @@ Address: %4
     </message>
     <message>
         <location line="+0"/>
-        <source>ClearCoin Core</source>
+        <source>UltraClear Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1588,7 +1588,7 @@ Address: %4
     </message>
     <message>
         <location line="+4"/>
-        <source>About ClearCoin Core</source>
+        <source>About UltraClear Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1646,17 +1646,17 @@ Address: %4
     </message>
     <message>
         <location line="+9"/>
-        <source>Welcome to ClearCoin Core.</source>
+        <source>Welcome to UltraClear Core.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+26"/>
-        <source>As this is the first time the program is launched, you can choose where ClearCoin Core will store its data.</source>
+        <source>As this is the first time the program is launched, you can choose where UltraClear Core will store its data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+10"/>
-        <source>ClearCoin Core will download and store a copy of the UCR block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <source>UltraClear Core will download and store a copy of the UCR block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1671,7 +1671,7 @@ Address: %4
     </message>
     <message>
         <location filename="../intro.cpp" line="+77"/>
-        <source>ClearCoin Core</source>
+        <source>UltraClear Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3801,7 +3801,7 @@ Maximum allowed: </source>
     </message>
     <message>
         <location line="+4"/>
-        <source>Invalid ClearCoin address</source>
+        <source>Invalid UltraClear address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5334,7 +5334,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <name>ShutdownWindow</name>
     <message>
         <location filename="../utilitydialog.cpp" line="+75"/>
-        <source>ClearCoin Core is shutting down...</source>
+        <source>UltraClear Core is shutting down...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5529,7 +5529,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+36"/>
-        <source>ClearCoin Core</source>
+        <source>UltraClear Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6412,7 +6412,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+2"/>
-        <source>Cannot obtain a lock on data directory %s. ClearCoin Core is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s. UltraClear Core is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6637,7 +6637,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+3"/>
-        <source>Unable to bind to %s on this computer. ClearCoin Core is probably already running.</source>
+        <source>Unable to bind to %s on this computer. UltraClear Core is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6672,7 +6672,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong ClearCoin Core will not work properly.</source>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong UltraClear Core will not work properly.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6867,7 +6867,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>Copyright (C) 2015-%i The ClearCoin Core Developers</source>
+        <source>Copyright (C) 2015-%i The UltraClear Core Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6977,7 +6977,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of ClearCoin Core</source>
+        <source>Error loading wallet.dat: Wallet requires newer version of UltraClear Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7132,7 +7132,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>Initialization sanity check failed. ClearCoin Core is shutting down.</source>
+        <source>Initialization sanity check failed. UltraClear Core is shutting down.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -8164,7 +8164,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart ClearCoin Core to complete</source>
+        <source>Wallet needed to be rewritten: restart UltraClear Core to complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

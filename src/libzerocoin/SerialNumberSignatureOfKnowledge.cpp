@@ -10,7 +10,7 @@
 * @license    This project is released under the MIT license.
 **/
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2019 The CLEARCOIN developers
+// Copyright (c) 2019 The ClearCoin Core developers
 
 #include <streams.h>
 #include "SerialNumberSignatureOfKnowledge.h"

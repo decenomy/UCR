@@ -16,8 +16,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "ClearCoin"
-            VALUE "FileDescription",    "Clr-cli (OSS RPC client for ClearCoin)"
+            VALUE "CompanyName",        "UltraClear"
+            VALUE "FileDescription",    "Clr-cli (OSS RPC client for UltraClear)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "clr-cli"
             VALUE "LegalCopyright",     COPYRIGHT_STR
