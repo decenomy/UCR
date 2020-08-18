@@ -4126,6 +4126,14 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
             REJECT_INVALID, "time-too-old");
     }
 
+    // Check if the timestamp is too far in the future
+    if (nHeight > 600000 && block.GetBlockTime() > GetAdjustedTime() + 30 && (Params().NetworkIDString() != "regtest"))
+    {
+        LogPrintf("Block time = %d , GetAdjustedTime = %d \n", block.GetBlockTime(), GetAdjustedTime());
+        return state.Invalid(error("%s : block's timestamp is too far in the future", __func__),
+            REJECT_INVALID, "time-too-far");
+    }
+
     // Check that the block chain matches the known block chain up to a checkpoint
     if (!Checkpoints::CheckBlock(nHeight, hash))
         return state.DoS(100, error("%s : rejected by checkpoint lock-in at %d", __func__, nHeight),

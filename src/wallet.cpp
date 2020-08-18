@@ -3065,8 +3065,19 @@ bool CWallet::CreateCoinStake(
         if (Stake(stakeInput.get(), nBits, block.GetBlockTime(), nTxNewTime, hashProofOfStake)) {
             LOCK(cs_main);
             //Double check that this will pass time requirements
-            if (nTxNewTime <= chainActive.Tip()->GetMedianTimePast() && Params().NetworkID() != CBaseChainParams::REGTEST) {
+            if (nTxNewTime <= chainActive.Tip()->GetMedianTimePast() && 
+                Params().NetworkID() != CBaseChainParams::REGTEST) 
+            {
                 LogPrintf("CreateCoinStake() : kernel found, but it is too far in the past \n");
+                continue;
+            }
+
+            //Double check that this will pass time requirements
+            if (chainActive.Tip()->nHeight >= 600000 && 
+                nTxNewTime > GetAdjustedTime() + 30 && 
+                Params().NetworkID() != CBaseChainParams::REGTEST) 
+            {
+                LogPrintf("CreateCoinStakeKernel() : kernel found, but it is too far in the future \n");
                 continue;
             }
 
