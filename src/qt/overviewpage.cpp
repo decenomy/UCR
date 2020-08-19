@@ -203,7 +203,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
 
     // UCR Balance
     CAmount nTotalBalance = balance + unconfirmedBalance;
-    CAmount clrAvailableBalance = balance - immatureBalance - nLockedBalance;
+    CAmount ucrAvailableBalance = balance - immatureBalance - nLockedBalance;
     CAmount nUnlockedBalance = nTotalBalance - nLockedBalance;
 
     // UCR Watch-Only Balance
@@ -218,11 +218,11 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     QString sPercentage = "";
     getPercentage(nUnlockedBalance, zerocoinBalance, sPercentage, szPercentage);
     // Combined balances
-    CAmount availableTotalBalance = clrAvailableBalance + matureZerocoinBalance;
+    CAmount availableTotalBalance = ucrAvailableBalance + matureZerocoinBalance;
     CAmount sumTotalBalance = nTotalBalance + zerocoinBalance;
 
     // UCR labels
-    ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, clrAvailableBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, ucrAvailableBalance, false, BitcoinUnits::separatorAlways));
     ui->labelUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedBalance, false, BitcoinUnits::separatorAlways));
     ui->labelImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nLockedBalance, false, BitcoinUnits::separatorAlways));
@@ -250,10 +250,10 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     int nZeromintPercentage = GetArg("-zeromintpercentage", 10);
     if (fEnableZeromint) {
         automintHelp += tr("AutoMint is currently enabled and set to ") + QString::number(nZeromintPercentage) + "%.\n";
-        automintHelp += tr("To disable AutoMint add 'enablezeromint=0' in clr.conf.");
+        automintHelp += tr("To disable AutoMint add 'enablezeromint=0' in ucr.conf.");
     }
     else {
-        automintHelp += tr("AutoMint is currently disabled.\nTo enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in clr.conf");
+        automintHelp += tr("AutoMint is currently disabled.\nTo enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in ucr.conf");
     }
 
     // Only show most balances if they are non-zero for the sake of simplicity
@@ -267,7 +267,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     bool showWatchOnly = nTotalWatchBalance != 0;
 
     // UCR Available
-    bool showUCRAvailable = settingShowAllBalances || clrAvailableBalance != nTotalBalance;
+    bool showUCRAvailable = settingShowAllBalances || ucrAvailableBalance != nTotalBalance;
     bool showWatchOnlyUCRAvailable = showUCRAvailable || nAvailableWatchBalance != nTotalWatchBalance;
     ui->labelBalanceText->setVisible(showUCRAvailable || showWatchOnlyUCRAvailable);
     ui->labelBalance->setVisible(showUCRAvailable || showWatchOnlyUCRAvailable);

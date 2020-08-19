@@ -38,9 +38,9 @@ OSX_PLIST=$(top_builddir)/share/qt/Info.plist #not installed
 OSX_QT_TRANSLATIONS = da,de,es,hu,ru,uk,zh_CN,zh_TW
 
 DIST_DOCS = $(wildcard doc/*.md) $(wildcard doc/release-notes/*.md)
-DIST_CONTRIB = $(top_srcdir)/contrib/clr-cli.bash-completion \
-	       $(top_srcdir)/contrib/clr-tx.bash-completion \
-	       $(top_srcdir)/contrib/clrd.bash-completion \
+DIST_CONTRIB = $(top_srcdir)/contrib/ucr-cli.bash-completion \
+	       $(top_srcdir)/contrib/ucr-tx.bash-completion \
+	       $(top_srcdir)/contrib/ucrd.bash-completion \
            $(top_srcdir)/contrib/init \
            $(top_srcdir)/contrib/install_db4.sh
 
@@ -63,9 +63,9 @@ OSX_PACKAGING = $(OSX_DEPLOY_SCRIPT) $(OSX_FANCY_PLIST) $(OSX_INSTALLER_ICONS) \
   $(top_srcdir)/contrib/macdeploy/detached-sig-create.sh
 
 COVERAGE_INFO = baseline.info \
-  test_clr_filtered.info total_coverage.info \
+  test_ucr_filtered.info total_coverage.info \
   baseline_filtered.info functional_test.info functional_test_filtered.info \
-  test_clr_coverage.info test_clr.info
+  test_ucr_coverage.info test_ucr.info
 
 dist-hook:
 	-$(GIT) archive --format=tar HEAD -- src/clientversion.cpp | $(AMTAR) -C $(top_distdir) -xf -
@@ -178,16 +178,16 @@ baseline_filtered.info: baseline.info
 	$(abs_builddir)/contrib/filter-lcov.py $(LCOV_FILTER_PATTERN) $< $@
 	$(LCOV) -a $@ $(LCOV_OPTS) -o $@
 
-test_clr.info: baseline_filtered.info
+test_ucr.info: baseline_filtered.info
 	$(MAKE) -C src/ check
-	$(LCOV) -c $(LCOV_OPTS) -d $(abs_builddir)/src -t test_clr -o $@
+	$(LCOV) -c $(LCOV_OPTS) -d $(abs_builddir)/src -t test_ucr -o $@
 	$(LCOV) -z $(LCOV_OPTS) -d $(abs_builddir)/src
 
-test_clr_filtered.info: test_clr.info
+test_ucr_filtered.info: test_ucr.info
 	$(abs_builddir)/contrib/filter-lcov.py $(LCOV_FILTER_PATTERN) $< $@
 	$(LCOV) -a $@ $(LCOV_OPTS) -o $@
 
-functional_test.info: test_clr_filtered.info
+functional_test.info: test_ucr_filtered.info
 	-@TIMEOUT=15 test/functional/test_runner.py $(EXTENDED_FUNCTIONAL_TESTS)
 	$(LCOV) -c $(LCOV_OPTS) -d $(abs_builddir)/src --t functional-tests -o $@
 	$(LCOV) -z $(LCOV_OPTS) -d $(abs_builddir)/src
@@ -196,13 +196,13 @@ functional_test_filtered.info: functional_test.info
 	$(abs_builddir)/contrib/filter-lcov.py $(LCOV_FILTER_PATTERN) $< $@
 	$(LCOV) -a $@ $(LCOV_OPTS) -o $@
 
-test_clr_coverage.info: baseline_filtered.info test_clr_filtered.info
-	$(LCOV) -a $(LCOV_OPTS) baseline_filtered.info -a test_clr_filtered.info -o $@
+test_ucr_coverage.info: baseline_filtered.info test_ucr_filtered.info
+	$(LCOV) -a $(LCOV_OPTS) baseline_filtered.info -a test_ucr_filtered.info -o $@
 
-total_coverage.info: test_clr_filtered.info functional_test_filtered.info
-	$(LCOV) -a $(LCOV_OPTS) baseline_filtered.info -a test_clr_filtered.info -a functional_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
+total_coverage.info: test_ucr_filtered.info functional_test_filtered.info
+	$(LCOV) -a $(LCOV_OPTS) baseline_filtered.info -a test_ucr_filtered.info -a functional_test_filtered.info -o $@ | $(GREP) "\%" | $(AWK) '{ print substr($$3,2,50) "/" $$5 }' > coverage_percent.txt
 
-test_clr.coverage/.dirstamp:  test_clr_coverage.info
+test_ucr.coverage/.dirstamp:  test_ucr_coverage.info
 	$(GENHTML) -s $(LCOV_OPTS) $< -o $(@D)
 	@touch $@
 
@@ -210,7 +210,7 @@ total.coverage/.dirstamp: total_coverage.info
 	$(GENHTML) -s $(LCOV_OPTS) $< -o $(@D)
 	@touch $@
 
-cov: test_clr.coverage/.dirstamp total.coverage/.dirstamp
+cov: test_ucr.coverage/.dirstamp total.coverage/.dirstamp
 
 endif
 
@@ -262,6 +262,6 @@ clean-docs:
 	rm -rf doc/doxygen
 
 clean-local: clean-docs
-	rm -rf coverage_percent.txt test_clr.coverage/ total.coverage/ test/tmp/ cache/ $(OSX_APP)
+	rm -rf coverage_percent.txt test_ucr.coverage/ total.coverage/ test/tmp/ cache/ $(OSX_APP)
 	rm -rf test/functional/__pycache__ test/functional/test_framework/__pycache__ test/cache
 

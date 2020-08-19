@@ -8,7 +8,7 @@
 #define BITCOIN_BIGNUM_H
 
 #if defined HAVE_CONFIG_H
-#include "config/clr-config.h"
+#include "config/ucr-config.h"
 #endif
 
 #include <stdexcept>

@@ -6,13 +6,13 @@ reset-files.bash
 *.tar.gz
 
 *.exe
-src/clr
-src/clrd
-src/clr-cli
-src/clr-tx
-src/bench/bench_clr
-src/test/test_clr
-src/qt/test/test_clr-qt
+src/ucr
+src/ucrd
+src/ucr-cli
+src/ucr-tx
+src/bench/bench_ucr
+src/test/test_ucr
+src/qt/test/test_ucr-qt
 
 # autoreconf
 Makefile.in
@@ -38,8 +38,8 @@ confdefs.h
 conftest.cpp
 conftest.err
 libtool
-src/config/clr-config.h
-src/config/clr-config.h.in
+src/config/ucr-config.h
+src/config/ucr-config.h.in
 src/config/stamp-h1
 src/univalue/univalue-config.h1
 share/setup.nsi
@@ -66,7 +66,7 @@ src/qt/test/moc*.cpp
 *.o
 *.o-*
 *.patch
-.clr
+.ucr
 *.a
 *.pb.cc
 *.pb.h
@@ -86,13 +86,13 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-clr-qt
-clr-Qt.app
+ucr-qt
+ucr-Qt.app
 background.tiff*
 
 # Unit-tests
 Makefile.test
-clr-qt_test
+ucr-qt_test
 src/test/buildenv.py
 
 # Resources cpp
@@ -108,7 +108,7 @@ build
 #lcov
 *.gcno
 /*.info
-test_clr.coverage/
+test_ucr.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -139,8 +139,8 @@ moc_*
 *.tmp
 ui_*
 build*
-clrd.*
-clrd-new-gui.*
+ucrd.*
+ucrd-new-gui.*
 src/test/test_pivx
 src/qt/test/test_pivx-qt
 src/secp256k1/gen_context

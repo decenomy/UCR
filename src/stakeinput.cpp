@@ -9,7 +9,7 @@
 #include "stakeinput.h"
 #include "wallet.h"
 
-CZClrStake::CZClrStake(const libzerocoin::CoinSpend& spend)
+CZUcrStake::CZUcrStake(const libzerocoin::CoinSpend& spend)
 {
     this->nChecksum = spend.getAccumulatorChecksum();
     this->denom = spend.getDenomination();
@@ -19,7 +19,7 @@ CZClrStake::CZClrStake(const libzerocoin::CoinSpend& spend)
     fMint = false;
 }
 
-int CZClrStake::GetChecksumHeightFromMint()
+int CZUcrStake::GetChecksumHeightFromMint()
 {
     int nHeightChecksum = chainActive.Height() - Params().Zerocoin_RequiredStakeDepth();
 
@@ -30,12 +30,12 @@ int CZClrStake::GetChecksumHeightFromMint()
     return GetChecksumHeight(nChecksum, denom);
 }
 
-int CZClrStake::GetChecksumHeightFromSpend()
+int CZUcrStake::GetChecksumHeightFromSpend()
 {
     return GetChecksumHeight(nChecksum, denom);
 }
 
-uint32_t CZClrStake::GetChecksum()
+uint32_t CZUcrStake::GetChecksum()
 {
     return nChecksum;
 }
@@ -43,7 +43,7 @@ uint32_t CZClrStake::GetChecksum()
 // The zUCR block index is the first appearance of the accumulator checksum that was used in the spend
 // note that this also means when staking that this checksum should be from a block that is beyond 60 minutes old and
 // 100 blocks deep.
-CBlockIndex* CZClrStake::GetIndexFrom()
+CBlockIndex* CZUcrStake::GetIndexFrom()
 {
     if (pindexFrom)
         return pindexFrom;
@@ -65,14 +65,14 @@ CBlockIndex* CZClrStake::GetIndexFrom()
     return pindexFrom;
 }
 
-CAmount CZClrStake::GetValue()
+CAmount CZUcrStake::GetValue()
 {
     return denom * COIN;
 }
 
 //Use the first accumulator checkpoint that occurs 60 minutes after the block being staked from
 // In case of regtest, next accumulator of 60 blocks after the block being staked from
-bool CZClrStake::GetModifier(uint64_t& nStakeModifier)
+bool CZUcrStake::GetModifier(uint64_t& nStakeModifier)
 {
     CBlockIndex* pindex = GetIndexFrom();
     if (!pindex)
@@ -98,7 +98,7 @@ bool CZClrStake::GetModifier(uint64_t& nStakeModifier)
     }
 }
 
-CDataStream CZClrStake::GetUniqueness()
+CDataStream CZUcrStake::GetUniqueness()
 {
     //The unique identifier for a zUCR is a hash of the serial
     CDataStream ss(SER_GETHASH, 0);
@@ -106,7 +106,7 @@ CDataStream CZClrStake::GetUniqueness()
     return ss;
 }
 
-bool CZClrStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
+bool CZUcrStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
 {
     CBlockIndex* pindexCheckpoint = GetIndexFrom();
     if (!pindexCheckpoint)
@@ -127,7 +127,7 @@ bool CZClrStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
     return true;
 }
 
-bool CZClrStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal)
+bool CZUcrStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal)
 {
     //Create an output returning the zUCR that was staked
     CTxOut outReward;
@@ -155,48 +155,48 @@ bool CZClrStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nT
     return true;
 }
 
-bool CZClrStake::GetTxFrom(CTransaction& tx)
+bool CZUcrStake::GetTxFrom(CTransaction& tx)
 {
     return false;
 }
 
-bool CZClrStake::MarkSpent(CWallet *pwallet, const uint256& txid)
+bool CZUcrStake::MarkSpent(CWallet *pwallet, const uint256& txid)
 {
-    CzUCRTracker* zclrTracker = pwallet->zclrTracker.get();
+    CzUCRTracker* zucrTracker = pwallet->zucrTracker.get();
     CMintMeta meta;
-    if (!zclrTracker->GetMetaFromStakeHash(hashSerial, meta))
+    if (!zucrTracker->GetMetaFromStakeHash(hashSerial, meta))
         return error("%s: tracker does not have serialhash", __func__);
 
-    zclrTracker->SetPubcoinUsed(meta.hashPubcoin, txid);
+    zucrTracker->SetPubcoinUsed(meta.hashPubcoin, txid);
     return true;
 }
 
 //!UCR Stake
-bool CClrStake::SetInput(CTransaction txPrev, unsigned int n)
+bool CUcrStake::SetInput(CTransaction txPrev, unsigned int n)
 {
     this->txFrom = txPrev;
     this->nPosition = n;
     return true;
 }
 
-bool CClrStake::GetTxFrom(CTransaction& tx)
+bool CUcrStake::GetTxFrom(CTransaction& tx)
 {
     tx = txFrom;
     return true;
 }
 
-bool CClrStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
+bool CUcrStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
 {
     txIn = CTxIn(txFrom.GetHash(), nPosition);
     return true;
 }
 
-CAmount CClrStake::GetValue()
+CAmount CUcrStake::GetValue()
 {
     return txFrom.vout[nPosition].nValue;
 }
 
-bool CClrStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal)
+bool CUcrStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal)
 {
     vector<valtype> vSolutions;
     txnouttype whichType;
@@ -231,7 +231,7 @@ bool CClrStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTo
     return true;
 }
 
-bool CClrStake::GetModifier(uint64_t& nStakeModifier)
+bool CUcrStake::GetModifier(uint64_t& nStakeModifier)
 {
     int nStakeModifierHeight = 0;
     int64_t nStakeModifierTime = 0;
@@ -245,7 +245,7 @@ bool CClrStake::GetModifier(uint64_t& nStakeModifier)
     return true;
 }
 
-CDataStream CClrStake::GetUniqueness()
+CDataStream CUcrStake::GetUniqueness()
 {
     //The unique identifier for a UCR stake is the outpoint
     CDataStream ss(SER_NETWORK, 0);
@@ -254,7 +254,7 @@ CDataStream CClrStake::GetUniqueness()
 }
 
 //The block that the UTXO was added to the chain
-CBlockIndex* CClrStake::GetIndexFrom()
+CBlockIndex* CUcrStake::GetIndexFrom()
 {
     uint256 hashBlock = 0;
     CTransaction tx;

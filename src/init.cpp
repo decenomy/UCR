@@ -7,7 +7,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/clr-config.h"
+#include "config/ucr-config.h"
 #endif
 
 #include "init.h"
@@ -41,7 +41,7 @@
 #include "util.h"
 #include "utilmoneystr.h"
 #include "validationinterface.h"
-#include "zclrchain.h"
+#include "zucrchain.h"
 
 #ifdef ENABLE_WALLET
 #include "db.h"
@@ -199,7 +199,7 @@ void PrepareShutdown()
     /// for example if the data directory was found to be locked.
     /// Be sure that anything that writes files or flushes caches only does this if the respective
     /// module was initialized.
-    RenameThread("clr-shutoff");
+    RenameThread("ucr-shutoff");
     mempool.AddTransactionsUpdated(1);
     StopHTTPRPC();
     StopREST();
@@ -294,7 +294,7 @@ void Shutdown()
     StopTorControl();
     // Shutdown witness thread if it's enabled
     if (nLocalServices == NODE_BLOOM_LIGHT_ZC) {
-        lightWorker.StopLightZclrThread();
+        lightWorker.StopLightZucrThread();
     }
 #ifdef ENABLE_WALLET
     delete pwalletMain;
@@ -384,7 +384,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-blocknotify=<cmd>", _("Execute command when the best block changes (%s in cmd is replaced by block hash)"));
     strUsage += HelpMessageOpt("-blocksizenotify=<cmd>", _("Execute command when the best block changes and its size is over (%s in cmd is replaced by block hash, %d with the block size)"));
     strUsage += HelpMessageOpt("-checkblocks=<n>", strprintf(_("How many blocks to check at startup (default: %u, 0 = all)"), 500));
-    strUsage += HelpMessageOpt("-conf=<file>", strprintf(_("Specify configuration file (default: %s)"), "clr.conf"));
+    strUsage += HelpMessageOpt("-conf=<file>", strprintf(_("Specify configuration file (default: %s)"), "ucr.conf"));
     if (mode == HMM_BITCOIND) {
 #if !defined(WIN32)
         strUsage += HelpMessageOpt("-daemon", _("Run in the background as a daemon and accept commands"));
@@ -397,7 +397,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-maxorphantx=<n>", strprintf(_("Keep at most <n> unconnectable transactions in memory (default: %u)"), DEFAULT_MAX_ORPHAN_TRANSACTIONS));
     strUsage += HelpMessageOpt("-par=<n>", strprintf(_("Set the number of script verification threads (%u to %d, 0 = auto, <0 = leave that many cores free, default: %d)"), -(int)boost::thread::hardware_concurrency(), MAX_SCRIPTCHECK_THREADS, DEFAULT_SCRIPTCHECK_THREADS));
 #ifndef WIN32
-    strUsage += HelpMessageOpt("-pid=<file>", strprintf(_("Specify pid file (default: %s)"), "clrd.pid"));
+    strUsage += HelpMessageOpt("-pid=<file>", strprintf(_("Specify pid file (default: %s)"), "ucrd.pid"));
 #endif
     strUsage += HelpMessageOpt("-reindex", _("Rebuild block chain index from current blk000??.dat files") + " " + _("on startup"));
     strUsage += HelpMessageOpt("-reindexaccumulators", _("Reindex the accumulator database") + " " + _("on startup"));
@@ -503,7 +503,7 @@ std::string HelpMessage(HelpMessageMode mode)
         strUsage += HelpMessageOpt("-stopafterblockimport", strprintf(_("Stop running after importing blocks from disk (default: %u)"), 0));
         strUsage += HelpMessageOpt("-sporkkey=<privkey>", _("Enable spork administration functionality with the appropriate private key."));
     }
-    string debugCategories = "addrman, alert, bench, coindb, db, lock, rand, rpc, selectcoins, tor, mempool, net, proxy, http, libevent, clr, (obfuscation, swiftx, masternode, mnpayments, mnbudget, zero)"; // Don't translate these and qt below
+    string debugCategories = "addrman, alert, bench, coindb, db, lock, rand, rpc, selectcoins, tor, mempool, net, proxy, http, libevent, ucr, (obfuscation, swiftx, masternode, mnpayments, mnbudget, zero)"; // Don't translate these and qt below
     if (mode == HMM_BITCOIN_QT)
         debugCategories += ", qt";
     strUsage += HelpMessageOpt("-debug=<category>", strprintf(_("Output debugging information (default: %u, supplying <category> is optional)"), 0) + ". " +
@@ -539,8 +539,8 @@ std::string HelpMessage(HelpMessageMode mode)
 #ifdef ENABLE_WALLET
     strUsage += HelpMessageGroup(_("Staking options:"));
     strUsage += HelpMessageOpt("-staking=<n>", strprintf(_("Enable staking functionality (0-1, default: %u)"), 1));
-    strUsage += HelpMessageOpt("-clrstake=<n>", strprintf(_("Enable or disable staking functionality for UCR inputs (0-1, default: %u)"), 1));
-    strUsage += HelpMessageOpt("-zclrstake=<n>", strprintf(_("Enable or disable staking functionality for zUCR inputs (0-1, default: %u)"), 1));
+    strUsage += HelpMessageOpt("-ucrstake=<n>", strprintf(_("Enable or disable staking functionality for UCR inputs (0-1, default: %u)"), 1));
+    strUsage += HelpMessageOpt("-zucrstake=<n>", strprintf(_("Enable or disable staking functionality for zUCR inputs (0-1, default: %u)"), 1));
     strUsage += HelpMessageOpt("-reservebalance=<amt>", _("Keep the specified amount available for spending at all times (default: 0)"));
     if (GetBoolArg("-help-debug", false)) {
         strUsage += HelpMessageOpt("-printstakemodifier", _("Display the stake modifier calculations in the debug.log file."));
@@ -562,12 +562,12 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-enableautoconvertaddress=<n>", strprintf(_("Enable automatic Zerocoin minting from specific addresses (0-1, default: %u)"), DEFAULT_AUTOCONVERTADDRESS));
     strUsage += HelpMessageOpt("-zeromintpercentage=<n>", strprintf(_("Percentage of automatically minted Zerocoin  (1-100, default: %u)"), 10));
     strUsage += HelpMessageOpt("-preferredDenom=<n>", strprintf(_("Preferred Denomination for automatically minted Zerocoin  (1/5/10/50/100/500/1000/5000), 0 for no preference. default: %u)"), 0));
-    strUsage += HelpMessageOpt("-backupzclr=<n>", strprintf(_("Enable automatic wallet backups triggered after each zUCR minting (0-1, default: %u)"), 1));
-    strUsage += HelpMessageOpt("-zclrbackuppath=<dir|file>", _("Specify custom backup path to add a copy of any automatic zUCR backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen"));
+    strUsage += HelpMessageOpt("-backupzucr=<n>", strprintf(_("Enable automatic wallet backups triggered after each zUCR minting (0-1, default: %u)"), 1));
+    strUsage += HelpMessageOpt("-zucrbackuppath=<dir|file>", _("Specify custom backup path to add a copy of any automatic zUCR backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen"));
 #endif // ENABLE_WALLET
     strUsage += HelpMessageOpt("-reindexzerocoin=<n>", strprintf(_("Delete all zerocoin spends and mints that have been recorded to the blockchain database and reindex them (0-1, default: %u)"), 0));
 
-//    strUsage += "  -anonymizeclramount=<n>     " + strprintf(_("Keep N UCR anonymized (default: %u)"), 0) + "\n";
+//    strUsage += "  -anonymizeucramount=<n>     " + strprintf(_("Keep N UCR anonymized (default: %u)"), 0) + "\n";
 //    strUsage += "  -liquidityprovider=<n>       " + strprintf(_("Provide liquidity to Obfuscation by infrequently mixing coins on a continual basis (0-100, default: %u, 1=very frequent, high fees, 100=very infrequent, low fees)"), 0) + "\n";
 
     strUsage += HelpMessageGroup(_("SwiftX options:"));
@@ -661,7 +661,7 @@ struct CImportingNow {
 
 void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
 {
-    RenameThread("clr-loadblk");
+    RenameThread("ucr-loadblk");
 
     // -reindex
     if (fReindex) {
@@ -752,7 +752,7 @@ bool AppInitServers()
     return true;
 }
 
-/** Initialize clr.
+/** Initialize ucr.
  *  @pre Parameters should be parsed and config file should be read.
  */
 bool AppInit2()
@@ -1741,11 +1741,11 @@ bool AppInit2()
 
         pwalletMain->InitAutoConvertAddresses();
 
-        bool fEnableZClrBackups = GetBoolArg("-backupzclr", true);
-        pwalletMain->setZClrAutoBackups(fEnableZClrBackups);
+        bool fEnableZUcrBackups = GetBoolArg("-backupzucr", true);
+        pwalletMain->setZUcrAutoBackups(fEnableZUcrBackups);
 
         //Load zerocoin mint hashes to memory
-        pwalletMain->zclrTracker->Init();
+        pwalletMain->zucrTracker->Init();
         zwalletMain->LoadMintPoolFromDB();
         zwalletMain->SyncWithChain();
     }  // (!fDisableWallet)
@@ -1904,7 +1904,7 @@ bool AppInit2()
 //        nZeromintPercentage = 99999;
 //    }
 //
-//    nAnonymizeUltraClearAmount = GetArg("-anonymizeclramount", 0);
+//    nAnonymizeUltraClearAmount = GetArg("-anonymizeucramount", 0);
 //    if (nAnonymizeUltraClearAmount > 999999) nAnonymizeUltraClearAmount = 999999;
 //    if (nAnonymizeUltraClearAmount < 2) nAnonymizeUltraClearAmount = 2;
 
@@ -1973,7 +1973,7 @@ bool AppInit2()
 
     if (nLocalServices & NODE_BLOOM_LIGHT_ZC) {
         // Run a thread to compute witnesses
-        lightWorker.StartLightZclrThread(threadGroup);
+        lightWorker.StartLightZucrThread(threadGroup);
     }
 
 #ifdef ENABLE_WALLET

@@ -10,7 +10,7 @@
 #define BITCOIN_MAIN_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/clr-config.h"
+#include "config/ucr-config.h"
 #endif
 
 #include "amount.h"
@@ -41,7 +41,7 @@
 #include <vector>
 
 #include "libzerocoin/CoinSpend.h"
-#include "lightzclrthread.h"
+#include "lightzucrthread.h"
 
 #include <boost/unordered_map.hpp>
 

@@ -1,0 +1,81 @@
+policy_module(ucr, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type ucr_t;
+type ucr_exec_t;
+init_daemon_domain(ucr_t, ucr_exec_t)
+
+permissive ucr_t;
+
+type ucr_initrc_exec_t;
+init_script_file(ucr_initrc_exec_t)
+
+type ucr_conf_t;
+files_type(ucr_conf_t)
+
+type ucr_var_lib_t;
+files_type(ucr_var_lib_t)
+
+type ucr_var_run_t;
+files_type(ucr_var_run_t)
+
+type ucr_port_t;
+corenet_port(ucr_port_t)
+
+########################################
+#
+# ucr local policy
+#
+allow ucr_t self:process { fork };
+
+allow ucr_t self:fifo_file rw_fifo_file_perms;
+allow ucr_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(ucr_t, ucr_conf_t, ucr_conf_t)
+manage_files_pattern(ucr_t, ucr_conf_t, ucr_conf_t)
+
+manage_dirs_pattern(ucr_t, ucr_var_lib_t, ucr_var_lib_t)
+manage_files_pattern(ucr_t, ucr_var_lib_t, ucr_var_lib_t)
+files_var_lib_filetrans(ucr_t, ucr_var_lib_t, { dir file })
+
+manage_dirs_pattern(ucr_t, ucr_var_run_t, ucr_var_run_t)
+manage_files_pattern(ucr_t, ucr_var_run_t, ucr_var_run_t)
+
+sysnet_dns_name_resolve(ucr_t)
+corenet_all_recvfrom_unlabeled(ucr_t)
+
+allow ucr_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(ucr_t)
+corenet_tcp_sendrecv_generic_node(ucr_t)
+corenet_tcp_sendrecv_all_ports(ucr_t)
+corenet_tcp_bind_generic_node(ucr_t)
+
+gen_require(`
+    type ucr_port_t;
+')
+allow ucr_t ucr_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type ucr_port_t;
+')
+allow ucr_t ucr_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(ucr_t)
+
+files_read_etc_files(ucr_t)
+
+miscfiles_read_localization(ucr_t)
+
+sysnet_dns_name_resolve(ucr_t)
+
+allow ucr_t ucr_exec_t:file execute_no_trans;
+allow ucr_t self:process setsched;
+corecmd_exec_ls(ucr_t)
+corenet_tcp_connect_http_port(ucr_t)
+dev_read_urand(ucr_t)
+fs_getattr_xattr_fs(ucr_t)
+kernel_read_system_state(ucr_t)

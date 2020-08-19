@@ -1,4 +1,4 @@
-Source: clr
+Source: ucr
 Section: utils
 Priority: optional
 Maintainer: Jonas Smedegaard <dr@jones.dk> ***TODO***
@@ -26,7 +26,7 @@ Homepage: http://www.clearnodes.com
 Vcs-Git: git://github.com/ClearNode/Clearcore-Project.git
 Vcs-Browser: http://github.com/ClearNode/CLR
 
-Package: clr-qt
+Package: ucr-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
@@ -39,10 +39,10 @@ Description: peer-to-peer network based digital currency - daemon
  Full transaction history is stored locally at each client.  This
  requires 1+ GB of space, slowly growing.
  .
- This package provides the daemon, clrd, and the CLI tool
- clr-cli to interact with the daemon.
+ This package provides the daemon, ucrd, and the CLI tool
+ ucr-cli to interact with the daemon.
 
-Package: clr-qt
+Package: ucr-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI

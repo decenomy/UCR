@@ -15,7 +15,7 @@ Users updating from a previous version after Tuesday, May 8, 2018 12:00:00 AM GM
 How to Upgrade
 ==============
 
-If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/ClearCoin-Qt (on Mac) or clrd/clr-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/ClearCoin-Qt (on Mac) or ucrd/ucr-qt (on Linux).
 
 
 Compatibility
@@ -97,7 +97,7 @@ The overview tab has been simplified greatly to display only balances that are a
 ### Wallet Options
 
 There have been a number of changes to the tasks that you are able to perform from the wallet options. Users will now have the ability to do the following: 
--	Enable and disable the auto zCLR minting feature. This is enabled by default and the enablezeromint=0 setting in the clr.conf file will overwrite the GUI option.
+-	Enable and disable the auto zCLR minting feature. This is enabled by default and the enablezeromint=0 setting in the ucr.conf file will overwrite the GUI option.
 -	The percentage of autominted zCLR can now be set from 1 to 100, changed from 10 – 100.
 -	The stake split threshold can now be set VIA the wallet options. This setting is an advanced feature for those wishing to remain staking regular CLR.
 -	“Unlock for staking and anonymization only” is now selected by default when unlocking the wallet from the User Interface
@@ -113,9 +113,9 @@ Backup to external devices / locations
 
 ### Summary
 
- The ClearCoin wallet can now have user selected directories for automatic backups of the wallet data file (wallet.dat). This can be set by adding the following lines to the clr.conf file, found in the CLRX data directory.
+ The ClearCoin wallet can now have user selected directories for automatic backups of the wallet data file (wallet.dat). This can be set by adding the following lines to the ucr.conf file, found in the CLRX data directory.
 - backuppath = <directory / full path>
-- zclrbackuppath = <directory / full path>
+- zucrbackuppath = <directory / full path>
 - custombackupthreshold = <backup limit>
 Note: System write permissions must be appropriate for the location the wallet is being saved to.
 
@@ -127,7 +127,7 @@ Note: System write permissions must be appropriate for the location the wallet i
 ### Details:
 
 * If path is set to directory, the backup will be named `wallet.dat-<year>-<month>-<day>-<hour>-<minute>-<second>`
-* If zCLR backup, auto generated name is `wallet-autozclrbackup.dat-<year>-<month>-<day>-<hour>-<minute>-<second>`
+* If zCLR backup, auto generated name is `wallet-autozucrbackup.dat-<year>-<month>-<day>-<hour>-<minute>-<second>`
 * If path set to file, backup will be named `<filename>.dat`
 * walletbackupthreshold enables the user to select the maximum count of backup files to be written before overwriting existing backups.
 
@@ -176,7 +176,7 @@ The ClearCoin client peer bans now have additional RPC commands to manage peers.
 
 When no `-rpcpassword` is specified, the daemon now uses a special 'cookie' file for authentication. This file is generated with random content when the daemon starts, and deleted when it exits. Its contents are used as authentication token. Read access to this file controls who can access through RPC. By default it is stored in the data directory but its location can be overridden with the option `-rpccookiefile`.
 This is similar to Tor's CookieAuthentication: see https://www.torproject.org/docs/tor-manual.html.en 
-This allows running clrd without having to do any manual configuration.
+This allows running ucrd without having to do any manual configuration.
 
 
 ### New RPC command
@@ -302,4 +302,4 @@ Detailed release notes follow. This overview includes changes that affect behavi
 Thanks to everyone who directly contributed to this release:
 
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/clr-project-translations/), the QA team during Testing and the Node hosts supporting our Testnet.
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/ucr-project-translations/), the QA team during Testing and the Node hosts supporting our Testnet.

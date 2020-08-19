@@ -15,7 +15,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"io.clr.UltraClear-Qt";
+        return @"io.ucr.UltraClear-Qt";
     } else {
         return [self __bundleIdentifier];
     }

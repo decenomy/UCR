@@ -12,7 +12,7 @@
 #include "timedata.h"
 #include "util.h"
 #include "stakeinput.h"
-#include "zclrchain.h"
+#include "zucrchain.h"
 
 using namespace std;
 
@@ -355,7 +355,7 @@ bool ContextualCheckZerocoinStake(int nPreviousBlockHeight, CStakeInput* stake)
     if (nPreviousBlockHeight < Params().Zerocoin_Block_V2_Start())
         return error("%s: zPIV stake block is less than allowed start height", __func__);
 
-    if (CZClrStake* zUCR = dynamic_cast<CZClrStake*>(stake)) {
+    if (CZUcrStake* zUCR = dynamic_cast<CZUcrStake*>(stake)) {
         CBlockIndex* pindexFrom = zUCR->GetIndexFrom();
         if (!pindexFrom)
             return error("%s: failed to get index associated with zPIV stake checksum", __func__);
@@ -391,7 +391,7 @@ bool CheckProofOfStake(const CBlock block, uint256& hashProofOfStake, std::uniqu
         if (spend.getSpendType() != libzerocoin::SpendType::STAKE)
             return error("%s: spend is using the wrong SpendType (%d)", __func__, (int)spend.getSpendType());
 
-        stake = std::unique_ptr<CStakeInput>(new CZClrStake(spend));
+        stake = std::unique_ptr<CStakeInput>(new CZUcrStake(spend));
 
         if (!ContextualCheckZerocoinStake(nPreviousBlockHeight, stake.get()))
             return error("%s: staked zUCR fails context checks", __func__);
@@ -406,9 +406,9 @@ bool CheckProofOfStake(const CBlock block, uint256& hashProofOfStake, std::uniqu
         if (!VerifyScript(txin.scriptSig, txPrev.vout[txin.prevout.n].scriptPubKey, STANDARD_SCRIPT_VERIFY_FLAGS, TransactionSignatureChecker(&tx, 0)))
             return error("CheckProofOfStake() : VerifySignature failed on coinstake %s", tx.GetHash().ToString().c_str());
 
-        CClrStake* clrInput = new CClrStake();
-        clrInput->SetInput(txPrev, txin.prevout.n);
-        stake = std::unique_ptr<CStakeInput>(clrInput);
+        CUcrStake* ucrInput = new CUcrStake();
+        ucrInput->SetInput(txPrev, txin.prevout.n);
+        stake = std::unique_ptr<CStakeInput>(ucrInput);
     }
 
     //Get the

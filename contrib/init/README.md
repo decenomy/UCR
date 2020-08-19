@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-SystemD: clrd.service
-Upstart: clrd.conf
-OpenRC:  clrd.openrc
-         clrd.openrcconf
-CentOS:  clrd.init
-macOS:    org.clr.clrd.plist
+SystemD: ucrd.service
+Upstart: ucrd.conf
+OpenRC:  ucrd.openrc
+         ucrd.openrcconf
+CentOS:  ucrd.init
+macOS:    org.ucr.ucrd.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

@@ -34,7 +34,7 @@
 #include "util.h"
 #include "utilmoneystr.h"
 #include "validationinterface.h"
-#include "zclrchain.h"
+#include "zucrchain.h"
 
 #include "primitives/zerocoin.h"
 #include "libzerocoin/Denominations.h"
@@ -89,7 +89,7 @@ int64_t nMaxTipAge = DEFAULT_MAX_TIP_AGE;
 unsigned int nStakeMinAge = 60 * 60;
 int64_t nReserveBalance = 0;
 
-/** Fees smaller than this (in uclr) are considered zero fee (for relaying and mining)
+/** Fees smaller than this (in uucr) are considered zero fee (for relaying and mining)
  * We are ~100 times smaller then bitcoin now (2015-06-23), set minRelayTxFee only 10 times higher
  * so it's still 10 times lower comparing to bitcoin.
  */
@@ -1344,7 +1344,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
                 CoinSpend spend = TxInToZerocoinSpend(txIn);
                 if (!ContextualCheckZerocoinSpend(tx, spend, chainActive.Tip(), 0))
                     return state.Invalid(error("%s: ContextualCheckZerocoinSpend failed for tx %s", __func__,
-                                               tx.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zclr");
+                                               tx.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zucr");
             }
         } else {
             LOCK(pool.cs);
@@ -2480,7 +2480,7 @@ static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck()
 {
-    RenameThread("clr-scriptch");
+    RenameThread("ucr-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -4359,17 +4359,17 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         CTransaction &stakeTxIn = block.vtx[1];
 
         // Inputs
-        std::vector<CTxIn> clrInputs;
+        std::vector<CTxIn> ucrInputs;
         std::vector<CTxIn> zUCRInputs;
 
         for (const CTxIn& stakeIn : stakeTxIn.vin) {
             if(stakeIn.IsZerocoinSpend()){
                 zUCRInputs.push_back(stakeIn);
             }else{
-                clrInputs.push_back(stakeIn);
+                ucrInputs.push_back(stakeIn);
             }
         }
-        const bool hasUCRInputs = !clrInputs.empty();
+        const bool hasUCRInputs = !ucrInputs.empty();
         const bool hasZUCRInputs = !zUCRInputs.empty();
 
         // ZC started after PoS.
@@ -4392,8 +4392,8 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                 if(tx.IsCoinStake()) continue;
                 if(hasUCRInputs)
                     // Check if coinstake input is double spent inside the same block
-                    for (const CTxIn& clrIn : clrInputs){
-                        if(clrIn.prevout == in.prevout){
+                    for (const CTxIn& ucrIn : ucrInputs){
+                        if(ucrIn.prevout == in.prevout){
                             // double spent coinstake input inside block
                             return error("%s: double spent coinstake input inside block", __func__);
                         }
@@ -4429,7 +4429,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
                 for (const CTransaction& t : bl.vtx) {
                     for (const CTxIn& in: t.vin) {
                         // Loop through every input of the staking tx
-                        for (const CTxIn& stakeIn : clrInputs) {
+                        for (const CTxIn& stakeIn : ucrInputs) {
                             // if it's already spent
 
                             // First regular staking check
@@ -4460,8 +4460,8 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
 
             // Now that this loop if completed. Check if we have zUCR inputs.
             if(hasZUCRInputs){
-                for (const CTxIn& zClrInput : zUCRInputs) {
-                    CoinSpend spend = TxInToZerocoinSpend(zClrInput);
+                for (const CTxIn& zUcrInput : zUCRInputs) {
+                    CoinSpend spend = TxInToZerocoinSpend(zUcrInput);
 
                     // First check if the serials were not already spent on the forked blocks.
                     CBigNum coinSerial = spend.getCoinSerialNumber();
@@ -4481,7 +4481,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
 
                     if (!ContextualCheckZerocoinSpendNoSerialCheck(stakeTxIn, spend, pindex, 0))
                         return state.DoS(100,error("%s: forked chain ContextualCheckZerocoinSpend failed for tx %s", __func__,
-                                                   stakeTxIn.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zclr");
+                                                   stakeTxIn.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zucr");
 
                     // Now only the ZKP left..
                     // As the spend maturity is 200, the acc value must be accumulated, otherwise it's not ready to be spent
@@ -4536,11 +4536,11 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
             }
         } else {
             if(!isBlockFromFork)
-                for (const CTxIn& zClrInput : zUCRInputs) {
-                        CoinSpend spend = TxInToZerocoinSpend(zClrInput);
+                for (const CTxIn& zUcrInput : zUCRInputs) {
+                        CoinSpend spend = TxInToZerocoinSpend(zUcrInput);
                         if (!ContextualCheckZerocoinSpend(stakeTxIn, spend, pindex, 0))
                             return state.DoS(100,error("%s: main chain ContextualCheckZerocoinSpend failed for tx %s", __func__,
-                                    stakeTxIn.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zclr");
+                                    stakeTxIn.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zucr");
                 }
 
         }
@@ -6374,7 +6374,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                 CBigNum bnAccValue = 0;
                 //std::cout << "asking for checkpoint value in height: " << height << ", den: " << den << std::endl;
                 if (!GetAccumulatorValue(height, den, bnAccValue)) {
-                    LogPrint("zclr", "peer misbehaving for request an invalid acc checkpoint \n", __func__);
+                    LogPrint("zucr", "peer misbehaving for request an invalid acc checkpoint \n", __func__);
                     Misbehaving(pfrom->GetId(), 50);
                 } else {
                     //std::cout << "Sending acc value, with checksum: " << GetChecksum(bnAccValue) << " for "
@@ -6399,7 +6399,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                 gen.setPfrom(pfrom);
                 if (gen.isValid(chainActive.Height())) {
                     if (!lightWorker.addWitWork(gen)) {
-                        LogPrint("zclr", "%s : add genwit request failed \n", __func__);
+                        LogPrint("zucr", "%s : add genwit request failed \n", __func__);
                         CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
                         // Invalid request only returns the message without a result.
                         ss << gen.getRequestNum();

@@ -13,12 +13,12 @@ The following are some helpful notes on how to run ClearCoin on your native plat
 
 Unpack the files into a directory and run:
 
-- bin/32/clr-qt (GUI, 32-bit) or bin/32/clrd (headless, 32-bit)
-- bin/64/clr-qt (GUI, 64-bit) or bin/64/clrd (headless, 64-bit)
+- bin/32/ucr-qt (GUI, 32-bit) or bin/32/ucrd (headless, 32-bit)
+- bin/64/ucr-qt (GUI, 64-bit) or bin/64/ucrd (headless, 64-bit)
 
 ### Windows
 
-Unpack the files into a directory, and then run clr-qt.exe.
+Unpack the files into a directory, and then run ucr-qt.exe.
 
 ### OSX
 
@@ -57,7 +57,7 @@ The ClearCoin repo's [root README](https://github.com/ClearNode/Clearcore-Projec
 ### Resources
 
 * Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or the [ClearCoin](http://forum.clearnodes.com/) forum.
-* Join the [ClearCoin-Dev](https://clr-dev.slack.com/) Slack group ([Sign-Up](https://clr-dev.herokuapp.com/)).
+* Join the [ClearCoin-Dev](https://ucr-dev.slack.com/) Slack group ([Sign-Up](https://ucr-dev.herokuapp.com/)).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

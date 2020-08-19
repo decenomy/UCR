@@ -1,6 +1,6 @@
 Mac OS X Build Instructions and Notes
 ====================================
-This guide will show you how to build clrd (headless client) for OSX.
+This guide will show you how to build ucrd (headless client) for OSX.
 
 Notes
 -----
@@ -40,7 +40,7 @@ Instructions: Homebrew
 
         brew install autoconf automake berkeley-db4 libtool boost miniupnpc openssl pkg-config protobuf qt5 zmq libevent
 
-### Building `clrd`
+### Building `ucrd`
 
 1. Clone the github tree to get the source code and go into the directory.
 
@@ -52,7 +52,7 @@ Instructions: Homebrew
         export LDFLAGS+=-L/usr/local/opt/openssl/lib
         export CPPFLAGS+=-I/usr/local/opt/openssl/include
 
-3.  Build clrd:
+3.  Build ucrd:
 
         ./autogen.sh
         ./configure --with-gui=qt5
@@ -62,7 +62,7 @@ Instructions: Homebrew
 
         make check
 
-5.  (Optional) You can also install clrd to your path:
+5.  (Optional) You can also install ucrd to your path:
 
         make install
 
@@ -74,7 +74,7 @@ Download Qt Creator from http://www.qt.io/download/. Download the "community edi
 1. Make sure you installed everything through homebrew mentioned above
 2. Do a proper ./configure --with-gui=qt5 --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
-4. Enter "clr-qt" as project name, enter src/qt as location
+4. Enter "ucr-qt" as project name, enter src/qt as location
 5. Leave the file selection as it is
 6. Confirm the "summary page"
 7. In the "Projects" tab select "Manage Kits..."
@@ -84,11 +84,11 @@ Download Qt Creator from http://www.qt.io/download/. Download the "community edi
 
 Creating a release build
 ------------------------
-You can ignore this section if you are building `clrd` for your own use.
+You can ignore this section if you are building `ucrd` for your own use.
 
-clrd/clr-cli binaries are not included in the clr-Qt.app bundle.
+ucrd/ucr-cli binaries are not included in the ucr-Qt.app bundle.
 
-If you are building `clrd` or `clr-qt` for others, your build machine should be set up
+If you are building `ucrd` or `ucr-qt` for others, your build machine should be set up
 as follows for maximum compatibility:
 
 All dependencies should be compiled with these flags:
@@ -103,14 +103,14 @@ bundle is packaged and signed to create the .dmg disk image that is distributed.
 Running
 -------
 
-It's now available at `./clrd`, provided that you are still in the `src`
+It's now available at `./ucrd`, provided that you are still in the `src`
 directory. We have to first create the RPC configuration file, though.
 
-Run `./clrd` to get the filename where it should be put, or just try these
+Run `./ucrd` to get the filename where it should be put, or just try these
 commands:
 
-    echo -e "rpcuser=clrrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/CLR/clr.conf"
-    chmod 600 "/Users/${USER}/Library/Application Support/CLR/clr.conf"
+    echo -e "rpcuser=ucrrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/CLR/ucr.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/CLR/ucr.conf"
 
 The next time you run it, it will start downloading the blockchain, but it won't
 output anything while it's doing this. This process may take several hours;
@@ -121,6 +121,6 @@ you can monitor its process by looking at the debug.log file, like this:
 Other commands:
 -------
 
-    ./clrd -daemon # to start the clr daemon.
-    ./clr-cli --help  # for a list of command-line options.
-    ./clr-cli help    # When the daemon is running, to get a list of RPC commands
+    ./ucrd -daemon # to start the ucr daemon.
+    ./ucr-cli --help  # for a list of command-line options.
+    ./ucr-cli help    # When the daemon is running, to get a list of RPC commands

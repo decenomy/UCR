@@ -28,7 +28,7 @@
 #include "blocksignature.h"
 #include "spork.h"
 #include "invalid.h"
-#include "zclrchain.h"
+#include "zucrchain.h"
 
 
 #include <boost/thread.hpp>
@@ -227,8 +227,8 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
                 if (hasZerocoinSpends) {
 
                     //Give a high priority to zerocoinspends to get into the next block
-                    //Priority = (age^6+100000)*amount - gives higher priority to zclrs that have been in mempool long
-                    //and higher priority to zclrs that are large in value
+                    //Priority = (age^6+100000)*amount - gives higher priority to zucrs that have been in mempool long
+                    //and higher priority to zucrs that are large in value
                     int64_t nTimeSeen = GetAdjustedTime();
                     double nConfs = 100000;
 
@@ -601,7 +601,7 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     CValidationState state;
     if (!ProcessNewBlock(state, NULL, pblock)) {
         if (pblock->IsZerocoinStake())
-            pwalletMain->zclrTracker->RemovePending(pblock->vtx[1].GetHash());
+            pwalletMain->zucrTracker->RemovePending(pblock->vtx[1].GetHash());
         return error("UltraClearMiner : ProcessNewBlock, block not accepted");
     }
 
@@ -622,7 +622,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
 {
     LogPrintf("UltraClearMiner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
-    RenameThread("clr-miner");
+    RenameThread("ucr-miner");
 
     // Each thread has its own key and counter
     CReserveKey reservekey(pwallet);

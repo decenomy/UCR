@@ -12,7 +12,7 @@
 #include "swifttx.h"
 #include "timedata.h"
 #include "wallet.h"
-#include "zclrchain.h"
+#include "zucrchain.h"
 
 #include <stdint.h>
 
@@ -55,7 +55,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
         if (!wtx.HasZerocoinSpendInputs() && !ExtractDestination(wtx.vout[1].scriptPubKey, address))
             return parts;
 
-        if (wtx.HasZerocoinSpendInputs() && (fZSpendFromMe || wallet->zclrTracker->HasMintTx(hash))) {
+        if (wtx.HasZerocoinSpendInputs() && (fZSpendFromMe || wallet->zucrTracker->HasMintTx(hash))) {
             //zUCR stake reward
             sub.involvesWatchAddress = false;
             sub.type = TransactionRecord::StakeZUCR;
@@ -99,7 +99,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
                 isminetype mine = wallet->IsMine(txout);
                 TransactionRecord sub(hash, nTime);
                 sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
-                sub.type = TransactionRecord::ZerocoinSpend_Change_zClr;
+                sub.type = TransactionRecord::ZerocoinSpend_Change_zUcr;
                 sub.address = mapValue["zerocoinmint"];
                 if (!fFeeAssigned) {
                     sub.debit -= (wtx.GetZerocoinSpent() - wtx.GetValueOut());
@@ -316,7 +316,7 @@ bool IsZUCRType(TransactionRecord::Type type)
         case TransactionRecord::ZerocoinMint:
         case TransactionRecord::ZerocoinSpend:
         case TransactionRecord::RecvFromZerocoinSpend:
-        case TransactionRecord::ZerocoinSpend_Change_zClr:
+        case TransactionRecord::ZerocoinSpend_Change_zUcr:
         case TransactionRecord::ZerocoinSpend_FromMe:
             return true;
         default:

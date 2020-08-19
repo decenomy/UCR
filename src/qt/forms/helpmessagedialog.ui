@@ -28,7 +28,7 @@
       </sizepolicy>
      </property>
      <property name="pixmap">
-      <pixmap resource="../clr.qrc">:/images/about</pixmap>
+      <pixmap resource="../ucr.qrc">:/images/about</pixmap>
      </property>
     </widget>
    </item>
@@ -97,7 +97,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../clr.qrc"/>
+  <include location="../ucr.qrc"/>
  </resources>
  <connections>
   <connection>

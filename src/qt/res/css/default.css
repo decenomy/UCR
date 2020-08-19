@@ -917,7 +917,7 @@ background-color:#ffffff;
 
 QLabel#labelOverviewHeaderRight {
 qproperty-alignment: 'AlignVCenter | AlignRight';
-background-image: url(':/images/clr_logo_horizontal');
+background-image: url(':/images/ucr_logo_horizontal');
 background-repeat: no-repeat;
 }
 
@@ -1560,7 +1560,7 @@ QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::indicator { /* Coin
 
 }
 
-QDialog#ZClrControlDialog .QTreeWidget#treeWidget { /* zUCR Control Widget Container */
+QDialog#ZUcrControlDialog .QTreeWidget#treeWidget { /* zUCR Control Widget Container */
 outline:0;
 background-color:#ffffff;
 border:1px solid #333;

@@ -184,8 +184,8 @@ bool Intro::pickDataDirectory()
         settings.setValue("strDataDir", dataDir);
     }
     /* Only override -datadir if different from the default, to make it possible to
-     * override -datadir in the clr.conf file in the default data directory
-     * (to be consistent with clrd behavior)
+     * override -datadir in the ucr.conf file in the default data directory
+     * (to be consistent with ucrd behavior)
      */
     if (dataDir != getDefaultDataDirectory())
         SoftSetArg("-datadir", GUIUtil::qstringToBoostPath(dataDir).string()); // use OS locale for path setting

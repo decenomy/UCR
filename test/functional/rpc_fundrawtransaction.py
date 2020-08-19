@@ -201,9 +201,9 @@ class RawTransactionsTest(BitcoinTestFramework):
 
         try:
             self.nodes[2].fundrawtransaction(rawtx, {'changeAddress': 'foobar'})
-            raise AssertionError("Accepted invalid clr address")
+            raise AssertionError("Accepted invalid ucr address")
         except JSONRPCException as e:
-            assert("changeAddress must be a valid clr address" in e.error['message'])
+            assert("changeAddress must be a valid ucr address" in e.error['message'])
 
 
         ############################################################

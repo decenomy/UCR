@@ -18,7 +18,7 @@
 #include "utilmoneystr.h"
 #include "wallet.h"
 #include "walletdb.h"
-#include "zclrchain.h"
+#include "zucrchain.h"
 
 #include <stdint.h>
 
@@ -94,7 +94,7 @@ UniValue getnewaddress(const UniValue& params, bool fHelp)
             "1. \"account\"        (string, optional) The account name for the address to be linked to. if not provided, the default account \"\" is used. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created if there is no account by the given name.\n"
 
             "\nResult:\n"
-            "\"clraddress\"    (string) The new clr address\n"
+            "\"ucraddress\"    (string) The new ucr address\n"
 
             "\nExamples:\n" +
             HelpExampleCli("getnewaddress", "") + HelpExampleCli("getnewaddress", "\"\"") +
@@ -167,7 +167,7 @@ UniValue getaccountaddress(const UniValue& params, bool fHelp)
             "1. \"account\"       (string, required) The account name for the address. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created and a new address created  if there is no account by the given name.\n"
 
             "\nResult:\n"
-            "\"clraddress\"   (string) The account clr address\n"
+            "\"ucraddress\"   (string) The account ucr address\n"
 
             "\nExamples:\n" +
             HelpExampleCli("getaccountaddress", "") + HelpExampleCli("getaccountaddress", "\"\"") +
@@ -221,11 +221,11 @@ UniValue setaccount(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw runtime_error(
-            "setaccount \"clraddress\" \"account\"\n"
+            "setaccount \"ucraddress\" \"account\"\n"
             "\nSets the account associated with the given address.\n"
 
             "\nArguments:\n"
-            "1. \"clraddress\"  (string, required) The clr address to be associated with an account.\n"
+            "1. \"ucraddress\"  (string, required) The ucr address to be associated with an account.\n"
             "2. \"account\"         (string, required) The account to assign the address to.\n"
 
             "\nExamples:\n" +
@@ -262,11 +262,11 @@ UniValue getaccount(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "getaccount \"clraddress\"\n"
+            "getaccount \"ucraddress\"\n"
             "\nReturns the account associated with the given address.\n"
 
             "\nArguments:\n"
-            "1. \"clraddress\"  (string, required) The clr address for account lookup.\n"
+            "1. \"ucraddress\"  (string, required) The ucr address for account lookup.\n"
 
             "\nResult:\n"
             "\"accountname\"        (string) the account address\n"
@@ -300,7 +300,7 @@ UniValue getaddressesbyaccount(const UniValue& params, bool fHelp)
 
             "\nResult:\n"
             "[                     (json array of string)\n"
-            "  \"clraddress\"  (string) a clr address associated with the given account\n"
+            "  \"ucraddress\"  (string) a ucr address associated with the given account\n"
             "  ,...\n"
             "]\n"
 
@@ -358,12 +358,12 @@ UniValue sendtoaddress(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 4)
         throw runtime_error(
-            "sendtoaddress \"clraddress\" amount ( \"comment\" \"comment-to\" )\n"
+            "sendtoaddress \"ucraddress\" amount ( \"comment\" \"comment-to\" )\n"
             "\nSend an amount to a given address. The amount is a real and is rounded to the nearest 0.00000001\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
-            "1. \"clraddress\"  (string, required) The clr address to send to.\n"
+            "1. \"ucraddress\"  (string, required) The ucr address to send to.\n"
             "2. \"amount\"      (numeric, required) The amount in UCR to send. eg 0.1\n"
             "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
             "                             This is not part of the transaction, just kept in your wallet.\n"
@@ -406,12 +406,12 @@ UniValue sendtoaddressix(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 4)
         throw runtime_error(
-            "sendtoaddressix \"clraddress\" amount ( \"comment\" \"comment-to\" )\n"
+            "sendtoaddressix \"ucraddress\" amount ( \"comment\" \"comment-to\" )\n"
             "\nSend an amount to a given address. The amount is a real and is rounded to the nearest 0.00000001\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
-            "1. \"clraddress\"  (string, required) The clr address to send to.\n"
+            "1. \"ucraddress\"  (string, required) The ucr address to send to.\n"
             "2. \"amount\"      (numeric, required) The amount in UCR to send. eg 0.1\n"
             "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
             "                             This is not part of the transaction, just kept in your wallet.\n"
@@ -463,7 +463,7 @@ UniValue listaddressgroupings(const UniValue& params, bool fHelp)
             "[\n"
             "  [\n"
             "    [\n"
-            "      \"clraddress\",     (string) The clr address\n"
+            "      \"ucraddress\",     (string) The ucr address\n"
             "      amount,                 (numeric) The amount in UCR\n"
             "      \"account\"             (string, optional) The account\n"
             "    ]\n"
@@ -500,12 +500,12 @@ UniValue signmessage(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() != 2)
         throw runtime_error(
-            "signmessage \"clraddress\" \"message\"\n"
+            "signmessage \"ucraddress\" \"message\"\n"
             "\nSign a message with the private key of an address" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
-            "1. \"clraddress\"  (string, required) The clr address to use for the private key.\n"
+            "1. \"ucraddress\"  (string, required) The ucr address to use for the private key.\n"
             "2. \"message\"         (string, required) The message to create a signature of.\n"
 
             "\nResult:\n"
@@ -555,11 +555,11 @@ UniValue getreceivedbyaddress(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw std::runtime_error(
-            "getreceivedbyaddress \"clraddress\" ( minconf )\n"
-            "\nReturns the total amount received by the given clraddress in transactions with at least minconf confirmations.\n"
+            "getreceivedbyaddress \"ucraddress\" ( minconf )\n"
+            "\nReturns the total amount received by the given ucraddress in transactions with at least minconf confirmations.\n"
 
             "\nArguments:\n"
-            "1. \"clraddress\"  (string, required) The clr address for transactions.\n"
+            "1. \"ucraddress\"  (string, required) The ucr address for transactions.\n"
             "2. minconf             (numeric, optional, default=1) Only include transactions confirmed at least this many times.\n"
 
             "\nResult:\n"
@@ -577,7 +577,7 @@ UniValue getreceivedbyaddress(const UniValue& params, bool fHelp)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    // clr address
+    // ucr address
     CBitcoinAddress address = CBitcoinAddress(params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid UCR address");
@@ -855,14 +855,14 @@ UniValue sendfrom(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 3 || params.size() > 6)
         throw runtime_error(
-            "sendfrom \"fromaccount\" \"toclraddress\" amount ( minconf \"comment\" \"comment-to\" )\n"
-            "\nSent an amount from an account to a clr address.\n"
+            "sendfrom \"fromaccount\" \"toucraddress\" amount ( minconf \"comment\" \"comment-to\" )\n"
+            "\nSent an amount from an account to a ucr address.\n"
             "The amount is a real and is rounded to the nearest 0.00000001." +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
             "1. \"fromaccount\"       (string, required) The name of the account to send funds from. May be the default account using \"\".\n"
-            "2. \"toclraddress\"  (string, required) The clr address to send funds to.\n"
+            "2. \"toucraddress\"  (string, required) The ucr address to send funds to.\n"
             "3. amount                (numeric, required) The amount in UCR. (transaction fee is added on top).\n"
             "4. minconf               (numeric, optional, default=1) Only use funds with at least this many confirmations.\n"
             "5. \"comment\"           (string, optional) A comment used to store what the transaction is for. \n"
@@ -925,7 +925,7 @@ UniValue sendmany(const UniValue& params, bool fHelp)
             "1. \"fromaccount\"         (string, required) The account to send the funds from, can be \"\" for the default account\n"
             "2. \"amounts\"             (string, required) A json object with addresses and amounts\n"
             "    {\n"
-            "      \"address\":amount   (numeric) The clr address is the key, the numeric amount in UCR is the value\n"
+            "      \"address\":amount   (numeric) The ucr address is the key, the numeric amount in UCR is the value\n"
             "      ,...\n"
             "    }\n"
             "3. minconf                 (numeric, optional, default=1) Only use the balance confirmed at least this many times.\n"
@@ -1011,15 +1011,15 @@ UniValue addmultisigaddress(const UniValue& params, bool fHelp)
 
             "\nArguments:\n"
             "1. nrequired        (numeric, required) The number of required signatures out of the n keys or addresses.\n"
-            "2. \"keysobject\"   (string, required) A json array of clr addresses or hex-encoded public keys\n"
+            "2. \"keysobject\"   (string, required) A json array of ucr addresses or hex-encoded public keys\n"
             "     [\n"
-            "       \"address\"  (string) clr address or hex-encoded public key\n"
+            "       \"address\"  (string) ucr address or hex-encoded public key\n"
             "       ...,\n"
             "     ]\n"
             "3. \"account\"      (string, optional) An account to assign the addresses to.\n"
 
             "\nResult:\n"
-            "\"clraddress\"  (string) A clr address associated with the keys.\n"
+            "\"ucraddress\"  (string) A ucr address associated with the keys.\n"
 
             "\nExamples:\n"
             "\nAdd a multisig address from 2 addresses\n" +
@@ -1343,7 +1343,7 @@ UniValue listtransactions(const UniValue& params, bool fHelp)
             "  {\n"
             "    \"account\":\"accountname\",       (string) The account name associated with the transaction. \n"
             "                                                It will be \"\" for the default account.\n"
-            "    \"address\":\"clraddress\",    (string) The clr address of the transaction. Not present for \n"
+            "    \"address\":\"ucraddress\",    (string) The ucr address of the transaction. Not present for \n"
             "                                                move transactions (category = move).\n"
             "    \"category\":\"send|receive|move\", (string) The transaction category. 'move' is a local (off blockchain)\n"
             "                                                transaction between accounts, and not associated with an address,\n"
@@ -1538,7 +1538,7 @@ UniValue listsinceblock(const UniValue& params, bool fHelp)
             "{\n"
             "  \"transactions\": [\n"
             "    \"account\":\"accountname\",       (string) The account name associated with the transaction. Will be \"\" for the default account.\n"
-            "    \"address\":\"clraddress\",    (string) The clr address of the transaction. Not present for move transactions (category = move).\n"
+            "    \"address\":\"ucraddress\",    (string) The ucr address of the transaction. Not present for move transactions (category = move).\n"
             "    \"category\":\"send|receive\",     (string) The transaction category. 'send' has negative amounts, 'receive' has positive amounts.\n"
             "    \"amount\": x.xxx,          (numeric) The amount in UCR. This is negative for the 'send' category, and for the 'move' category for moves \n"
             "                                          outbound. It is positive for the 'receive' category, and for the 'move' category for inbound funds.\n"
@@ -1635,7 +1635,7 @@ UniValue gettransaction(const UniValue& params, bool fHelp)
             "  \"details\" : [\n"
             "    {\n"
             "      \"account\" : \"accountname\",  (string) The account name involved in the transaction, can be \"\" for the default account.\n"
-            "      \"address\" : \"clraddress\",   (string) The clr address involved in the transaction\n"
+            "      \"address\" : \"ucraddress\",   (string) The ucr address involved in the transaction\n"
             "      \"category\" : \"send|receive\",    (string) The category, either 'send' or 'receive'\n"
             "      \"amount\" : x.xxx                  (numeric) The amount in UCR\n"
             "      \"vout\" : n,                       (numeric) the vout value\n"
@@ -1926,7 +1926,7 @@ UniValue encryptwallet(const UniValue& params, bool fHelp)
             "\nNow set the passphrase to use the wallet, such as for signing or sending UCRs\n" +
             HelpExampleCli("walletpassphrase", "\"my pass phrase\"") +
             "\nNow we can so something like sign\n" +
-            HelpExampleCli("signmessage", "\"clraddress\" \"test message\"") +
+            HelpExampleCli("signmessage", "\"ucraddress\" \"test message\"") +
             "\nNow lock the wallet again by removing the passphrase\n" +
             HelpExampleCli("walletlock", "") +
             "\nAs a json rpc call\n" +
@@ -1957,7 +1957,7 @@ UniValue encryptwallet(const UniValue& params, bool fHelp)
     // slack space in .dat files; that is bad if the old data is
     // unencrypted private keys. So:
     StartShutdown();
-    return "wallet encrypted; clr server stopping, restart to run with encrypted wallet. The keypool has been flushed, you need to make a new backup.";
+    return "wallet encrypted; ucr server stopping, restart to run with encrypted wallet. The keypool has been flushed, you need to make a new backup.";
 }
 
 UniValue lockunspent(const UniValue& params, bool fHelp)
@@ -2613,7 +2613,7 @@ UniValue listmintedzerocoins(const UniValue& params, bool fHelp)
     EnsureWalletIsUnlocked(true);
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
-    set<CMintMeta> setMints = pwalletMain->zclrTracker->ListMints(true, fMatureOnly, true);
+    set<CMintMeta> setMints = pwalletMain->zucrTracker->ListMints(true, fMatureOnly, true);
 
     int nBestHeight = chainActive.Height();
 
@@ -2637,7 +2637,7 @@ UniValue listmintedzerocoins(const UniValue& params, bool fHelp)
                     uint256 hashStake = mint.GetSerialNumber().getuint256();
                     hashStake = Hash(hashStake.begin(), hashStake.end());
                     m.hashStake = hashStake;
-                    pwalletMain->zclrTracker->UpdateState(m);
+                    pwalletMain->zucrTracker->UpdateState(m);
                 }
             }
             objMint.push_back(Pair("hash stake", m.hashStake.GetHex()));       // Confirmations
@@ -2678,7 +2678,7 @@ UniValue listzerocoinamounts(const UniValue& params, bool fHelp)
     EnsureWalletIsUnlocked(true);
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
-    set<CMintMeta> setMints = pwalletMain->zclrTracker->ListMints(true, true, true);
+    set<CMintMeta> setMints = pwalletMain->zucrTracker->ListMints(true, true, true);
 
     std::map<libzerocoin::CoinDenomination, CAmount> spread;
     for (const auto& denom : libzerocoin::zerocoinDenomList)
@@ -2902,7 +2902,7 @@ UniValue spendzerocoin(const UniValue& params, bool fHelp)
 
     vector<CZerocoinMint> vMintsSelected;
 
-    return DoZclrSpend(nAmount, fMintChange, fMinimizeChange, nSecurityLevel, vMintsSelected, address_str);
+    return DoZucrSpend(nAmount, fMintChange, fMinimizeChange, nSecurityLevel, vMintsSelected, address_str);
 }
 
 
@@ -2987,11 +2987,11 @@ UniValue spendzerocoinmints(const UniValue& params, bool fHelp)
         nAmount += mint.GetDenominationAsAmount();
     }
 
-    return DoZclrSpend(nAmount, false, true, 100, vMintsSelected, address_str);
+    return DoZucrSpend(nAmount, false, true, 100, vMintsSelected, address_str);
 }
 
 
-extern UniValue DoZclrSpend(const CAmount nAmount, bool fMintChange, bool fMinimizeChange, const int nSecurityLevel, vector<CZerocoinMint>& vMintsSelected, std::string address_str)
+extern UniValue DoZucrSpend(const CAmount nAmount, bool fMintChange, bool fMinimizeChange, const int nSecurityLevel, vector<CZerocoinMint>& vMintsSelected, std::string address_str)
 {
     int64_t nTimeStart = GetTimeMillis();
     CBitcoinAddress address = CBitcoinAddress(); // Optional sending address. Dummy initialization here.
@@ -3083,8 +3083,8 @@ UniValue resetmintzerocoin(const UniValue& params, bool fHelp)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
-    CzUCRTracker* zclrTracker = pwalletMain->zclrTracker.get();
-    set<CMintMeta> setMints = zclrTracker->ListMints(false, false, true);
+    CzUCRTracker* zucrTracker = pwalletMain->zucrTracker.get();
+    set<CMintMeta> setMints = zucrTracker->ListMints(false, false, true);
     vector<CMintMeta> vMintsToFind(setMints.begin(), setMints.end());
     vector<CMintMeta> vMintsMissing;
     vector<CMintMeta> vMintsToUpdate;
@@ -3095,14 +3095,14 @@ UniValue resetmintzerocoin(const UniValue& params, bool fHelp)
     // update the meta data of mints that were marked for updating
     UniValue arrUpdated(UniValue::VARR);
     for (CMintMeta meta : vMintsToUpdate) {
-        zclrTracker->UpdateState(meta);
+        zucrTracker->UpdateState(meta);
         arrUpdated.push_back(meta.hashPubcoin.GetHex());
     }
 
     // delete any mints that were unable to be located on the blockchain
     UniValue arrDeleted(UniValue::VARR);
     for (CMintMeta mint : vMintsMissing) {
-        zclrTracker->Archive(mint);
+        zucrTracker->Archive(mint);
         arrDeleted.push_back(mint.hashPubcoin.GetHex());
     }
 
@@ -3136,8 +3136,8 @@ UniValue resetspentzerocoin(const UniValue& params, bool fHelp)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     CWalletDB walletdb(pwalletMain->strWalletFile);
-    CzUCRTracker* zclrTracker = pwalletMain->zclrTracker.get();
-    set<CMintMeta> setMints = zclrTracker->ListMints(false, false, false);
+    CzUCRTracker* zucrTracker = pwalletMain->zucrTracker.get();
+    set<CMintMeta> setMints = zucrTracker->ListMints(false, false, false);
     list<CZerocoinSpend> listSpends = walletdb.ListSpentCoins();
     list<CZerocoinSpend> listUnconfirmedSpends;
 
@@ -3159,7 +3159,7 @@ UniValue resetspentzerocoin(const UniValue& params, bool fHelp)
     for (CZerocoinSpend spend : listUnconfirmedSpends) {
         for (auto& meta : setMints) {
             if (meta.hashSerial == GetSerialHash(spend.GetSerial())) {
-                zclrTracker->SetPubcoinNotUsed(meta.hashPubcoin);
+                zucrTracker->SetPubcoinNotUsed(meta.hashPubcoin);
                 walletdb.EraseZerocoinSpendSerialEntry(spend.GetSerial());
                 RemoveSerialFromDB(spend.GetSerial());
                 UniValue obj(UniValue::VOBJ);
@@ -3273,8 +3273,8 @@ UniValue exportzerocoins(const UniValue& params, bool fHelp)
     if (params.size() == 2)
         denomination = libzerocoin::IntToZerocoinDenomination(params[1].get_int());
 
-    CzUCRTracker* zclrTracker = pwalletMain->zclrTracker.get();
-    set<CMintMeta> setMints = zclrTracker->ListMints(!fIncludeSpent, false, false);
+    CzUCRTracker* zucrTracker = pwalletMain->zucrTracker.get();
+    set<CMintMeta> setMints = zucrTracker->ListMints(!fIncludeSpent, false, false);
 
     UniValue jsonList(UniValue::VARR);
     for (const CMintMeta& meta : setMints) {
@@ -3388,7 +3388,7 @@ UniValue importzerocoins(const UniValue& params, bool fHelp)
         CZerocoinMint mint(denom, bnValue, bnRandom, bnSerial, fUsed, nVersion, &privkey);
         mint.SetTxHash(txid);
         mint.SetHeight(nHeight);
-        pwalletMain->zclrTracker->Add(mint, true);
+        pwalletMain->zucrTracker->Add(mint, true);
         count++;
         nValue += libzerocoin::ZerocoinDenominationToAmount(denom);
     }
@@ -3450,23 +3450,23 @@ UniValue reconsiderzerocoins(const UniValue& params, bool fHelp)
     return arrRet;
 }
 
-UniValue setzclrseed(const UniValue& params, bool fHelp)
+UniValue setzucrseed(const UniValue& params, bool fHelp)
 {
     if(fHelp || params.size() != 1)
         throw runtime_error(
-            "setzclrseed \"seed\"\n"
-            "\nSet the wallet's deterministic zclr seed to a specific value.\n" +
+            "setzucrseed \"seed\"\n"
+            "\nSet the wallet's deterministic zucr seed to a specific value.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
-            "1. \"seed\"        (string, required) The deterministic zclr seed.\n"
+            "1. \"seed\"        (string, required) The deterministic zucr seed.\n"
 
             "\nResult\n"
             "\"success\" : b,  (boolean) Whether the seed was successfully set.\n"
 
             "\nExamples\n" +
-            HelpExampleCli("setzclrseed", "63f793e7895dd30d99187b35fbfb314a5f91af0add9e0a4e5877036d1e392dd5") +
-            HelpExampleRpc("setzclrseed", "63f793e7895dd30d99187b35fbfb314a5f91af0add9e0a4e5877036d1e392dd5"));
+            HelpExampleCli("setzucrseed", "63f793e7895dd30d99187b35fbfb314a5f91af0add9e0a4e5877036d1e392dd5") +
+            HelpExampleRpc("setzucrseed", "63f793e7895dd30d99187b35fbfb314a5f91af0add9e0a4e5877036d1e392dd5"));
 
     EnsureWalletIsUnlocked();
 
@@ -3484,11 +3484,11 @@ UniValue setzclrseed(const UniValue& params, bool fHelp)
     return ret;
 }
 
-UniValue getzclrseed(const UniValue& params, bool fHelp)
+UniValue getzucrseed(const UniValue& params, bool fHelp)
 {
     if(fHelp || !params.empty())
         throw runtime_error(
-            "getzclrseed\n"
+            "getzucrseed\n"
             "\nCheck archived zUCR list to see if any mints were added to the blockchain.\n" +
             HelpRequiringPassphrase() + "\n"
 
@@ -3496,7 +3496,7 @@ UniValue getzclrseed(const UniValue& params, bool fHelp)
             "\"seed\" : s,  (string) The deterministic zUCR seed.\n"
 
             "\nExamples\n" +
-            HelpExampleCli("getzclrseed", "") + HelpExampleRpc("getzclrseed", ""));
+            HelpExampleCli("getzucrseed", "") + HelpExampleRpc("getzucrseed", ""));
 
     EnsureWalletIsUnlocked();
 
@@ -3558,10 +3558,10 @@ UniValue generatemintlist(const UniValue& params, bool fHelp)
     return arrRet;
 }
 
-UniValue dzclrstate(const UniValue& params, bool fHelp) {
+UniValue dzucrstate(const UniValue& params, bool fHelp) {
     if (fHelp || params.size() != 0)
         throw runtime_error(
-                "dzclrstate\n"
+                "dzucrstate\n"
                         "\nThe current state of the mintpool of the deterministic zUCR wallet.\n" +
                 HelpRequiringPassphrase() + "\n"
 
@@ -3572,7 +3572,7 @@ UniValue dzclrstate(const UniValue& params, bool fHelp) {
     UniValue obj(UniValue::VOBJ);
     int nCount, nCountLastUsed;
     zwallet->GetState(nCount, nCountLastUsed);
-    obj.push_back(Pair("dzclr_count", nCount));
+    obj.push_back(Pair("dzucr_count", nCount));
     obj.push_back(Pair("mintpool_count", nCountLastUsed));
 
     return obj;
@@ -3609,11 +3609,11 @@ void static SearchThread(CzUCRWallet* zwallet, int nCountStart, int nCountEnd)
     }
 }
 
-UniValue searchdzclr(const UniValue& params, bool fHelp)
+UniValue searchdzucr(const UniValue& params, bool fHelp)
 {
     if(fHelp || params.size() != 3)
         throw runtime_error(
-            "searchdzclr\n"
+            "searchdzucr\n"
             "\nMake an extended search for deterministically generated zUCR that have not yet been recognized by the wallet.\n" +
             HelpRequiringPassphrase() + "\n"
 
@@ -3623,7 +3623,7 @@ UniValue searchdzclr(const UniValue& params, bool fHelp)
             "3. \"threads\"     (numeric) How many threads should this operation consume.\n"
 
             "\nExamples\n" +
-            HelpExampleCli("searchdzclr", "1, 100, 2") + HelpExampleRpc("searchdzclr", "1, 100, 2"));
+            HelpExampleCli("searchdzucr", "1, 100, 2") + HelpExampleRpc("searchdzucr", "1, 100, 2"));
 
     EnsureWalletIsUnlocked();
 
@@ -3639,7 +3639,7 @@ UniValue searchdzclr(const UniValue& params, bool fHelp)
 
     CzUCRWallet* zwallet = pwalletMain->zwalletMain;
 
-    boost::thread_group* dzclrThreads = new boost::thread_group();
+    boost::thread_group* dzucrThreads = new boost::thread_group();
     int nRangePerThread = nRange / nThreads;
 
     int nPrevThreadEnd = nCount - 1;
@@ -3647,12 +3647,12 @@ UniValue searchdzclr(const UniValue& params, bool fHelp)
         int nStart = nPrevThreadEnd + 1;;
         int nEnd = nStart + nRangePerThread;
         nPrevThreadEnd = nEnd;
-        dzclrThreads->create_thread(boost::bind(&SearchThread, zwallet, nStart, nEnd));
+        dzucrThreads->create_thread(boost::bind(&SearchThread, zwallet, nStart, nEnd));
     }
 
-    dzclrThreads->join_all();
+    dzucrThreads->join_all();
 
-    zwallet->RemoveMintsFromPool(pwalletMain->zclrTracker->GetSerialHashes());
+    zwallet->RemoveMintsFromPool(pwalletMain->zucrTracker->GetSerialHashes());
     zwallet->SyncWithChain(false);
 
     //todo: better response

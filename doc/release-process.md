@@ -24,7 +24,7 @@ If you're using the automated script (found in [contrib/gitian-build.sh](/contri
 Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
-    git clone https://github.com/clr-project/gitian.sigs.git
+    git clone https://github.com/ucr-project/gitian.sigs.git
     git clone https://github.com/ClearNode/CLR-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     git clone https://github.com/ClearNode/Clearcore-Project.git
@@ -50,7 +50,7 @@ If you're using the automated script (found in [contrib/gitian-build.sh](/contri
 
 Setup Gitian descriptors:
 
-    pushd ./clr
+    pushd ./ucr
     export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
     export VERSION=(new version, e.g. 0.8.0)
     git fetch
@@ -84,7 +84,7 @@ Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, a
 By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
     pushd ./gitian-builder
-    make -C ../clr/depends download SOURCES_PATH=`pwd`/cache/common
+    make -C ../ucr/depends download SOURCES_PATH=`pwd`/cache/common
     popd
 
 Only missing files will be fetched, so this is safe to re-run for each build.
@@ -92,7 +92,7 @@ Only missing files will be fetched, so this is safe to re-run for each build.
 NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
 
     pushd ./gitian-builder
-    ./bin/gbuild --url clr=/path/to/clr,signature=/path/to/sigs {rest of arguments}
+    ./bin/gbuild --url ucr=/path/to/ucr,signature=/path/to/sigs {rest of arguments}
     popd
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
@@ -100,47 +100,47 @@ The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 ### Build and sign ClearCoin Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
-    ./bin/gbuild --memory 3000 --commit clr=v${VERSION} ../clr/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../clr/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/clr-*.tar.gz build/out/src/clr-*.tar.gz ../
+    ./bin/gbuild --memory 3000 --commit ucr=v${VERSION} ../ucr/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../ucr/contrib/gitian-descriptors/gitian-linux.yml
+    mv build/out/ucr-*.tar.gz build/out/src/ucr-*.tar.gz ../
 
-    ./bin/gbuild --memory 3000 --commit clr=v${VERSION} ../clr/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../clr/contrib/gitian-descriptors/gitian-win.yml
-    mv build/out/clr-*-win-unsigned.tar.gz inputs/clr-win-unsigned.tar.gz
-    mv build/out/clr-*.zip build/out/clr-*.exe ../
+    ./bin/gbuild --memory 3000 --commit ucr=v${VERSION} ../ucr/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../ucr/contrib/gitian-descriptors/gitian-win.yml
+    mv build/out/ucr-*-win-unsigned.tar.gz inputs/ucr-win-unsigned.tar.gz
+    mv build/out/ucr-*.zip build/out/ucr-*.exe ../
 
-    ./bin/gbuild --memory 3000 --commit clr=v${VERSION} ../clr/contrib/gitian-descriptors/gitian-osx.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../clr/contrib/gitian-descriptors/gitian-osx.yml
-    mv build/out/clr-*-osx-unsigned.tar.gz inputs/clr-osx-unsigned.tar.gz
-    mv build/out/clr-*.tar.gz build/out/clr-*.dmg ../
+    ./bin/gbuild --memory 3000 --commit ucr=v${VERSION} ../ucr/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../ucr/contrib/gitian-descriptors/gitian-osx.yml
+    mv build/out/ucr-*-osx-unsigned.tar.gz inputs/ucr-osx-unsigned.tar.gz
+    mv build/out/ucr-*.tar.gz build/out/ucr-*.dmg ../
 
-    ./bin/gbuild --memory 3000 --commit clr=v${VERSION} ../clr/contrib/gitian-descriptors/gitian-aarch64.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../clr/contrib/gitian-descriptors/gitian-aarch64.yml
-    mv build/out/clr-*.tar.gz build/out/src/clr-*.tar.gz ../
+    ./bin/gbuild --memory 3000 --commit ucr=v${VERSION} ../ucr/contrib/gitian-descriptors/gitian-aarch64.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../ucr/contrib/gitian-descriptors/gitian-aarch64.yml
+    mv build/out/ucr-*.tar.gz build/out/src/ucr-*.tar.gz ../
     popd
 
 Build output expected:
 
-  1. source tarball (`clr-${VERSION}.tar.gz`)
-  2. linux 32-bit and 64-bit dist tarballs (`clr-${VERSION}-linux[32|64].tar.gz`)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (`clr-${VERSION}-win[32|64]-setup-unsigned.exe`, `clr-${VERSION}-win[32|64].zip`)
-  4. OS X unsigned installer and dist tarball (`clr-${VERSION}-osx-unsigned.dmg`, `clr-${VERSION}-osx64.tar.gz`)
+  1. source tarball (`ucr-${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`ucr-${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`ucr-${VERSION}-win[32|64]-setup-unsigned.exe`, `ucr-${VERSION}-win[32|64].zip`)
+  4. OS X unsigned installer and dist tarball (`ucr-${VERSION}-osx-unsigned.dmg`, `ucr-${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 ### Verify other gitian builders signatures to your own. (Optional)
 
 Add other gitian builders keys to your gpg keyring, and/or refresh keys.
 
-    gpg --import clr/contrib/gitian-keys/*.pgp
+    gpg --import ucr/contrib/gitian-keys/*.pgp
     gpg --refresh-keys
 
 Verify the signatures
 
     pushd ./gitian-builder
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../clr/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../clr/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../clr/contrib/gitian-descriptors/gitian-osx.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../clr/contrib/gitian-descriptors/gitian-aarch64.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../ucr/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../ucr/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../ucr/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../ucr/contrib/gitian-descriptors/gitian-aarch64.yml
     popd
 
 ### Next steps:
@@ -162,22 +162,22 @@ Codesigner only: Create Windows/OS X detached signatures:
 
 Codesigner only: Sign the osx binary:
 
-    transfer clr-osx-unsigned.tar.gz to osx for signing
-    tar xf clr-osx-unsigned.tar.gz
+    transfer ucr-osx-unsigned.tar.gz to osx for signing
+    tar xf ucr-osx-unsigned.tar.gz
     ./detached-sig-create.sh -s "Key ID"
     Enter the keychain password and authorize the signature
     Move signature-osx.tar.gz back to the gitian host
 
 Codesigner only: Sign the windows binaries:
 
-    tar xf clr-win-unsigned.tar.gz
+    tar xf ucr-win-unsigned.tar.gz
     ./detached-sig-create.sh -key /path/to/codesign.key
     Enter the passphrase for the key when prompted
     signature-win.tar.gz will be created
 
 Codesigner only: Commit the detached codesign payloads:
 
-    cd ~/clr-detached-sigs
+    cd ~/ucr-detached-sigs
     checkout the appropriate branch for this release series
     rm -rf *
     tar xf signature-osx.tar.gz
@@ -190,25 +190,25 @@ Codesigner only: Commit the detached codesign payloads:
 Non-codesigners: wait for Windows/OS X detached signatures:
 
 - Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
-- Detached signatures will then be committed to the [clr-detached-sigs](https://github.com/ClearNode/CLR-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+- Detached signatures will then be committed to the [ucr-detached-sigs](https://github.com/ClearNode/CLR-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
 Create (and optionally verify) the signed OS X binary:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../clr/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../clr/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../clr/contrib/gitian-descriptors/gitian-osx-signer.yml
-    mv build/out/clr-osx-signed.dmg ../clr-${VERSION}-osx.dmg
+    ./bin/gbuild -i --commit signature=v${VERSION} ../ucr/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../ucr/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../ucr/contrib/gitian-descriptors/gitian-osx-signer.yml
+    mv build/out/ucr-osx-signed.dmg ../ucr-${VERSION}-osx.dmg
     popd
 
 Create (and optionally verify) the signed Windows binaries:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../clr/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../clr/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../clr/contrib/gitian-descriptors/gitian-win-signer.yml
-    mv build/out/clr-*win64-setup.exe ../clr-${VERSION}-win64-setup.exe
-    mv build/out/clr-*win32-setup.exe ../clr-${VERSION}-win32-setup.exe
+    ./bin/gbuild -i --commit signature=v${VERSION} ../ucr/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../ucr/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../ucr/contrib/gitian-descriptors/gitian-win-signer.yml
+    mv build/out/ucr-*win64-setup.exe ../ucr-${VERSION}-win64-setup.exe
+    mv build/out/ucr-*win32-setup.exe ../ucr-${VERSION}-win32-setup.exe
     popd
 
 Commit your signature for the signed OS X/Windows binaries:
@@ -230,17 +230,17 @@ sha256sum * > SHA256SUMS
 
 The list of files should be:
 ```
-clr-${VERSION}-aarch64-linux-gnu.tar.gz
-clr-${VERSION}-arm-linux-gnueabihf.tar.gz
-clr-${VERSION}-i686-pc-linux-gnu.tar.gz
-clr-${VERSION}-x86_64-linux-gnu.tar.gz
-clr-${VERSION}-osx64.tar.gz
-clr-${VERSION}-osx.dmg
-clr-${VERSION}.tar.gz
-clr-${VERSION}-win32-setup.exe
-clr-${VERSION}-win32.zip
-clr-${VERSION}-win64-setup.exe
-clr-${VERSION}-win64.zip
+ucr-${VERSION}-aarch64-linux-gnu.tar.gz
+ucr-${VERSION}-arm-linux-gnueabihf.tar.gz
+ucr-${VERSION}-i686-pc-linux-gnu.tar.gz
+ucr-${VERSION}-x86_64-linux-gnu.tar.gz
+ucr-${VERSION}-osx64.tar.gz
+ucr-${VERSION}-osx.dmg
+ucr-${VERSION}.tar.gz
+ucr-${VERSION}-win32-setup.exe
+ucr-${VERSION}-win32.zip
+ucr-${VERSION}-win64-setup.exe
+ucr-${VERSION}-win64.zip
 ```
 The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested
@@ -262,7 +262,7 @@ Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spur
 
   - bitcointalk announcement thread
 
-  - Optionally twitter, reddit /r/clr, ... but this will usually sort out itself
+  - Optionally twitter, reddit /r/ucr, ... but this will usually sort out itself
 
   - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 

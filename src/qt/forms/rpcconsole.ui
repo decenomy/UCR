@@ -423,7 +423,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../clr.qrc">
+            <iconset resource="../ucr.qrc">
              <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
            </property>
            <property name="shortcut">
@@ -1326,7 +1326,7 @@
         </widget>
        </item>
        <item row="4" column="0">
-        <widget class="QLabel" name="wallet_customzclrbackuppath_label">
+        <widget class="QLabel" name="wallet_customzucrbackuppath_label">
          <property name="text">
           <string>Custom zUCR Backup Path:</string>
          </property>
@@ -1336,7 +1336,7 @@
         </widget>
        </item>
        <item row="4" column="1" colspan="3">
-        <widget class="QLabel" name="wallet_customzclrbackuppath">
+        <widget class="QLabel" name="wallet_customzucrbackuppath">
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -1637,7 +1637,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../clr.qrc"/>
+  <include location="../ucr.qrc"/>
  </resources>
  <connections/>
 </ui>

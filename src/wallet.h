@@ -24,8 +24,8 @@
 #include "validationinterface.h"
 #include "wallet_ismine.h"
 #include "walletdb.h"
-#include "zclrwallet.h"
-#include "zclrtracker.h"
+#include "zucrwallet.h"
+#include "zucrtracker.h"
 
 #include <algorithm>
 #include <map>
@@ -216,7 +216,7 @@ public:
     std::string ResetMintZerocoin();
     std::string ResetSpentZerocoin();
     void ReconsiderZerocoins(std::list<CZerocoinMint>& listMintsRestored, std::list<CDeterministicMint>& listDMintsRestored);
-    void ZClrBackupWallet();
+    void ZUcrBackupWallet();
     bool GetZerocoinKey(const CBigNum& bnSerial, CKey& key);
     bool CreateZUCROutPut(libzerocoin::CoinDenomination denomination, CTxOut& outMint, CDeterministicMint& dMint);
     bool GetMint(const uint256& hashSerial, CZerocoinMint& mint);
@@ -224,7 +224,7 @@ public:
     bool DatabaseMint(CDeterministicMint& dMint);
     bool SetMintUnspent(const CBigNum& bnSerial);
     bool UpdateMint(const CBigNum& bnValue, const int& nHeight, const uint256& txid, const libzerocoin::CoinDenomination& denom);
-    string GetUniqueWalletBackupName(bool fzclrAuto) const;
+    string GetUniqueWalletBackupName(bool fzucrAuto) const;
     void InitAutoConvertAddresses();
 
 
@@ -249,7 +249,7 @@ public:
     bool fWalletUnlockAnonymizeOnly;
     std::string strWalletFile;
     bool fBackupMints;
-    std::unique_ptr<CzUCRTracker> zclrTracker;
+    std::unique_ptr<CzUCRTracker> zucrTracker;
 
     std::set<int64_t> setKeyPool;
     std::map<CKeyID, CKeyMetadata> mapKeyMetadata;
@@ -337,7 +337,7 @@ public:
     void setZWallet(CzUCRWallet* zwallet)
     {
         zwalletMain = zwallet;
-        zclrTracker = std::unique_ptr<CzUCRTracker>(new CzUCRTracker(strWalletFile));
+        zucrTracker = std::unique_ptr<CzUCRTracker>(new CzUCRTracker(strWalletFile));
     }
 
     CzUCRWallet* getZWallet() { return zwalletMain; }
@@ -347,7 +347,7 @@ public:
         return fEnableZeromint || fEnableAutoConvert;
     }
 
-    void setZClrAutoBackups(bool fEnabled)
+    void setZUcrAutoBackups(bool fEnabled)
     {
         fBackupMints = fEnabled;
     }

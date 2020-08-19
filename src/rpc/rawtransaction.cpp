@@ -22,7 +22,7 @@
 #include "swifttx.h"
 #include "uint256.h"
 #include "utilmoneystr.h"
-#include "zclrchain.h"
+#include "zucrchain.h"
 #ifdef ENABLE_WALLET
 #include "wallet.h"
 #endif
@@ -138,7 +138,7 @@ UniValue getrawtransaction(const UniValue& params, bool fHelp)
             "         \"reqSigs\" : n,            (numeric) The required sigs\n"
             "         \"type\" : \"pubkeyhash\",  (string) The type, eg 'pubkeyhash'\n"
             "         \"addresses\" : [           (json array of string)\n"
-            "           \"clraddress\"        (string) clr address\n"
+            "           \"ucraddress\"        (string) ucr address\n"
             "           ,...\n"
             "         ]\n"
             "       }\n"
@@ -222,9 +222,9 @@ UniValue listunspent(const UniValue& params, bool fHelp)
             "\nArguments:\n"
             "1. minconf          (numeric, optional, default=1) The minimum confirmations to filter\n"
             "2. maxconf          (numeric, optional, default=9999999) The maximum confirmations to filter\n"
-            "3. \"addresses\"    (string) A json array of clr addresses to filter\n"
+            "3. \"addresses\"    (string) A json array of ucr addresses to filter\n"
             "    [\n"
-            "      \"address\"   (string) clr address\n"
+            "      \"address\"   (string) ucr address\n"
             "      ,...\n"
             "    ]\n"
             "4. watchonlyconfig  (numberic, optional, default=1) 1 = list regular unspent transactions, 2 = list only watchonly transactions,  3 = list all unspent transactions (including watchonly)\n"
@@ -234,7 +234,7 @@ UniValue listunspent(const UniValue& params, bool fHelp)
             "  {\n"
             "    \"txid\" : \"txid\",        (string) the transaction id \n"
             "    \"vout\" : n,               (numeric) the vout value\n"
-            "    \"address\" : \"address\",  (string) the clr address\n"
+            "    \"address\" : \"address\",  (string) the ucr address\n"
             "    \"account\" : \"account\",  (string) The associated account, or \"\" for the default account\n"
             "    \"scriptPubKey\" : \"key\", (string) the script key\n"
             "    \"amount\" : x.xxx,         (numeric) the transaction amount in btc\n"
@@ -348,7 +348,7 @@ UniValue createrawtransaction(const UniValue& params, bool fHelp)
             "     ]\n"
             "2. \"addresses\"           (string, required) a json object with addresses as keys and amounts as values\n"
             "    {\n"
-            "      \"address\": x.xxx   (numeric, required) The key is the clr address, the value is the btc amount\n"
+            "      \"address\": x.xxx   (numeric, required) The key is the ucr address, the value is the btc amount\n"
             "      ,...\n"
             "    }\n"
             "3. locktime                (numeric, optional, default=0) Raw locktime. Non-0 value also locktime-activates inputs\n"
@@ -465,7 +465,7 @@ UniValue decoderawtransaction(const UniValue& params, bool fHelp)
             "         \"reqSigs\" : n,            (numeric) The required sigs\n"
             "         \"type\" : \"pubkeyhash\",  (string) The type, eg 'pubkeyhash'\n"
             "         \"addresses\" : [           (json array of string)\n"
-            "           \"12tvKAXCxZjSmdNbao16dKXC8tRWfcF5oc\"   (string) clr address\n"
+            "           \"12tvKAXCxZjSmdNbao16dKXC8tRWfcF5oc\"   (string) ucr address\n"
             "           ,...\n"
             "         ]\n"
             "       }\n"
@@ -508,7 +508,7 @@ UniValue decodescript(const UniValue& params, bool fHelp)
             "  \"type\":\"type\", (string) The output type\n"
             "  \"reqSigs\": n,    (numeric) The required signatures\n"
             "  \"addresses\": [   (json array of string)\n"
-            "     \"address\"     (string) clr address\n"
+            "     \"address\"     (string) ucr address\n"
             "     ,...\n"
             "  ],\n"
             "  \"p2sh\",\"address\" (string) script address\n"
@@ -963,11 +963,11 @@ UniValue createrawzerocoinstake(const UniValue& params, bool fHelp)
     vOutMint[0] = CTxOut(0, scriptEmpty);
     CDeterministicMint dMint;
     if (!pwalletMain->CreateZUCROutPut(staked_denom, vOutMint[1], dMint))
-        throw JSONRPCError(RPC_WALLET_ERROR, "failed to create new zclr output");
+        throw JSONRPCError(RPC_WALLET_ERROR, "failed to create new zucr output");
 
     for (int i=2; i<5; i++) {
         if (!pwalletMain->CreateZUCROutPut(libzerocoin::ZQ_ONE, vOutMint[i], dMint))
-            throw JSONRPCError(RPC_WALLET_ERROR, "failed to create new zclr output");
+            throw JSONRPCError(RPC_WALLET_ERROR, "failed to create new zucr output");
     }
     coinstake_tx.vout = vOutMint;
 

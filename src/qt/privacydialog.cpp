@@ -15,7 +15,7 @@
 #include "sendcoinsentry.h"
 #include "walletmodel.h"
 #include "coincontrol.h"
-#include "zclrcontroldialog.h"
+#include "zucrcontroldialog.h"
 #include "spork.h"
 #include "askpassphrasedialog.h"
 
@@ -305,19 +305,19 @@ void PrivacyDialog::on_pushButtonSpendzUCR_clicked()
     sendzUCR();
 }
 
-void PrivacyDialog::on_pushButtonZClrControl_clicked()
+void PrivacyDialog::on_pushButtonZUcrControl_clicked()
 {
     if (!walletModel || !walletModel->getOptionsModel())
         return;
 
-    ZClrControlDialog* zClrControl = new ZClrControlDialog(this);
-    zClrControl->setModel(walletModel);
-    zClrControl->exec();
+    ZUcrControlDialog* zUcrControl = new ZUcrControlDialog(this);
+    zUcrControl->setModel(walletModel);
+    zUcrControl->exec();
 }
 
-void PrivacyDialog::setZClrControlLabels(int64_t nAmount, int nQuantity)
+void PrivacyDialog::setZUcrControlLabels(int64_t nAmount, int nQuantity)
 {
-    ui->labelzClrSelected_int->setText(QString::number(nAmount));
+    ui->labelzUcrSelected_int->setText(QString::number(nAmount));
     ui->labelQuantitySelected_int->setText(QString::number(nQuantity));
 }
 
@@ -426,8 +426,8 @@ void PrivacyDialog::sendzUCR()
     // use mints from zUCR selector if applicable
     vector<CMintMeta> vMintsToFetch;
     vector<CZerocoinMint> vMintsSelected;
-    if (!ZClrControlDialog::setSelectedMints.empty()) {
-        vMintsToFetch = ZClrControlDialog::GetSelectedMints();
+    if (!ZUcrControlDialog::setSelectedMints.empty()) {
+        vMintsToFetch = ZUcrControlDialog::GetSelectedMints();
 
         for (auto& meta : vMintsToFetch) {
             if (meta.nVersion < libzerocoin::PrivateCoin::PUBKEY_VERSION) {
@@ -498,9 +498,9 @@ void PrivacyDialog::sendzUCR()
             walletModel->updateAddressBookLabels(address.Get(), "(no label)", "send");
     }
 
-    // Clear zclr selector in case it was used
-    ZClrControlDialog::setSelectedMints.clear();
-    ui->labelzClrSelected_int->setText(QString("0"));
+    // Clear zucr selector in case it was used
+    ZUcrControlDialog::setSelectedMints.clear();
+    ui->labelzUcrSelected_int->setText(QString("0"));
     ui->labelQuantitySelected_int->setText(QString("0"));
 
     // Some statistics for entertainment
@@ -659,7 +659,7 @@ void PrivacyDialog::setBalance(const CAmount& balance, const CAmount& unconfirme
         mapImmature.insert(make_pair(denom, 0));
     }
 
-    std::vector<CMintMeta> vMints = pwalletMain->zclrTracker->GetMints(false);
+    std::vector<CMintMeta> vMints = pwalletMain->zucrTracker->GetMints(false);
     map<libzerocoin::CoinDenomination, int> mapMaturityHeights = GetMintMaturityHeight();
     for (auto& meta : vMints){
         // All denominations

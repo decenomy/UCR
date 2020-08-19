@@ -6,7 +6,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifdef HAVE_CONFIG_H
-#include "config/clr-config.h"
+#include "config/ucr-config.h"
 #endif
 
 #include "netbase.h"

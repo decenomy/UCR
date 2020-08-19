@@ -14,7 +14,7 @@ Mandatory Update
 How to Upgrade
 ==============
 
-If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/ClearCoin-Qt (on Mac) or clrd/clr-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/ClearCoin-Qt (on Mac) or ucrd/ucr-qt (on Linux).
 
 
 Compatibility
@@ -60,4 +60,4 @@ Detailed release notes follow. This overview includes changes that affect behavi
 Thanks to everyone who directly contributed to this release:
 
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/clr-project-translations/), the QA team during Testing and the Node hosts supporting our Testnet.
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/ucr-project-translations/), the QA team during Testing and the Node hosts supporting our Testnet.

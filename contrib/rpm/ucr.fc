@@ -1,0 +1,8 @@
+/usr/bin/ucr-cli		--	gen_context(system_u:object_r:ucr_exec_t,s0)
+/usr/sbin/ucrd		--	gen_context(system_u:object_r:ucr_exec_t,s0)
+/usr/lib(64)?/ucr/ucrd		--	gen_context(system_u:object_r:ucr_exec_t,s0)
+
+/etc/ucr(/.*)?		gen_context(system_u:object_r:ucr_conf_t,s0)
+/var/lib/ucr(/.*)?		gen_context(system_u:object_r:ucr_var_lib_t,s0)
+
+(/var)?/run/ucrd(/.*)?   gen_context(system_u:object_r:ucr_var_run_t,s0)

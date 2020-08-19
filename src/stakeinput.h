@@ -29,8 +29,8 @@ public:
 
 // zUCRStake can take two forms
 // 1) the stake candidate, which is a zcmint that is attempted to be staked
-// 2) a staked zclr, which is a zcspend that has successfully staked
-class CZClrStake : public CStakeInput
+// 2) a staked zucr, which is a zcspend that has successfully staked
+class CZUcrStake : public CStakeInput
 {
 private:
     uint32_t nChecksum;
@@ -39,7 +39,7 @@ private:
     uint256 hashSerial;
 
 public:
-    explicit CZClrStake(libzerocoin::CoinDenomination denom, const uint256& hashSerial)
+    explicit CZUcrStake(libzerocoin::CoinDenomination denom, const uint256& hashSerial)
     {
         this->denom = denom;
         this->hashSerial = hashSerial;
@@ -47,7 +47,7 @@ public:
         fMint = true;
     }
 
-    explicit CZClrStake(const libzerocoin::CoinSpend& spend);
+    explicit CZUcrStake(const libzerocoin::CoinSpend& spend);
 
     CBlockIndex* GetIndexFrom() override;
     bool GetTxFrom(CTransaction& tx) override;
@@ -63,13 +63,13 @@ public:
     uint32_t GetChecksum();
 };
 
-class CClrStake : public CStakeInput
+class CUcrStake : public CStakeInput
 {
 private:
     CTransaction txFrom;
     unsigned int nPosition;
 public:
-    CClrStake()
+    CUcrStake()
     {
         this->pindexFrom = nullptr;
     }

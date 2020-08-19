@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/clr-config.h"
+#include "config/ucr-config.h"
 #endif
 
 #include "addressbookpage.h"

@@ -361,36 +361,36 @@ static const CRPCCommand vRPCCommands[] =
         { "hidden",             "waitforblockheight",     &waitforblockheight,     true,  true,  false  },
 
         /* UCR features */
-        {"clr", "masternode", &masternode, true, true, false},
-        {"clr", "listmasternodes", &listmasternodes, true, true, false},
-        {"clr", "getmasternodecount", &getmasternodecount, true, true, false},
-        {"clr", "masternodeconnect", &masternodeconnect, true, true, false},
-        {"clr", "createmasternodebroadcast", &createmasternodebroadcast, true, true, false},
-        {"clr", "decodemasternodebroadcast", &decodemasternodebroadcast, true, true, false},
-        {"clr", "relaymasternodebroadcast", &relaymasternodebroadcast, true, true, false},
-        {"clr", "masternodecurrent", &masternodecurrent, true, true, false},
-        {"clr", "masternodedebug", &masternodedebug, true, true, false},
-        {"clr", "startmasternode", &startmasternode, true, true, false},
-        {"clr", "createmasternodekey", &createmasternodekey, true, true, false},
-        {"clr", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
-        {"clr", "listmasternodeconf", &listmasternodeconf, true, true, false},
-        {"clr", "getmasternodestatus", &getmasternodestatus, true, true, false},
-        {"clr", "getmasternodewinners", &getmasternodewinners, true, true, false},
-        {"clr", "getmasternodescores", &getmasternodescores, true, true, false},
-        {"clr", "mnbudget", &mnbudget, true, true, false},
-        {"clr", "preparebudget", &preparebudget, true, true, false},
-        {"clr", "submitbudget", &submitbudget, true, true, false},
-        {"clr", "mnbudgetvote", &mnbudgetvote, true, true, false},
-        {"clr", "getbudgetvotes", &getbudgetvotes, true, true, false},
-        {"clr", "getnextsuperblock", &getnextsuperblock, true, true, false},
-        {"clr", "getbudgetprojection", &getbudgetprojection, true, true, false},
-        {"clr", "getbudgetinfo", &getbudgetinfo, true, true, false},
-        {"clr", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
-        {"clr", "mnfinalbudget", &mnfinalbudget, true, true, false},
-        {"clr", "checkbudgets", &checkbudgets, true, true, false},
-        {"clr", "mnsync", &mnsync, true, true, false},
-        {"clr", "spork", &spork, true, true, false},
-        {"clr", "getpoolinfo", &getpoolinfo, true, true, false},
+        {"ucr", "masternode", &masternode, true, true, false},
+        {"ucr", "listmasternodes", &listmasternodes, true, true, false},
+        {"ucr", "getmasternodecount", &getmasternodecount, true, true, false},
+        {"ucr", "masternodeconnect", &masternodeconnect, true, true, false},
+        {"ucr", "createmasternodebroadcast", &createmasternodebroadcast, true, true, false},
+        {"ucr", "decodemasternodebroadcast", &decodemasternodebroadcast, true, true, false},
+        {"ucr", "relaymasternodebroadcast", &relaymasternodebroadcast, true, true, false},
+        {"ucr", "masternodecurrent", &masternodecurrent, true, true, false},
+        {"ucr", "masternodedebug", &masternodedebug, true, true, false},
+        {"ucr", "startmasternode", &startmasternode, true, true, false},
+        {"ucr", "createmasternodekey", &createmasternodekey, true, true, false},
+        {"ucr", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
+        {"ucr", "listmasternodeconf", &listmasternodeconf, true, true, false},
+        {"ucr", "getmasternodestatus", &getmasternodestatus, true, true, false},
+        {"ucr", "getmasternodewinners", &getmasternodewinners, true, true, false},
+        {"ucr", "getmasternodescores", &getmasternodescores, true, true, false},
+        {"ucr", "mnbudget", &mnbudget, true, true, false},
+        {"ucr", "preparebudget", &preparebudget, true, true, false},
+        {"ucr", "submitbudget", &submitbudget, true, true, false},
+        {"ucr", "mnbudgetvote", &mnbudgetvote, true, true, false},
+        {"ucr", "getbudgetvotes", &getbudgetvotes, true, true, false},
+        {"ucr", "getnextsuperblock", &getnextsuperblock, true, true, false},
+        {"ucr", "getbudgetprojection", &getbudgetprojection, true, true, false},
+        {"ucr", "getbudgetinfo", &getbudgetinfo, true, true, false},
+        {"ucr", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
+        {"ucr", "mnfinalbudget", &mnfinalbudget, true, true, false},
+        {"ucr", "checkbudgets", &checkbudgets, true, true, false},
+        {"ucr", "mnsync", &mnsync, true, true, false},
+        {"ucr", "spork", &spork, true, true, false},
+        {"ucr", "getpoolinfo", &getpoolinfo, true, true, false},
 
 #ifdef ENABLE_WALLET
         /* Wallet */
@@ -606,7 +606,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(string methodname, string args)
 {
-    return "> clr-cli " + methodname + " " + args + "\n";
+    return "> ucr-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args)

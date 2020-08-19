@@ -38,7 +38,7 @@
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>io.clr.ClearCoin-Qt</string>
+  <string>io.ucr.ClearCoin-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,10 +46,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>com.clrcoin.ClearCoinPayment</string>
+      <string>com.ucrcoin.ClearCoinPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>clr</string>
+        <string>ucr</string>
       </array>
     </dict>
   </array>
@@ -58,7 +58,7 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>io.clr.paymentrequest</string>
+      <string>io.ucr.paymentrequest</string>
       <key>UTTypeDescription</key>
       <string>ClearCoin payment request</string>
       <key>UTTypeConformsTo</key>
@@ -68,10 +68,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-clr-payment-request</string>
+        <string>application/x-ucr-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>clrpaymentrequest</string>
+          <string>ucrpaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -84,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>io.clr.paymentrequest</string>
+        <string>io.ucr.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

@@ -16,7 +16,7 @@ Budgets go through a series of stages before being paid:
 Prepare collateral transaction
 ------------------------
 
-mnbudget prepare \<proposal-name\> \<url\> \<payment_count\> \<block_start\> \<clr_address\> \<monthly_payment_clr\> [use_ix(true|false)]
+mnbudget prepare \<proposal-name\> \<url\> \<payment_count\> \<block_start\> \<ucr_address\> \<monthly_payment_ucr\> [use_ix(true|false)]
 
 Example:
 ```
@@ -32,7 +32,7 @@ In this transaction we prepare collateral for "_cool-project_". This proposal wi
 Submit proposal to network
 ------------------------
 
-mnbudget submit \<proposal-name\> \<url\> \<payment_count\> \<block_start\> \<clr_address\> \<monthly_payment_clr\> \<collateral_hash\>
+mnbudget submit \<proposal-name\> \<url\> \<payment_count\> \<block_start\> \<ucr_address\> \<monthly_payment_ucr\> \<collateral_hash\>
 
 Example:
 ```

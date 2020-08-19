@@ -2290,7 +2290,7 @@ void ThreadCheckObfuScationPool()
     if (fLiteMode) return; //disable all Obfuscation/Masternode related functionality
 
     // Make this thread recognisable as the wallet flushing thread
-    RenameThread("clr-obfuscation");
+    RenameThread("ucr-obfuscation");
 
     unsigned int c = 0;
 

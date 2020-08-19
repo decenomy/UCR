@@ -83,12 +83,12 @@ UniValue importprivkey(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 3)
         throw runtime_error(
-            "importprivkey \"clrprivkey\" ( \"label\" rescan )\n"
+            "importprivkey \"ucrprivkey\" ( \"label\" rescan )\n"
             "\nAdds a private key (as returned by dumpprivkey) to your wallet.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
-            "1. \"clrprivkey\"   (string, required) The private key (see dumpprivkey)\n"
+            "1. \"ucrprivkey\"   (string, required) The private key (see dumpprivkey)\n"
             "2. \"label\"            (string, optional, default=\"\") An optional label\n"
             "3. rescan               (boolean, optional, default=true) Rescan the wallet for transactions\n"
 
@@ -331,13 +331,13 @@ UniValue dumpprivkey(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "dumpprivkey \"clraddress\"\n"
-            "\nReveals the private key corresponding to 'clraddress'.\n"
+            "dumpprivkey \"ucraddress\"\n"
+            "\nReveals the private key corresponding to 'ucraddress'.\n"
             "Then the importprivkey can be used with this output\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
-            "1. \"clraddress\"   (string, required) The clr address for the private key\n"
+            "1. \"ucraddress\"   (string, required) The ucr address for the private key\n"
 
             "\nResult:\n"
             "\"key\"                (string) The private key\n"
@@ -437,12 +437,12 @@ UniValue bip38encrypt(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() != 2)
         throw runtime_error(
-            "bip38encrypt \"clraddress\" \"passphrase\"\n"
-            "\nEncrypts a private key corresponding to 'clraddress'.\n" +
+            "bip38encrypt \"ucraddress\" \"passphrase\"\n"
+            "\nEncrypts a private key corresponding to 'ucraddress'.\n" +
             HelpRequiringPassphrase() + "\n"
 
             "\nArguments:\n"
-            "1. \"clraddress\"   (string, required) The clr address for the private key (you must hold the key already)\n"
+            "1. \"ucraddress\"   (string, required) The ucr address for the private key (you must hold the key already)\n"
             "2. \"passphrase\"   (string, required) The passphrase you want the private key to be encrypted with - Valid special chars: !#$%&'()*+,-./:;<=>?`{|}~ \n"
 
             "\nResult:\n"
@@ -483,7 +483,7 @@ UniValue bip38decrypt(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() != 2)
         throw runtime_error(
-            "bip38decrypt \"clraddress\" \"passphrase\"\n"
+            "bip38decrypt \"ucraddress\" \"passphrase\"\n"
             "\nDecrypts and then imports password protected private key.\n" +
             HelpRequiringPassphrase() + "\n"
 

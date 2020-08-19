@@ -66,15 +66,15 @@ TESTS =
 BENCHMARKS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += clrd
+  bin_PROGRAMS += ucrd
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += clr-cli clr-tx
+  bin_PROGRAMS += ucr-cli ucr-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# clr core #
+# ucr core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   accumulators.h \
@@ -181,12 +181,12 @@ BITCOIN_CORE_H = \
   wallet.h \
   wallet_ismine.h \
   walletdb.h \
-  zclrchain.h \
-  zclrtracker.h \
-  zclrwallet.h \
+  zucrchain.h \
+  zucrtracker.h \
+  zucrwallet.h \
   genwit.h \
   concurrentqueue.h \
-  lightzclrthread.h \
+  lightzucrthread.h \
   zmq/zmqabstractnotifier.h \
   zmq/zmqconfig.h \
   zmq/zmqnotificationinterface.h \
@@ -198,7 +198,7 @@ obj/build.h: FORCE
 	  "$(abs_top_srcdir)"
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between clrd and clr-qt
+# server: shared between ucrd and ucr-qt
 libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
@@ -234,7 +234,7 @@ libbitcoin_server_a_SOURCES = \
   txdb.cpp \
   txmempool.cpp \
   validationinterface.cpp \
-  zclrchain.cpp \
+  zucrchain.cpp \
   $(BITCOIN_CORE_H)
 
 if ENABLE_ZMQ
@@ -246,7 +246,7 @@ libbitcoin_zmq_a_SOURCES = \
   zmq/zmqpublishnotifier.cpp
 endif
 
-# wallet: shared between clrd and clr-qt, but only linked
+# wallet: shared between ucrd and ucr-qt, but only linked
 # when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
@@ -274,11 +274,11 @@ libbitcoin_wallet_a_SOURCES = \
   wallet.cpp \
   wallet_ismine.cpp \
   walletdb.cpp \
-  zclrwallet.cpp \
-  zclrtracker.cpp \
+  zucrwallet.cpp \
+  zucrtracker.cpp \
   stakeinput.cpp \
   genwit.cpp \
-  lightzclrthread.cpp \
+  lightzucrthread.cpp \
   $(BITCOIN_CORE_H)
 
 # crypto primitives library
@@ -357,7 +357,7 @@ libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
   libzerocoin/Params.cpp \
   libzerocoin/SerialNumberSignatureOfKnowledge.cpp
 
-# common: shared between clrd, and clr-qt and non-server tools
+# common: shared between ucrd, and ucr-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
@@ -422,7 +422,7 @@ libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 AM_LDFLAGS += $(COMPAT_LDFLAGS)
 endif
 
-# cli: shared between clr-cli and clr-qt
+# cli: shared between ucr-cli and ucr-qt
 libbitcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_cli_a_SOURCES = \
@@ -433,16 +433,16 @@ libbitcoin_cli_a_SOURCES = \
 nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# clrd binary #
-clrd_SOURCES = clrd.cpp
-clrd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-clrd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-clrd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# ucrd binary #
+ucrd_SOURCES = ucrd.cpp
+ucrd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+ucrd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+ucrd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-clrd_SOURCES += clrd-res.rc
+ucrd_SOURCES += ucrd-res.rc
 endif
-clrd_LDADD = \
+ucrd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_WALLET) \
   $(LIBBITCOIN_COMMON) \
@@ -456,40 +456,40 @@ clrd_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-clrd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+ucrd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# clr-cli binary #
-clr_cli_SOURCES = clr-cli.cpp
-clr_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-clr_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-clr_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# ucr-cli binary #
+ucr_cli_SOURCES = ucr-cli.cpp
+ucr_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+ucr_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+ucr_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-clr_cli_SOURCES += clr-cli-res.rc
+ucr_cli_SOURCES += ucr-cli-res.rc
 endif
 
-clr_cli_LDADD = \
+ucr_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO)
 
-clr_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+ucr_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# clr-tx binary #
-clr_tx_SOURCES = \
-  clr-tx.cpp \
+# ucr-tx binary #
+ucr_tx_SOURCES = \
+  ucr-tx.cpp \
   timedata.cpp
-clr_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-clr_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-clr_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+ucr_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+ucr_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+ucr_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-clr_tx_SOURCES += clr-tx-res.rc
+ucr_tx_SOURCES += ucr-tx-res.rc
 endif
 
-clr_tx_LDADD = \
+ucr_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_ZEROCOIN) \
@@ -497,7 +497,7 @@ clr_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-clr_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+ucr_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # bitcoinconsensus library #
@@ -546,12 +546,12 @@ CLEANFILES += obj/build.h
 EXTRA_DIST =
 
 
-config/clr-config.h: config/stamp-h1
+config/ucr-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/clr-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/ucr-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/clr-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/clr-config.h.in
+$(top_srcdir)/$(subdir)/config/ucr-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/ucr-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean

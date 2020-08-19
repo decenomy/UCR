@@ -6,7 +6,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/clr-config.h"
+#include "config/ucr-config.h"
 #endif
 
 #include "optionsmodel.h"
@@ -178,7 +178,7 @@ void OptionsModel::Init()
     if (settings.contains("nPreferredDenom"))
         SoftSetArg("-preferredDenom", settings.value("nPreferredDenom").toString().toStdString());
     if (settings.contains("nAnonymizeUltraClearAmount"))
-        SoftSetArg("-anonymizeclramount", settings.value("nAnonymizeUltraClearAmount").toString().toStdString());
+        SoftSetArg("-anonymizeucramount", settings.value("nAnonymizeUltraClearAmount").toString().toStdString());
 
     language = settings.value("language").toString();
 }
@@ -189,7 +189,7 @@ void OptionsModel::Reset()
 
     // Remove all entries from our QSettings object
     settings.clear();
-    resetSettings = true; // Needed in clr.cpp during shotdown to also remove the window positions
+    resetSettings = true; // Needed in ucr.cpp during shotdown to also remove the window positions
 
     // default setting for OptionsModel::StartAtStartup - disabled
     if (GUIUtil::GetStartOnSystemStartup())
@@ -273,7 +273,7 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
             return QVariant(nZeromintPercentage);
         case ZeromintPrefDenom:
             return QVariant(nPreferredDenom);
-        case AnonymizeClrAmount:
+        case AnonymizeUcrAmount:
             return QVariant(nAnonymizeUltraClearAmount);
         case Listen:
             return settings.value("fListen");
@@ -411,10 +411,10 @@ bool OptionsModel::setData(const QModelIndex& index, const QVariant& value, int 
             settings.setValue("fHideOrphans", fHideOrphans);
             emit hideOrphansChanged(fHideOrphans);
             break;
-        case AnonymizeClrAmount:
+        case AnonymizeUcrAmount:
             nAnonymizeUltraClearAmount = value.toInt();
             settings.setValue("nAnonymizeUltraClearAmount", nAnonymizeUltraClearAmount);
-            emit anonymizeClrAmountChanged(nAnonymizeUltraClearAmount);
+            emit anonymizeUcrAmountChanged(nAnonymizeUltraClearAmount);
             break;
         case CoinControlFeatures:
             fCoinControlFeatures = value.toBool();
