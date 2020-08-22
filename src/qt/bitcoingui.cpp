@@ -220,6 +220,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
     progressBarLabel->setVisible(true);
     progressBarLabel->setObjectName("progressBarLabel");
     progressBar = new GUIUtil::ProgressBar();
+    progressBar->setObjectName("progressBar");
     progressBar->setAlignment(Qt::AlignCenter);
     progressBar->setVisible(true);
 

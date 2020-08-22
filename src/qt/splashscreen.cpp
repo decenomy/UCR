@@ -26,10 +26,10 @@
 SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle* networkStyle) : QWidget(0, f), curAlignment(0)
 {
     // set reference point, paddings
-    int paddingLeft = 14;
+    int paddingLeft = 64;
     int paddingTop = 420;
-    int titleVersionVSpace = 17;
-    int titleCopyrightVSpace = 32;
+    int titleVersionVSpace = 24;
+    int titleCopyrightVSpace = 48;
 
     float fontFactor = 1.0;
 
@@ -42,7 +42,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle* networkStyle) 
     QString copyrightTextCLR = QChar(0xA9) + QString(" 2019-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The ClearCoin Core developers"));
     QString copyrightTextUCR = QChar(0xA9) + QString(" 2020-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The UltraClear Core developers"));
     QString titleAddText = networkStyle->getTitleAddText();
-
+ 
     QString font = QApplication::font().toString();
 
     // load the bitmap for writing some text over it

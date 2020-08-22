@@ -484,7 +484,7 @@
        <string>&amp;Display</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_Display">
-       <item>
+       <!--<item>
         <layout class="QHBoxLayout" name="horizontalLayout_1_Display">
          <item>
           <widget class="QLabel" name="langLabel">
@@ -557,7 +557,7 @@ https://www.transifex.com/ClearNode/Clearcore-Project-translations</string>
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
-       </item>
+       </item>-->
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3_Display">
          <item>
