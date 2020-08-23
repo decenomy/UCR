@@ -71,7 +71,7 @@ QToolBar {
 background-color: #030303;
 border:0px solid #030303;
 margin:0;
-width: 70px;
+width: 64px;
 border-top-right-radius: 20px;
 border-bottom-right-radius: 20px;
 }
@@ -83,27 +83,30 @@ selection-background-color: transparent;
 border:0px solid #030303;
 min-height:2.5em;
 padding: 0em 0em;
+padding-left: 6px;
+padding-right: 6px;
 margin-top: 10px;
-font-size: 11px;
+font-size: 9px;
 color:#FFFFFF;
-width: 80px;
+width: 64px;
 height: 60px;
+text-transform: uppercase;
 }
 
 QToolBar > QToolButton:checked {
 background-color: #202020;
-color:#FFFFFF;
+color:#27caff;
 }
 
 /* QToolBar > QToolButton:hover:!selected { */
 QToolBar > QToolButton:hover {
 background-color: #404040;
-color:#FFFFFF;
+color:#27caff;
 }
 
 QToolBar > QToolButton#ToolbarSpacer {
 background-color: transparent;
-width: 80px;
+width: 64px;
 height: 40px;
 }
 
@@ -448,7 +451,7 @@ border:0;
 
 .QTableView { /* Table - has to be selected as a class otherwise it throws off QCalendarWidget */
 background:transparent;
-border:1px solid #333;
+border:1px solid #1fa0fa;
 }
 
 QTableView::item { /* Table Item */

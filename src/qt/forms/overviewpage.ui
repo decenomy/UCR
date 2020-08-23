@@ -238,6 +238,11 @@
                            <height>20</height>
                           </size>
                          </property>
+                         <property name="styleSheet">
+                            <string>QLabel {
+                                color: #202020;
+                            }</string>
+                         </property>
                          <property name="font">
                           <font>
                            <pointsize>12</pointsize>
@@ -424,6 +429,11 @@
                            <width>0</width>
                            <height>20</height>
                           </size>
+                         </property>
+                         <property name="styleSheet">
+                            <string>QLabel {
+                                color: #202020;
+                            }</string>
                          </property>
                          <property name="font">
                           <font>
@@ -844,6 +854,11 @@
                            <height>20</height>
                           </size>
                          </property>
+                         <property name="styleSheet">
+                            <string>QLabel {
+                                color: #202020;
+                            }</string>
+                         </property>
                          <property name="font">
                           <font>
                            <pointsize>12</pointsize>
@@ -1070,12 +1085,17 @@
                         <height>20</height>
                        </size>
                       </property>
+                      <property name="styleSheet">
+                            <string>QLabel {
+                                color: #202020;
+                            }</string>
+                         </property>
                       <property name="font">
-                       <font>
+                      <font>
                         <pointsize>12</pointsize>
                         <weight>75</weight>
                         <bold>true</bold>
-                       </font>
+                      </font>
                       </property>
                       <property name="text">
                        <string>Recent transactions</string>

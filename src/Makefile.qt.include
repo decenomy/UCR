@@ -208,19 +208,24 @@ RES_ICONS = \
   qt/res/icons/eye_plus.png \
   qt/res/icons/filesave.png \
   qt/res/icons/history.png \
+  qt/res/icons/history_hi.png \
   qt/res/icons/key.png \
   qt/res/icons/lock_closed.png \
   qt/res/icons/lock_open.png \
   qt/res/icons/masternodes.png \
+  qt/res/icons/masternodes_hi.png \
   qt/res/icons/onion.png \
   qt/res/icons/overview.png \
+  qt/res/icons/overview_hi.png \
   qt/res/icons/qrcode.png \
   qt/res/icons/quit.png \
   qt/res/icons/receive.png \
+  qt/res/icons/receive_hi.png \
   qt/res/icons/receive_dark.png \
   qt/res/icons/privacy.png \
   qt/res/icons/remove.png \
   qt/res/icons/send.png \
+  qt/res/icons/send_hi.png \
   qt/res/icons/send_dark.png \
   qt/res/icons/governance.png \
   qt/res/icons/governance_dark.png \

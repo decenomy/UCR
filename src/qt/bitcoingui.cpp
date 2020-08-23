@@ -298,7 +298,12 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 {
     QActionGroup* tabGroup = new QActionGroup(this);
 
-    overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Overview"), this);
+    QIcon overviewIcon;
+    overviewIcon.addPixmap(QPixmap(":/icons/overview_hi"), QIcon::Normal,   QIcon::On);
+    overviewIcon.addPixmap(QPixmap(":/icons/overview"), QIcon::Normal,   QIcon::Off);
+    overviewIcon.addPixmap(QPixmap(":/icons/overview_hi"), QIcon::Active,   QIcon::Off);
+
+    overviewAction = new QAction(overviewIcon, tr("&Overview"), this);
     overviewAction->setStatusTip(tr("Show general overview of wallet"));
     overviewAction->setToolTip(overviewAction->statusTip());
     overviewAction->setCheckable(true);
@@ -309,7 +314,12 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(overviewAction);
 
-    sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send"), this);
+    QIcon sendCoinsIcon;
+    sendCoinsIcon.addPixmap(QPixmap(":/icons/send_hi"), QIcon::Normal,   QIcon::On);
+    sendCoinsIcon.addPixmap(QPixmap(":/icons/send"), QIcon::Normal,   QIcon::Off);
+    sendCoinsIcon.addPixmap(QPixmap(":/icons/send_hi"), QIcon::Active,   QIcon::Off);
+
+    sendCoinsAction = new QAction(sendCoinsIcon, tr("&Send"), this);
     sendCoinsAction->setStatusTip(tr("Send coins to a UCR address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
@@ -320,7 +330,12 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(sendCoinsAction);
 
-    receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
+    QIcon receiveCoinsIcon;
+    receiveCoinsIcon.addPixmap(QPixmap(":/icons/receiving_addresses_hi"), QIcon::Normal,   QIcon::On);
+    receiveCoinsIcon.addPixmap(QPixmap(":/icons/receiving_addresses"), QIcon::Normal,   QIcon::Off);
+    receiveCoinsIcon.addPixmap(QPixmap(":/icons/receiving_addresses_hi"), QIcon::Active,   QIcon::Off);
+
+    receiveCoinsAction = new QAction(receiveCoinsIcon, tr("&Receive"), this);
     receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and ucr: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
@@ -331,7 +346,12 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(receiveCoinsAction);
 
-    historyAction = new QAction(QIcon(":/icons/history"), tr("&Transactions"), this);
+    QIcon historyCoinsIcon;
+    historyCoinsIcon.addPixmap(QPixmap(":/icons/history_hi"), QIcon::Normal,   QIcon::On);
+    historyCoinsIcon.addPixmap(QPixmap(":/icons/history"), QIcon::Normal,   QIcon::Off);
+    historyCoinsIcon.addPixmap(QPixmap(":/icons/history_hi"), QIcon::Active,   QIcon::Off);
+
+    historyAction = new QAction(historyCoinsIcon, tr("&Transactions"), this);
     historyAction->setStatusTip(tr("Browse transaction history"));
     historyAction->setToolTip(historyAction->statusTip());
     historyAction->setCheckable(true);
@@ -358,7 +378,13 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
-        masternodeAction = new QAction(QIcon(":/icons/masternodes"), tr("&Masternodes"), this);
+
+        QIcon masternodeIcon;
+        masternodeIcon.addPixmap(QPixmap(":/icons/masternodes_hi"), QIcon::Normal,   QIcon::On);
+        masternodeIcon.addPixmap(QPixmap(":/icons/masternodes"), QIcon::Normal,   QIcon::Off);
+        masternodeIcon.addPixmap(QPixmap(":/icons/masternodes_hi"), QIcon::Active,   QIcon::Off);
+
+        masternodeAction = new QAction(masternodeIcon, tr("&Masternodes"), this);
         masternodeAction->setStatusTip(tr("Browse masternodes"));
         masternodeAction->setToolTip(masternodeAction->statusTip());
         masternodeAction->setCheckable(true);
@@ -827,6 +853,7 @@ void BitcoinGUI::openClicked()
 void BitcoinGUI::gotoOverviewPage()
 {
     overviewAction->setChecked(true);
+    overviewAction->setIcon(QIcon(":/icons/overview_hi"));
     if (walletFrame) walletFrame->gotoOverviewPage();
 }
 
