@@ -1963,7 +1963,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
         ret = blockValue * 9998/10000;
     }
 
-    if(nHeight > 600000) {
+    if(nHeight > Params().UltraClearStart()) {
         ret = blockValue - (5 * COIN);
     }
 
@@ -4127,7 +4127,7 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
     }
 
     // Check if the timestamp is too far in the future
-    if (nHeight > 600000 && block.GetBlockTime() > GetAdjustedTime() + 30 && (Params().NetworkIDString() != "regtest"))
+    if (nHeight > Params().UltraClearStart() && block.GetBlockTime() > GetAdjustedTime() + 30 && (Params().NetworkIDString() != "regtest"))
     {
         LogPrintf("Block time = %d , GetAdjustedTime = %d \n", block.GetBlockTime(), GetAdjustedTime());
         return state.Invalid(error("%s : block's timestamp is too far in the future", __func__),
@@ -6667,7 +6667,7 @@ int ActiveProtocol()
 
     // return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 
-    if (chainActive.Height() > 600000)
+    if (chainActive.Height() > Params().UltraClearStart())
         return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }

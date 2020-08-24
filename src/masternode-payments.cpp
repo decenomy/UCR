@@ -198,7 +198,7 @@ bool IsBlockValueValid(const CBlock& block, CAmount nExpectedValue, CAmount nMin
         if (nHeight % GetBudgetPaymentCycleBlocks() < 100) {
             return true;
         } else {
-            if(nHeight > 600000) {
+            if(nHeight > Params().UltraClearStart()) {
                 return nMinted == nExpectedValue;
             } else {
                 return nMinted <= nExpectedValue;
@@ -208,7 +208,7 @@ bool IsBlockValueValid(const CBlock& block, CAmount nExpectedValue, CAmount nMin
 
         //are these blocks even enabled
         if (!IsSporkActive(SPORK_13_ENABLE_SUPERBLOCKS)) {
-            if(nHeight > 600000) {
+            if(nHeight > Params().UltraClearStart()) {
                 return nMinted == nExpectedValue;
             } else {
                 return nMinted <= nExpectedValue;
@@ -219,7 +219,7 @@ bool IsBlockValueValid(const CBlock& block, CAmount nExpectedValue, CAmount nMin
             //the value of the block is evaluated in CheckBlock
             return true;
         } else {
-            if(nHeight > 600000) {
+            if(nHeight > Params().UltraClearStart()) {
                 return nMinted == nExpectedValue;
             } else {
                 return nMinted <= nExpectedValue;

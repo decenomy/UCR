@@ -3073,7 +3073,7 @@ bool CWallet::CreateCoinStake(
             }
 
             //Double check that this will pass time requirements
-            if (chainActive.Tip()->nHeight >= 600000 && 
+            if (chainActive.Tip()->nHeight >= Params().UltraClearStart() && 
                 nTxNewTime > GetAdjustedTime() + 30 && 
                 Params().NetworkID() != CBaseChainParams::REGTEST) 
             {
