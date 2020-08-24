@@ -220,7 +220,7 @@ public:
 
         nPoolMaxTransactions = 3;
         strSporkKey = "04d45416e4a64b1b051e2a2ebd80ced5efe148cf5fbcb70e56860957675a2da1a21fd522c42c1ed18a1ec42641589a09cf3f58678d213825dc21798183a005a984";
-        strSporkKeyOld = "0476959408a6ea4d27531e06179dc940ff01e340dda28074e0e232858f49a937b8e62b069c97447d3f7b8dbd8d22c9fedefc7fc0d92e520cd54c943c5d12fa5323";
+        strSporkKeyOld = "04d45416e4a64b1b051e2a2ebd80ced5efe148cf5fbcb70e56860957675a2da1a21fd522c42c1ed18a1ec42641589a09cf3f58678d213825dc21798183a005a984";
         strObfuscationPoolDummyAddress = "CPXvKDwCXKLETiMgpuNq5ioFBUgiSSvTdW";
         nStartMasternodePayments = 1550372857; //Sun, 17 Feb 2019 03:07:37 GMT
 
