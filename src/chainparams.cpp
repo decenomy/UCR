@@ -117,7 +117,7 @@ public:
         pchMessageStart[1] = 0xc2;
         pchMessageStart[2] = 0xfe;
         pchMessageStart[3] = 0x19;
-        vAlertPubKey = ParseHex("04d45416e4a64b1b051e2a2ebd80ced5efe148cf5fbcb70e56860957675a2da1a21fd522c42c1ed18a1ec42641589a09cf3f58678d213825dc21798183a005a984");
+        vAlertPubKey = ParseHex("0391eb99d1d94bf8bbc66b39ba11c95814a2bcbcc1cf6c567c8bd58b8710b192f4");
         nDefaultPort = 32628;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // PIVX starting difficulty is 1 / 2^12
 //        nSubsidyHalvingInterval = 210000;
@@ -147,7 +147,8 @@ public:
         nInvalidAmountFiltered = 0 * COIN; //Amount of invalid coins filtered through exchanges, that should be considered valid
         nBlockZerocoinV2 = std::numeric_limits<int>::max(); //!> The block that zerocoin v2 becomes active - roughly Tuesday, May 8, 2018 4:00:00 AM GMT
         nEnforceNewSporkKey = 1599033600; //!> Sporks signed after (GMT): 09/02/2020 @ 8:00am (UTC) must use the new spork key
-        nRejectOldSporkKey = 1599206400; //!> Fully reject old spork key after (GMT): 09/04/2020 @ 8:00am (UTC)
+        nRejectOldSporkKey = 1599030000; //!> Fully reject old spork key after (GMT): 09/02/2020 @ 7:00am (UTC)
+        nBlockUltraClear = 600000;
 
         /**
          * Build the genesis block. Note that the output of the genesis coinbase cannot
@@ -219,8 +220,8 @@ public:
         fZeroCoinEnabled = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "04d45416e4a64b1b051e2a2ebd80ced5efe148cf5fbcb70e56860957675a2da1a21fd522c42c1ed18a1ec42641589a09cf3f58678d213825dc21798183a005a984";
-        strSporkKeyOld = "04d45416e4a64b1b051e2a2ebd80ced5efe148cf5fbcb70e56860957675a2da1a21fd522c42c1ed18a1ec42641589a09cf3f58678d213825dc21798183a005a984";
+        strSporkKey = "0391eb99d1d94bf8bbc66b39ba11c95814a2bcbcc1cf6c567c8bd58b8710b192f4";
+        strSporkKeyOld = "0476959408a6ea4d27531e06179dc940ff01e340dda28074e0e232858f49a937b8e62b069c97447d3f7b8dbd8d22c9fedefc7fc0d92e520cd54c943c5d12fa5323";
         strObfuscationPoolDummyAddress = "CPXvKDwCXKLETiMgpuNq5ioFBUgiSSvTdW";
         nStartMasternodePayments = 1550372857; //Sun, 17 Feb 2019 03:07:37 GMT
 
@@ -240,8 +241,6 @@ public:
         nZerocoinRequiredStakeDepth = 200; //The required confirmations for a zucr to be stakable
 
         nBudget_Fee_Confirmations = 6; // Number of confirmations for the finalization fee
-
-
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const

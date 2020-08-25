@@ -1925,9 +1925,9 @@ int64_t GetBlockValue(int nHeight)
         nSubsidy = 40 * COIN;
     } else if (nHeight <= 550000 && nHeight > 500000) {
         nSubsidy = 45 * COIN;
-    } else if (nHeight <= 600000 && nHeight > 550000) {
+    } else if (nHeight <= Params().UltraClearStart() && nHeight > 550000) {
         nSubsidy = 50 * COIN;
-    } else if (nHeight <= 700000 && nHeight > 600000) {
+    } else if (nHeight <= 700000 && nHeight > Params().UltraClearStart()) {
         nSubsidy = 70 * COIN;
     } else if (nHeight <= 800000 && nHeight > 700000) {
         nSubsidy = 90 * COIN;
