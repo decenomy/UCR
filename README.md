@@ -1,9 +1,9 @@
-ClearCoin Core integration/staging repository
+UltraClear Core integration/staging repository
 =====================================
 
 
-ClearCoin is an open source crypto-currency focused on fast private transactions with low transaction fees & environmental footprint.  
-More information at [clearnodes.com](http://www.clearnodes.com)
+UltraClear is an open source crypto-currency focused on fast private transactions with low transaction fees & environmental footprint.  
+More information at [clrcoin.net](http://www.clrcoin.net)
 
 ### Coin Specs
 <table>
