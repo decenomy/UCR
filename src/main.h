@@ -99,9 +99,9 @@ inline int64_t GetMasterNodeCollateral(int nHeight){
         return 20000;
     } else if (nHeight <= 400000 && nHeight > 350000) {
         return 35000;
-    } else if (nHeight <= 600000 && nHeight > 400000) {
+    } else if (nHeight <= Params().UltraClearStart() && nHeight > 400000) {
         return 50000;
-    } else if (nHeight <= 700000 && nHeight > 600000) {
+    } else if (nHeight <= 700000 && nHeight > Params().UltraClearStart()) {
         return 60000;
     } else if (nHeight <= 800000 && nHeight > 700000) {
         return 70000;
