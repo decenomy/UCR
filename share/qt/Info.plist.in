@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>ClearCoin-Qt</string>
+  <string>UltraClear-Qt</string>
   
   <key>CFBundleName</key>
-  <string>ClearCoin-Qt</string>
+  <string>UltraClear-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>io.ucr.ClearCoin-Qt</string>
+  <string>io.ucr.UltraClear-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>

@@ -55,4 +55,4 @@ Description: peer-to-peer network based digital currency - Qt GUI
  Full transaction history is stored locally at each client.  This
  requires 1+ GB of space, slowly growing.
  .
- This package provides ClearCoin-Qt, a GUI for ClearCoin based on Qt.
+ This package provides UltraClear-Qt, a GUI for ClearCoin based on Qt.

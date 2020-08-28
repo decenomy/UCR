@@ -22,7 +22,7 @@ Unpack the files into a directory, and then run ucr-qt.exe.
 
 ### OSX
 
-Drag ClearCoin-Qt to your applications folder, and then run ClearCoin-Qt.
+Drag UltraClear-Qt to your applications folder, and then run UltraClear-Qt.
 
 ### Need Help?
 
