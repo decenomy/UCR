@@ -5549,7 +5549,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>The ClearCoin Core developers</source>
+        <source>The UltraClear Core developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

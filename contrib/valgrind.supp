@@ -1,4 +1,4 @@
-# Valgrind suppressions file for ClearCoin.
+# Valgrind suppressions file for UltraClear.
 #
 # Includes known Valgrind warnings in our dependencies that cannot be fixed
 # in-tree.

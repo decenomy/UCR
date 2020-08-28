@@ -46,7 +46,7 @@ def setup():
 def build():
     global args, workdir
 
-    os.makedirs('ClearCoin-binaries/' + args.version, exist_ok=True)
+    os.makedirs('UltraClear-binaries/' + args.version, exist_ok=True)
     print('\nBuilding Dependencies\n')
     os.chdir('gitian-builder')
     os.makedirs('inputs', exist_ok=True)
@@ -59,21 +59,21 @@ def build():
         print('\nCompiling ' + args.version + ' Linux')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'ucr='+args.commit, '--url', 'ucr='+args.url, '../Clearcore-Project/contrib/gitian-descriptors/gitian-linux.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-linux', '--destination', '../gitian.sigs/', '../Clearcore-Project/contrib/gitian-descriptors/gitian-linux.yml'])
-        subprocess.check_call('mv build/out/ucr-*.tar.gz build/out/src/ucr-*.tar.gz ../ClearCoin-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/ucr-*.tar.gz build/out/src/ucr-*.tar.gz ../UltraClear-binaries/'+args.version, shell=True)
 
     if args.windows:
         print('\nCompiling ' + args.version + ' Windows')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'ucr='+args.commit, '--url', 'ucr='+args.url, '../Clearcore-Project/contrib/gitian-descriptors/gitian-win.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-unsigned', '--destination', '../gitian.sigs/', '../Clearcore-Project/contrib/gitian-descriptors/gitian-win.yml'])
         subprocess.check_call('mv build/out/ucr-*-win-unsigned.tar.gz inputs/', shell=True)
-        subprocess.check_call('mv build/out/ucr-*.zip build/out/ucr-*.exe ../ClearCoin-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/ucr-*.zip build/out/ucr-*.exe ../UltraClear-binaries/'+args.version, shell=True)
 
     if args.macos:
         print('\nCompiling ' + args.version + ' MacOS')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'ucr='+args.commit, '--url', 'ucr='+args.url, '../Clearcore-Project/contrib/gitian-descriptors/gitian-osx.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-unsigned', '--destination', '../gitian.sigs/', '../Clearcore-Project/contrib/gitian-descriptors/gitian-osx.yml'])
         subprocess.check_call('mv build/out/ucr-*-osx-unsigned.tar.gz inputs/', shell=True)
-        subprocess.check_call('mv build/out/ucr-*.tar.gz build/out/ucr-*.dmg ../ClearCoin-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/ucr-*.tar.gz build/out/ucr-*.dmg ../UltraClear-binaries/'+args.version, shell=True)
 
     os.chdir(workdir)
 
@@ -96,18 +96,18 @@ def sign():
 
     if args.windows:
         print('\nSigning ' + args.version + ' Windows')
-        subprocess.check_call('cp inputs/ClearCoin-' + args.version + '-win-unsigned.tar.gz inputs/ClearCoin-win-unsigned.tar.gz', shell=True)
+        subprocess.check_call('cp inputs/UltraClear-' + args.version + '-win-unsigned.tar.gz inputs/UltraClear-win-unsigned.tar.gz', shell=True)
         subprocess.check_call(['bin/gbuild', '-i', '--commit', 'signature='+args.commit, '../Clearcore-Project/contrib/gitian-descriptors/gitian-win-signer.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-signed', '--destination', '../gitian.sigs/', '../Clearcore-Project/contrib/gitian-descriptors/gitian-win-signer.yml'])
-        subprocess.check_call('mv build/out/ucr-*win64-setup.exe ../ClearCoin-binaries/'+args.version, shell=True)
-        subprocess.check_call('mv build/out/ucr-*win32-setup.exe ../ClearCoin-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/ucr-*win64-setup.exe ../UltraClear-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/ucr-*win32-setup.exe ../UltraClear-binaries/'+args.version, shell=True)
 
     if args.macos:
         print('\nSigning ' + args.version + ' MacOS')
-        subprocess.check_call('cp inputs/ClearCoin-' + args.version + '-osx-unsigned.tar.gz inputs/ClearCoin-osx-unsigned.tar.gz', shell=True)
+        subprocess.check_call('cp inputs/UltraClear-' + args.version + '-osx-unsigned.tar.gz inputs/UltraClear-osx-unsigned.tar.gz', shell=True)
         subprocess.check_call(['bin/gbuild', '-i', '--commit', 'signature='+args.commit, '../Clearcore-Project/contrib/gitian-descriptors/gitian-osx-signer.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-signed', '--destination', '../gitian.sigs/', '../Clearcore-Project/contrib/gitian-descriptors/gitian-osx-signer.yml'])
-        subprocess.check_call('mv build/out/ucr-osx-signed.dmg ../ClearCoin-binaries/'+args.version+'/ClearCoin-'+args.version+'-osx.dmg', shell=True)
+        subprocess.check_call('mv build/out/ucr-osx-signed.dmg ../UltraClear-binaries/'+args.version+'/UltraClear-'+args.version+'-osx.dmg', shell=True)
 
     os.chdir(workdir)
 
@@ -223,10 +223,10 @@ def main():
     if args.setup:
         setup()
 
-    os.chdir('ClearCoin')
+    os.chdir('UltraClear')
     if args.pull:
         subprocess.check_call(['git', 'fetch', args.url, 'refs/pull/'+args.version+'/merge'])
-        os.chdir('../gitian-builder/inputs/ClearCoin')
+        os.chdir('../gitian-builder/inputs/UltraClear')
         subprocess.check_call(['git', 'fetch', args.url, 'refs/pull/'+args.version+'/merge'])
         args.commit = subprocess.check_output(['git', 'show', '-s', '--format=%H', 'FETCH_HEAD'], universal_newlines=True, encoding='utf8').strip()
         args.version = 'pull-' + args.version

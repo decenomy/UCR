@@ -1,4 +1,4 @@
-ClearCoin Core version *1.0.0* is now available from:  <https://github.com/ClearNode/Clearcore-Project/releases>
+UltraClear Core version *1.0.0* is now available from:  <https://github.com/ClearNode/Clearcore-Project/releases>
 
 This is a new major version release, including various bug fixes and performance improvements, as well as updated translations.
 
@@ -8,7 +8,7 @@ Please report bugs using the issue tracker at github: <https://github.com/ClearN
 Mandatory Update
 ==============
 
-ClearCoin Core v1.0.0 is a mandatory update for all users. This release contains new consensus rules and improvements that are not backwards compatible with older versions. Users will have a grace period of one week to update their clients before enforcement of this update is enabled.
+UltraClear Core v1.0.0 is a mandatory update for all users. This release contains new consensus rules and improvements that are not backwards compatible with older versions. Users will have a grace period of one week to update their clients before enforcement of this update is enabled.
 
 Users updating from a previous version after Tuesday, May 8, 2018 12:00:00 AM GMT will require a full resync of their local blockchain from either the P2P network or by way of the bootstrap.
 
@@ -21,7 +21,7 @@ If you are running an older version, shut it down. Wait until it has completely 
 Compatibility
 ==============
 
-ClearCoin Core is extensively tested on multiple operating systems using
+UltraClear Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later.
 
 Microsoft ended support for Windows XP on [April 8th, 2014](https://www.microsoft.com/en-us/WindowsForBusiness/end-of-xp-support),
@@ -29,7 +29,7 @@ No attempt is made to prevent installing or running the software on Windows XP, 
 can still do so at your own risk but be aware that there are known instabilities and issues.
 Please do not report issues about Windows XP to the issue tracker.
 
-ClearCoin Core should also work on most other Unix-like systems but is not
+UltraClear Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 ### :exclamation::exclamation::exclamation: MacOS 10.13 High Sierra :exclamation::exclamation::exclamation:
@@ -45,7 +45,7 @@ zCLR Updates
 
 ### zCLR Staking
 
-zCLR Staking is here! zCLR staking will be activated on the morning of the 8th of May 2018. With the release of zCLR staking, there are effectively 2 versions of zCLR, zCLR minted on the 3.0.6 ClearCoin wallet or lower, and zCLR minted on ClearCoin wallet version or higher. New features in this release will require the use of zCLR v2, zCLR minted on this wallet release 1.0.0 or later. If you currently hold zCLR v1 and wish to take advantage of zCLR staking and deterministic zCLR, you will need to spend the zCLR v1 to yourself and remint zCLR v2.
+zCLR Staking is here! zCLR staking will be activated on the morning of the 8th of May 2018. With the release of zCLR staking, there are effectively 2 versions of zCLR, zCLR minted on the 3.0.6 UltraClear wallet or lower, and zCLR minted on UltraClear wallet version or higher. New features in this release will require the use of zCLR v2, zCLR minted on this wallet release 1.0.0 or later. If you currently hold zCLR v1 and wish to take advantage of zCLR staking and deterministic zCLR, you will need to spend the zCLR v1 to yourself and remint zCLR v2.
 Note: To find your zCLR version, click the privacy tab, then the zCLR Control button then expand the arrows next to the desired denomination.
 
 
@@ -70,7 +70,7 @@ strzCLRPathCustom/zCLR Staking and Masternode Rewards
 
 ### strzCLRPathCustom, zCLR and Masternode Payment Schedule
 
-To encourage the use of zCLR and increase the ClearCoin zerocoin anonymity set, the ClearCoin payment schedule has been changed to the following:
+To encourage the use of zCLR and increase the UltraClear zerocoin anonymity set, the UltraClear payment schedule has been changed to the following:
 
 If a user staking zCLR wins the reward for their block, the following zCLR reward will be: 
 - 3 zCLR (3 x 1 denominations) rewarded to the staker, 2 CLR rewarded to the masternode owner and 1 CLR available for the budget. This is a total block reward of 6 CLR, up from 5.
@@ -89,7 +89,7 @@ User Experience
 
 ### Graphical User Interface
 
-The visual layout of the ClearCoin Qt wallet has undergone a near-complete overhaul.
+The visual layout of the UltraClear Qt wallet has undergone a near-complete overhaul.
 A new 'vertical tab' layout is now being used instead of the prior 'horizontal tab' layout, as well as a completely new icon set.
 The overview tab has been simplified greatly to display only balances that are active or relevant, zero-balance line items are hidden by default to avoid clutter.
 
@@ -113,7 +113,7 @@ Backup to external devices / locations
 
 ### Summary
 
- The ClearCoin wallet can now have user selected directories for automatic backups of the wallet data file (wallet.dat). This can be set by adding the following lines to the ucr.conf file, found in the CLRX data directory.
+ The UltraClear wallet can now have user selected directories for automatic backups of the wallet data file (wallet.dat). This can be set by adding the following lines to the ucr.conf file, found in the CLRX data directory.
 - backuppath = <directory / full path>
 - zucrbackuppath = <directory / full path>
 - custombackupthreshold = <backup limit>
@@ -164,12 +164,12 @@ Backing up 4 times will result as shown below
             
 
 
-ClearCoin Daemon & Client (RPC Changes)
+UltraClear Daemon & Client (RPC Changes)
 --------------
 
 ### RPC Ban Management
 
-The ClearCoin client peer bans now have additional RPC commands to manage peers. Peers can be banned and unbanned at will without the need to restart the wallet client. No changes have been made to the conditions resulting in automatic peer bans. New RPC commands: `setban`, `listbanned`, `clearbanned`, and `disconnectnode`
+The UltraClear client peer bans now have additional RPC commands to manage peers. Peers can be banned and unbanned at will without the need to restart the wallet client. No changes have been made to the conditions resulting in automatic peer bans. New RPC commands: `setban`, `listbanned`, `clearbanned`, and `disconnectnode`
 
 
 ### Random-cookie RPC authentication
@@ -188,7 +188,7 @@ This allows for a user (such as a third party integration) to query the blockcha
 ### New RPC command 
 `findserial`
 
-Search the zerocoin database for a zerocoinspend transaction that contains the given serial. This will be a helpful tool for the ClearCoin support group, which often times sees users say "I didn't spend that zCLR". This RPC call allows for support to grab the serial, and then find the spend tx on the chain.
+Search the zerocoin database for a zerocoinspend transaction that contains the given serial. This will be a helpful tool for the UltraClear support group, which often times sees users say "I didn't spend that zCLR". This RPC call allows for support to grab the serial, and then find the spend tx on the chain.
 
 
 ### New RPC commands 
@@ -206,11 +206,11 @@ Network Layer 2 Changes (Proposals / Budgets / SwiftX)
 
 ### Monthly Budget Increase
 
-As voted on by the ClearCoin masternodes, the monthly budget available to be utilised has been increased to 42,000 CLR / month. This CLR only has the opportunity to be raised once per month (paid to winning proposals) with any unused CLR not created by the blockchain.
+As voted on by the UltraClear masternodes, the monthly budget available to be utilised has been increased to 42,000 CLR / month. This CLR only has the opportunity to be raised once per month (paid to winning proposals) with any unused CLR not created by the blockchain.
 
 ### Budget Finalization Fee
 
-The ClearCoin finalization fee for successful proposals has now been reduced, this fee is now 5 CLR down from 50 CLR. The total fee outlay for a successful proposal is now a total of 55 CLR.
+The UltraClear finalization fee for successful proposals has now been reduced, this fee is now 5 CLR down from 50 CLR. The total fee outlay for a successful proposal is now a total of 55 CLR.
 
 
 ### SwiftX Raw Transactions
@@ -263,7 +263,7 @@ Minor Enhancements
 Further Reading: Version 2 Zerocoins
 ==============
 
-Several critical security flaws in the zerocoin protocol and ClearCoin's zerocoin implementation have been patched. Enough has changed that new zerocoins are distinct from old zerocoins, and have been labelled as *version 2*. When using the zCLR Control dialog in the QT wallet, a user is able to see zCLR marked as version 1 or 2.
+Several critical security flaws in the zerocoin protocol and UltraClear's zerocoin implementation have been patched. Enough has changed that new zerocoins are distinct from old zerocoins, and have been labelled as *version 2*. When using the zCLR Control dialog in the QT wallet, a user is able to see zCLR marked as version 1 or 2.
 
 zPoS (zCLR staking)
 --------------
@@ -273,7 +273,7 @@ Once a zCLR has over 200 confirmations it becomes available to stake. Staking zC
 Secure Spending
 --------------
 
-Version 1 zerocoins, as implemented by [Miers et. al](http://zerocoin.org/media/pdf/ZerocoinOakland.pdf), allow for something we describe as *serial trolling*. Spending zerocoins requires that the spender reveal their serial number associated with the zerocoin, and in turn that serial number is used to check for double spending. There is a fringe situation (which is very unlikely to happen within ClearCoin's zerocoin implementation due to delayed coin accumulation) where the spender sends the spending transaction, but the transaction does not immediately make it into the blockchain and remains in the mempool for a long enough duration that a *troll* has enough time to see the spender's serial number, mint a new zerocoin with the same serial number, and spend the new zerocoin before the original spender's transaction becomes confirmed. If the timing of this fringe situation worked, then the original spender's coin would be seen as invalid because the troll was able to have the serial recorded into the blockchain first, thus making the original spender's serial appear as a double spend.
+Version 1 zerocoins, as implemented by [Miers et. al](http://zerocoin.org/media/pdf/ZerocoinOakland.pdf), allow for something we describe as *serial trolling*. Spending zerocoins requires that the spender reveal their serial number associated with the zerocoin, and in turn that serial number is used to check for double spending. There is a fringe situation (which is very unlikely to happen within UltraClear's zerocoin implementation due to delayed coin accumulation) where the spender sends the spending transaction, but the transaction does not immediately make it into the blockchain and remains in the mempool for a long enough duration that a *troll* has enough time to see the spender's serial number, mint a new zerocoin with the same serial number, and spend the new zerocoin before the original spender's transaction becomes confirmed. If the timing of this fringe situation worked, then the original spender's coin would be seen as invalid because the troll was able to have the serial recorded into the blockchain first, thus making the original spender's serial appear as a double spend.
 
 The serial troll situation is mitigated in version 2 by requiring that the serial number be a hash of a public key. The spend requires an additional signature signed by the private key associated with the public key hash matching the serial number. This work around was conceived by Tim Ruffing, a cryptographer that has studied the zerocoin protocol and done consulting work for the ZCoin project.
 
@@ -285,7 +285,7 @@ Zerocoins, or zCLR, are now deterministically generated using a unique 256 bit s
 Zerocoin Modulus
 --------------
 
-ClearCoin's zerocoin implementation used the same code from the ZCoin project to import the modulus use for the zerocoin protocol. The chosen modulus is the 2048 bit RSA number created for the RSA factoring challenge. The ZCoin project's implementation (which ClearCoin used) improperly imported the modulus into the code. This flaw was discovered by user GOAT from the [Civitas Project](https://github.com/eastcoastcrypto/Civitas/), and reported to ClearCoin using the bug bounty program. The modulus is now correctly imported and ClearCoin's accumulators have been changed to use the new proper modulus.
+UltraClear's zerocoin implementation used the same code from the ZCoin project to import the modulus use for the zerocoin protocol. The chosen modulus is the 2048 bit RSA number created for the RSA factoring challenge. The ZCoin project's implementation (which UltraClear used) improperly imported the modulus into the code. This flaw was discovered by user GOAT from the [Civitas Project](https://github.com/eastcoastcrypto/Civitas/), and reported to UltraClear using the bug bounty program. The modulus is now correctly imported and UltraClear's accumulators have been changed to use the new proper modulus.
 
 
 *1.0.0* Change log

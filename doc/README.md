@@ -1,13 +1,13 @@
-ClearCoin Core
+UltraClear Core
 =====================
 
 Setup
 ---------------------
-[ClearCoin Core](http://clearnodes.com/wallet) is the original ClearCoin client and it builds the backbone of the network. However, it downloads and stores the entire history of ClearCoin transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[UltraClear Core](http://clearnodes.com/wallet) is the original UltraClear client and it builds the backbone of the network. However, it downloads and stores the entire history of UltraClear transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 Running
 ---------------------
-The following are some helpful notes on how to run ClearCoin on your native platform.
+The following are some helpful notes on how to run UltraClear on your native platform.
 
 ### Unix
 
@@ -26,15 +26,15 @@ Drag UltraClear-Qt to your applications folder, and then run UltraClear-Qt.
 
 ### Need Help?
 
-* See the documentation at the [ClearCoin Wiki](https://en.bitcoin.it/wiki/Main_Page) ***TODO***
+* See the documentation at the [UltraClear Wiki](https://en.bitcoin.it/wiki/Main_Page) ***TODO***
 for help and more information.
-* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or on the [ClearCoin Forum](http://forum.clearnodes.com/).
+* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or on the [UltraClear Forum](http://forum.clearnodes.com/).
 * Join our Discord server [Discord Server](https://discord.clearnodes.com)
-* Join one of our Slack groups [ClearCoin Slack Groups](https://clearnodes.com/slack-logins/) (Main community is replaced by Discord).
+* Join one of our Slack groups [UltraClear Slack Groups](https://clearnodes.com/slack-logins/) (Main community is replaced by Discord).
 
 Building
 ---------------------
-The following are developer notes on how to build ClearCoin on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build UltraClear on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OSX Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
@@ -42,7 +42,7 @@ The following are developer notes on how to build ClearCoin on your native platf
 
 Development
 ---------------------
-The ClearCoin repo's [root README](https://github.com/ClearNode/Clearcore-Project/blob/master/README.md) contains relevant information on the development process and automated testing.
+The UltraClear repo's [root README](https://github.com/ClearNode/Clearcore-Project/blob/master/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
@@ -56,8 +56,8 @@ The ClearCoin repo's [root README](https://github.com/ClearNode/Clearcore-Projec
 
 ### Resources
 
-* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or the [ClearCoin](http://forum.clearnodes.com/) forum.
-* Join the [ClearCoin-Dev](https://ucr-dev.slack.com/) Slack group ([Sign-Up](https://ucr-dev.herokuapp.com/)).
+* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or the [UltraClear](http://forum.clearnodes.com/) forum.
+* Join the [UltraClear-Dev](https://ucr-dev.slack.com/) Slack group ([Sign-Up](https://ucr-dev.herokuapp.com/)).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
