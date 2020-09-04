@@ -468,6 +468,7 @@ bool CNode::DisconnectOldProtocol(int nVersionRequired, string strLastCommand)
         LogPrintf("%s : peer=%d using obsolete version %i; disconnecting\n", __func__, id, nVersion);
         PushMessage("reject", strLastCommand, REJECT_OBSOLETE, strprintf("Version must be %d or greater", ActiveProtocol()));
         fDisconnect = true;
+        CNode::Ban(addr, BanReasonNodeMisbehaving, 3600);
     }
 
     return fDisconnect;
