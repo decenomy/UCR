@@ -7,11 +7,11 @@ then
 fi
 
 # Upgrade the system and install required dependencies
-	sudo apt update && sudo apt upgrade
+	sudo apt update
 	sudo apt install git zip unzip build-essential libtool bsdmainutils autotools-dev autoconf pkg-config automake python3 -y
 
 # Clone UCR code from UCR official Github repository
-	git clone https://github.com/sapphire-pt/UCR.git
+	git clone https://github.com/ucrcoin/UCR.git
 
 # Entering UCR directory
 	cd UCR
