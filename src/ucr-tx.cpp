@@ -48,7 +48,7 @@ static bool AppInitRawTx(int argc, char* argv[])
 
     if (argc < 2 || mapArgs.count("-?") || mapArgs.count("-help")) {
         // First part of help message is specific to this utility
-        std::string strUsage = _("UltraClear Core ucr-tx utility version") + " " + FormatFullVersion() + "\n\n" +
+        std::string strUsage = _("Ultra Clear ucr-tx utility version") + " " + FormatFullVersion() + "\n\n" +
                                _("Usage:") + "\n" +
                                "  ucr-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded ucr transaction") + "\n" +
                                "  ucr-tx [options] -create [commands]   " + _("Create hex-encoded ucr transaction") + "\n" +

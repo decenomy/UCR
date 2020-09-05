@@ -1,4 +1,4 @@
-UltraClear Core integration/staging repository
+Ultra Clear integration/staging repository
 =====================================
 
 

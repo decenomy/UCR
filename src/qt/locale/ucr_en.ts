@@ -831,7 +831,7 @@
     <message>
         <location line="-436"/>
         <location line="+918"/>
-        <source>UltraClear Core</source>
+        <source>Ultra Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -861,12 +861,12 @@
     </message>
     <message>
         <location line="+31"/>
-        <source>&amp;About UltraClear Core</source>
+        <source>&amp;About Ultra Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Show information about UltraClear Core</source>
+        <source>Show information about Ultra Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -936,12 +936,12 @@
     </message>
     <message>
         <location line="+4"/>
-        <source>Show the UltraClear Core help message to get a list with possible UCR command-line options</source>
+        <source>Show the Ultra Clear help message to get a list with possible UCR command-line options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+233"/>
-        <source>UltraClear Core client</source>
+        <source>Ultra Clear client</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
@@ -1577,7 +1577,7 @@ Address: %4
     </message>
     <message>
         <location line="+0"/>
-        <source>UltraClear Core</source>
+        <source>Ultra Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1588,7 +1588,7 @@ Address: %4
     </message>
     <message>
         <location line="+4"/>
-        <source>About UltraClear Core</source>
+        <source>About Ultra Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1646,17 +1646,17 @@ Address: %4
     </message>
     <message>
         <location line="+9"/>
-        <source>Welcome to UltraClear Core.</source>
+        <source>Welcome to Ultra Clear.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+26"/>
-        <source>As this is the first time the program is launched, you can choose where UltraClear Core will store its data.</source>
+        <source>As this is the first time the program is launched, you can choose where Ultra Clear will store its data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+10"/>
-        <source>UltraClear Core will download and store a copy of the UCR block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <source>Ultra Clear will download and store a copy of the UCR block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1671,7 +1671,7 @@ Address: %4
     </message>
     <message>
         <location filename="../intro.cpp" line="+77"/>
-        <source>UltraClear Core</source>
+        <source>Ultra Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5334,7 +5334,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <name>ShutdownWindow</name>
     <message>
         <location filename="../utilitydialog.cpp" line="+75"/>
-        <source>UltraClear Core is shutting down...</source>
+        <source>Ultra Clear is shutting down...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5529,7 +5529,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+36"/>
-        <source>UltraClear Core</source>
+        <source>Ultra Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5549,7 +5549,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>The UltraClear Core developers</source>
+        <source>The Ultra Clear developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6412,7 +6412,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+2"/>
-        <source>Cannot obtain a lock on data directory %s. UltraClear Core is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s. Ultra Clear is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6637,7 +6637,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+3"/>
-        <source>Unable to bind to %s on this computer. UltraClear Core is probably already running.</source>
+        <source>Unable to bind to %s on this computer. Ultra Clear is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6672,7 +6672,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong UltraClear Core will not work properly.</source>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Ultra Clear will not work properly.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6867,7 +6867,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>Copyright (C) 2015-%i The UltraClear Core Developers</source>
+        <source>Copyright (C) 2015-%i The Ultra Clear Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6977,7 +6977,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of UltraClear Core</source>
+        <source>Error loading wallet.dat: Wallet requires newer version of Ultra Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7132,7 +7132,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>Initialization sanity check failed. UltraClear Core is shutting down.</source>
+        <source>Initialization sanity check failed. Ultra Clear is shutting down.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -8164,7 +8164,7 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart UltraClear Core to complete</source>
+        <source>Wallet needed to be rewritten: restart Ultra Clear to complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

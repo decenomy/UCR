@@ -479,7 +479,7 @@ void BlockExplorer::showEvent(QShowEvent*)
 
         if (!GetBoolArg("-txindex", true)) {
             QString Warning = tr("Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (ucr.conf).");
-            QMessageBox::warning(this, "UltraClear Core Blockchain Explorer", Warning, QMessageBox::Ok);
+            QMessageBox::warning(this, "Ultra Clear Blockchain Explorer", Warning, QMessageBox::Ok);
         }
     }
 }
