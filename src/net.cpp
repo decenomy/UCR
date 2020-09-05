@@ -63,7 +63,7 @@ using namespace std;
 
 namespace
 {
-const int MAX_OUTBOUND_CONNECTIONS = 16;
+const int MAX_OUTBOUND_CONNECTIONS = 32;
 
 struct ListenSocket {
     SOCKET socket;
@@ -86,7 +86,7 @@ static CNode* pnodeLocalHost = NULL;
 uint64_t nLocalHostNonce = 0;
 static std::vector<ListenSocket> vhListenSocket;
 CAddrMan addrman;
-int nMaxConnections = 125;
+int nMaxConnections = 250;
 bool fAddressesInitialized = false;
 std::string strSubVersion;
 
@@ -468,7 +468,7 @@ bool CNode::DisconnectOldProtocol(int nVersionRequired, string strLastCommand)
         LogPrintf("%s : peer=%d using obsolete version %i; disconnecting\n", __func__, id, nVersion);
         PushMessage("reject", strLastCommand, REJECT_OBSOLETE, strprintf("Version must be %d or greater", ActiveProtocol()));
         fDisconnect = true;
-        CNode::Ban(addr, BanReasonNodeMisbehaving, 3600);
+        CNode::Ban(addr, BanReasonNodeMisbehaving, 300); // just to back off
     }
 
     return fDisconnect;

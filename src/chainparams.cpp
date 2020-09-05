@@ -179,15 +179,16 @@ public:
         assert(hashGenesisBlock == uint256("0x0000086d20056b2feb29fb638fe1086ac017b481bf52f0cc1cca297385a91f44"));
         assert(genesis.hashMerkleRoot == uint256("0x57614ebefbc1a26b6cee7cd4bc94d060baaadf1ad2551a81153a588fd75b471c"));
 
-        if(GetAdjustedTime() < 1599206400) { //!> Fully ignore these seed servers after (GMT): 09/04/2020 @ 8:00am (UTC)
-            vSeeds.push_back(CDNSSeedData("explorer.clearnodes.com", "explorer.clearnodes.com"));
-            vSeeds.push_back(CDNSSeedData("seed1.clearnodes.com", "seed1.clearnodes.com"));
-            vSeeds.push_back(CDNSSeedData("seed2.clearnodes.com", "seed2.clearnodes.com"));
-            vSeeds.push_back(CDNSSeedData("seed3.clearnodes.com", "seed3.clearnodes.com"));
-            vSeeds.push_back(CDNSSeedData("seed4.clearnodes.com", "seed4.clearnodes.com"));
-            vSeeds.push_back(CDNSSeedData("seed5.clearnodes.com", "seed5.clearnodes.com"));
-        }
+        // if(GetAdjustedTime() < 1599206400) { //!> Fully ignore these seed servers after (GMT): 09/04/2020 @ 8:00am (UTC)
+        //     vSeeds.push_back(CDNSSeedData("explorer.clearnodes.com", "explorer.clearnodes.com"));
+        //     vSeeds.push_back(CDNSSeedData("seed1.clearnodes.com", "seed1.clearnodes.com"));
+        //     vSeeds.push_back(CDNSSeedData("seed2.clearnodes.com", "seed2.clearnodes.com"));
+        //     vSeeds.push_back(CDNSSeedData("seed3.clearnodes.com", "seed3.clearnodes.com"));
+        //     vSeeds.push_back(CDNSSeedData("seed4.clearnodes.com", "seed4.clearnodes.com"));
+        //     vSeeds.push_back(CDNSSeedData("seed5.clearnodes.com", "seed5.clearnodes.com"));
+        // }
 
+        vSeeds.push_back(CDNSSeedData("168.119.57.200", "168.119.57.200"));
         vSeeds.push_back(CDNSSeedData("seed1.sappcoin.com", "seed1.sappcoin.com"));
         vSeeds.push_back(CDNSSeedData("seed2.sappcoin.com", "seed2.sappcoin.com"));
         vSeeds.push_back(CDNSSeedData("seed3.sappcoin.com", "seed3.sappcoin.com"));

@@ -6667,9 +6667,13 @@ int ActiveProtocol()
 
     // return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 
-    if (chainActive.Height() > Params().UltraClearStart())
-        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-    return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
+    // if (GetAdjustedTime() > 1599206400) {
+    //     return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+    // } else {
+    //     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
+    // }
+
+    return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
 }
 
 // requires LOCK(cs_vRecvMsg)
