@@ -25,6 +25,6 @@ fi
 	cd ..
 
 # Create zip file of binaries
-	cp UCR/src/ucrd UCR/src/ucr-cli UCR/src/ucr-tx UCR/src/qt/ucr-qt UCR/UCR.dmg .
-	zip UCR-MacOS.zip ucrd ucr-cli ucr-tx ucr-qt UCR.dmg
-	rm -f ucrd ucr-cli ucr-tx ucr-qt UCR.dmg
+	cp UCR/src/ucrd UCR/src/ucr-cli UCR/src/ucr-tx UCR/src/qt/ucr-qt UCR/UltraClear-Qt.dmg .
+	zip UCR-MacOS.zip ucrd ucr-cli ucr-tx ucr-qt UltraClear-Qt.dmg
+	rm -f ucrd ucr-cli ucr-tx ucr-qt UltraClear-Qt.dmg
