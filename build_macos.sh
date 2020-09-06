@@ -7,7 +7,7 @@ then
 fi
 
 # Clone UCR code from UCR official Github repository
-	git clone https://github.com/sappcoin-com/SAPP.git
+	git clone https://github.com/ucrcoin/UCR.git
 
 # Entering UCR directory
 	cd UCR
