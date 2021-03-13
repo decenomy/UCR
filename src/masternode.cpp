@@ -318,14 +318,58 @@ bool CMasternode::IsInputAssociatedWithPubkey() const
 
 CAmount CMasternode::GetMasternodeNodeCollateral(int nHeight) 
 {
-    if (nHeight <= 100000) {
+    if (nHeight <= 1000 && nHeight > Params().LAST_POW_BLOCK()) {
+        return 10 * COIN;
+    } else if (nHeight <= 2000 && nHeight > 1000) {
+        return 50 * COIN;
+    } else if (nHeight <= 10000 && nHeight > 2000) {
+        return 100 * COIN;
+    } else if (nHeight <= 20000 && nHeight > 10000) {
+        return 500 * COIN;
+    } else if (nHeight <= 30000 && nHeight > 20000) {
+        return 750 * COIN;
+    } else if (nHeight <= 40000 && nHeight > 30000) {
+        return 250 * COIN;
+    } else if (nHeight <= 50000 && nHeight > 40000) {
+        return 375 * COIN;
+    } else if (nHeight <= 60000 && nHeight > 50000) {
+        return 750 * COIN;
+    } else if (nHeight <= 70000 && nHeight > 60000) {
+        return 1125 * COIN;
+    } else if (nHeight <= 80000 && nHeight > 70000) {
+        return 1750 * COIN;
+    } else if (nHeight <= 100000 && nHeight > 80000) {
+        return 2500 * COIN;
+    } else if (nHeight <= 120000 && nHeight > 100000) {
+        return 3500 * COIN;
+    } else if (nHeight <= 145000 && nHeight > 120000) {
+        return 5000 * COIN;
+    } else if (nHeight <= 170000 && nHeight > 145000) {
+        return 6500 * COIN;
+    } else if (nHeight <= 200000 && nHeight > 170000) {
+        return 8000 * COIN;
+    } else if (nHeight <= 230000 && nHeight > 200000) {
+        return 10000 * COIN;
+    } else if (nHeight <= 265000 && nHeight > 230000) {
+        return 12000 * COIN;
+    } else if (nHeight <= 300000 && nHeight > 265000) {
         return 15000 * COIN;
-    } else if (nHeight <= 200000 && nHeight > 100000) {
-        return 17500 * COIN;
-    } else if (nHeight > 200000) {
+    } else if (nHeight <= 350000 && nHeight > 300000) {
         return 20000 * COIN;
+    } else if (nHeight <= 400000 && nHeight > 350000) {
+        return 35000 * COIN;
+    } else if (nHeight <= Params().UltraClearStart() && nHeight > 400000) {
+        return 50000 * COIN;
+    } else if (nHeight <= 700000 && nHeight > Params().UltraClearStart()) {
+        return 60000 * COIN;
+    } else if (nHeight <= 800000 && nHeight > 700000) {
+        return 70000 * COIN;
+    } else if (nHeight <= 900000 && nHeight > 800000) {
+        return 80000 * COIN;
+    } else if (nHeight <= 1000000 && nHeight > 900000) {
+        return 90000 * COIN;
     }
-    return 0;
+    return 100000 * COIN;
 }
 
 CAmount CMasternode::GetBlockValue(int nHeight)
@@ -418,11 +462,6 @@ CAmount CMasternode::GetMasternodePayment(int nHeight)
 {
     int64_t ret = 0;
 
-    if (Params().NetworkID() == CBaseChainParams::TESTNET) {
-        if (nHeight < 200)
-            return 0;
-    }
-
     if (nHeight <= Params().LAST_POW_BLOCK()) {
     	return 0;
     } else if (nHeight <=12000 && nHeight > Params().LAST_POW_BLOCK()){
@@ -434,6 +473,8 @@ CAmount CMasternode::GetMasternodePayment(int nHeight)
     if(nHeight > Params().UltraClearStart()) {
         ret = GetBlockValue(nHeight) - (5 * COIN);
     }
+
+    return ret;
 }
 
 CMasternodeBroadcast::CMasternodeBroadcast() :
@@ -535,20 +576,40 @@ bool CMasternodeBroadcast::Create(CTxIn txin, CService service, CKey keyCollater
 
 bool CMasternodeBroadcast::Sign(const CKey& key, const CPubKey& pubKey)
 {
+    sigTime = GetAdjustedTime();
+
     std::string strError = "";
-    nMessVersion = MessageVersion::MESS_VER_HASH;
-    const std::string strMessage = GetSignatureHash().GetHex();
+    std::string strMessage;
 
-    if (!CMessageSigner::SignMessage(strMessage, vchSig, key)) {
-        return error("%s : SignMessage() (nMessVersion=%d) failed", __func__, nMessVersion);
+    if(Params().GetConsensus().NetworkUpgradeActive(chainActive.Height(), Consensus::UPGRADE_V3_4)) {
+        nMessVersion = MessageVersion::MESS_VER_HASH;
+        strMessage = GetSignatureHash().GetHex();
+
+        if (!CMessageSigner::SignMessage(strMessage, vchSig, key)) {
+            return error("%s : SignMessage() (nMessVersion=%d) failed", __func__, nMessVersion);
+        }
+
+        if (!CMessageSigner::VerifyMessage(pubKey, vchSig, strMessage, strError)) {
+            return error("%s : VerifyMessage() (nMessVersion=%d) failed, error: %s\n",
+                    __func__, nMessVersion, strError);
+        }
+
+        return true;
+    } else {
+        nMessVersion = MessageVersion::MESS_VER_STRMESS;
+        strMessage = GetOldStrMessage();
+
+        CHashWriter ss(SER_GETHASH, 0);
+        ss << strMessageMagic;
+        ss << strMessage;
+
+        if (!key.SignCompact(ss.GetHash(), vchSig)) {
+            return error("%s : VerifyMessage() (nMessVersion=%d) failed, error: Signing failed.\n",
+                    __func__, nMessVersion);
+        }
+
+        return true;
     }
-
-    if (!CMessageSigner::VerifyMessage(pubKey, vchSig, strMessage, strError)) {
-        return error("%s : VerifyMessage() (nMessVersion=%d) failed, error: %s\n",
-                __func__, nMessVersion, strError);
-    }
-
-    return true;
 }
 
 bool CMasternodeBroadcast::Sign(const std::string strSignKey)
@@ -577,16 +638,16 @@ std::string CMasternodeBroadcast::GetOldStrMessage() const
 bool CMasternodeBroadcast::CheckSignature() const
 {
     std::string strError = "";
-    const std::string strMessage = (
-                            nMessVersion == MessageVersion::MESS_VER_HASH ?
-                            GetSignatureHash().GetHex() :
-                            GetStrMessage()
-                            );
+    std::string strMessage = (nMessVersion == MessageVersion::MESS_VER_HASH ?
+                                  GetSignatureHash().GetHex() :
+                                  GetStrMessage());
+    std::string oldStrMessage = (nMessVersion == MessageVersion::MESS_VER_HASH ?
+                                     GetSignatureHash().GetHex() :
+                                     GetOldStrMessage());
 
-    if(!CMessageSigner::VerifyMessage(pubKeyCollateralAddress, vchSig, strMessage, strError) &&
-       !CMessageSigner::VerifyMessage(pubKeyCollateralAddress, vchSig, GetOldStrMessage(), strError)) {
+    if (!CMessageSigner::VerifyMessage(pubKeyCollateralAddress, vchSig, oldStrMessage, strError) &&
+        !CMessageSigner::VerifyMessage(pubKeyCollateralAddress, vchSig, strMessage, strError))
         return error("%s : VerifyMessage (nMessVersion=%d) failed: %s", __func__, nMessVersion, strError);
-    } 
 
     return true;
 }
@@ -832,7 +893,7 @@ std::string CMasternodePing::GetStrMessage() const
 {
     int64_t salt = sporkManager.GetSporkValue(SPORK_103_PING_MESSAGE_SALT);
 
-    if (salt == 4070908800ULL) {
+    if (salt != 0) {
         return vin.ToString() + blockHash.ToString() + std::to_string(sigTime) + std::to_string(salt);
     } else {
         return vin.ToString() + blockHash.ToString() + std::to_string(sigTime);
