@@ -7,11 +7,11 @@ then
 fi
 
 # Clone code from official Github repository
-    rm -rf 777
-    git clone https://github.com/777-project/777
+    rm -rf UCR
+    git clone https://github.com/ucrcoin/UCR.git
 
 # Entering directory
-    cd 777
+    cd UCR
 
 # Compile dependencies
     cd depends
@@ -31,6 +31,6 @@ fi
     cd ..
 
 # Create zip file of binaries
-    cp 777/src/jackpotd 777/src/jackpot-cli 777/src/jackpot-tx 777/src/qt/jackpot-qt 777/Jackpot-Core.dmg .
-    zip Jackpot-MacOS.zip jackpotd jackpot-cli jackpot-tx jackpot-qt Jackpot-Core.dmg
-    rm -f jackpotd jackpot-cli jackpot-tx jackpot-qt Jackpot-Core.dmg
+    cp UCR/src/ucrd UCR/src/ucr-cli UCR/src/ucr-tx UCR/src/qt/ucr-qt UCR/ucr-Core.dmg .
+    zip UCR-MacOS.zip ucrd ucr-cli ucr-tx ucr-qt UltraClear-Core.dmg
+    rm -f ucrd ucr-cli ucr-tx ucr-qt ucr-Core.dmg

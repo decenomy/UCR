@@ -12,11 +12,11 @@ fi
 	echo "1" | sudo update-alternatives --config x86_64-w64-mingw32-g++
 
 # Clone code from official Github repository
-	rm -rf 777
-	git clone https://github.com/777-project/777
+	rm -rf UCR
+	git clone https://github.com/ucrcoin/UCR.git
 
 # Entering directory
-	cd 777
+	cd UCR
 
 # Compile dependencies
 	cd depends
@@ -30,6 +30,6 @@ fi
 	cd ..
 
 # Create zip file of binaries
-	cp 777/src/jackpotd.exe 777/src/jackpot-cli.exe 777/src/jackpot-tx.exe 777/src/qt/jackpot-qt.exe .
-	zip Jackpot-Windows.zip jackpotd.exe jackpot-cli.exe jackpot-tx.exe jackpot-qt.exe
-	rm -f jackpotd.exe jackpot-cli.exe jackpot-tx.exe jackpot-qt.exe
+	cp UCR/src/ucrd.exe UCR/src/ucr-cli.exe UCR/src/ucr-tx.exe UCR/src/qt/ucr-qt.exe .
+	zip UCR-Windows.zip ucrd.exe ucr-cli.exe ucr-tx.exe ucr-qt.exe
+	rm -f ucrd.exe ucr-cli.exe ucr-tx.exe ucr-qt.exe
