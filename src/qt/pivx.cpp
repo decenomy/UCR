@@ -544,10 +544,12 @@ int main(int argc, char* argv[])
     Q_INIT_RESOURCE(pivx_locale);
     Q_INIT_RESOURCE(pivx);
 
+    //TODO to set this up we need to review all the UI measurements to be relative to the screen DPI
     // Generate high-dpi pixmaps
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 #if QT_VERSION >= 0x050600
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    //TODO to set this up we need to review all the UI measurements to be relative to the screen DPI
+    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling); 
 #endif
 #ifdef Q_OS_MAC
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
@@ -620,7 +622,7 @@ int main(int argc, char* argv[])
     if (!Intro::pickDataDirectory())
         return 0;
 
-    /// 6. Determine availability of data directory and parse ucr.conf
+    /// 6. Determine availability of data directory and parse ultraclear.conf
     /// - Do not call GetDataDir(true) before this step finishes
     if (!fs::is_directory(GetDataDir(false))) {
         QMessageBox::critical(0, QObject::tr("Ultra Clear"),
@@ -677,7 +679,7 @@ int main(int argc, char* argv[])
         exit(0);
 
     // Start up the payment server early, too, so impatient users that click on
-    // ucr: links repeatedly have their payment requests routed to this process:
+    // ultraclear: links repeatedly have their payment requests routed to this process:
     app.createPaymentServer();
 #endif
 

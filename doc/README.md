@@ -13,16 +13,16 @@ The following are some helpful notes on how to run Ultra Clear Core on your nati
 
 Unpack the files into a directory and run:
 
-- `bin/ucr-qt` (GUI) or
-- `bin/ucrd` (headless)
+- `bin/ultraclear-qt` (GUI) or
+- `bin/ultracleard` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run ucr-qt.exe.
+Unpack the files into a directory, and then run ultraclear-qt.exe.
 
 ### macOS
 
-Drag ucr-Qt to your applications folder, and then run ucr-Qt.
+Drag ultraclear-Qt to your applications folder, and then run ultraclear-Qt.
 
 ### Need Help?
 

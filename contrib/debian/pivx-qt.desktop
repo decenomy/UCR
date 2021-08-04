@@ -1,13 +1,13 @@
 [Desktop Entry]
 Version=1.0
 Name=Ultra Clear
-Comment= UCR P2P Cryptocurrency
-Comment[fr]= UCR, monnaie virtuelle cryptographique pair à pair
-Comment[tr]= UCR, eşten eşe kriptografik sanal para birimi
-Exec=ucr-qt %u
+Comment= Ultra Clear P2P Cryptocurrency
+Comment[fr]= Ultra Clear, monnaie virtuelle cryptographique pair à pair
+Comment[tr]= Ultra Clear, eşten eşe kriptografik sanal para birimi
+Exec=ultraclear-qt %u
 Terminal=false
 Type=Application
 Icon=pivx128
 MimeType=x-scheme-handler/pivx;
 Categories=Office;Finance;
-StartupWMClass=ucr-qt
+StartupWMClass=ultraclear-qt

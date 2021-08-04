@@ -63,7 +63,6 @@ BASE_SCRIPTS= [
     'wallet_zapwallettxes.py',                  # ~ 300 sec
     'p2p_time_offset.py',                       # ~ 267 sec
     'rpc_fundrawtransaction.py',                # ~ 260 sec
-    'mining_pos_coldStaking.py',                # ~ 215 sec
     'mining_pos_reorg.py',                      # ~ 212 sec
     'wallet_abandonconflict.py',                # ~ 212 sec
     'wallet_hd.py',                             # ~ 210 sec
@@ -78,7 +77,6 @@ BASE_SCRIPTS= [
     'feature_proxy.py',                         # ~ 143 sec
     'feature_uacomment.py',                     # ~ 130 sec
     'wallet_upgrade.py',                        # ~ 124 sec
-    'wallet_import_stakingaddress.py',          # ~ 123 sec
 
     # vv Tests less than 2m vv
     'p2p_disconnect_ban.py',                    # ~ 118 sec
@@ -88,7 +86,6 @@ BASE_SCRIPTS= [
     'interface_http.py',                        # ~ 105 sec
     'wallet_listtransactions.py',               # ~ 97 sec
     'mempool_reorg.py',                         # ~ 92 sec
-    'sapling_wallet_persistence.py',            # ~ 90 sec
     'wallet_encryption.py',                     # ~ 89 sec
     'wallet_keypool.py',                        # ~ 88 sec
     'wallet_dump.py',                           # ~ 83 sec
@@ -177,7 +174,6 @@ LEGACY_SKIP_TESTS = [
     'rpc_net.py',
     'rpc_signmessage.py',
     'rpc_spork.py',
-    'sapling_wallet_persistence.py',
     'wallet_hd.py',         # no HD tests for pre-HD wallets
     'wallet_upgrade.py',    # can't upgrade to pre-HD wallet
 ]
@@ -231,7 +227,7 @@ def main():
     logging.basicConfig(format='%(message)s', level=logging_level)
 
     # Create base test directory
-    tmpdir = "%s/ucr_test_runner_%s" % (args.tmpdirprefix, datetime.datetime.now().strftime("%Y%m%d_%H%M%S"))
+    tmpdir = "%s/ultraclear_test_runner_%s" % (args.tmpdirprefix, datetime.datetime.now().strftime("%Y%m%d_%H%M%S"))
     os.makedirs(tmpdir)
 
     logging.debug("Temporary test directory at %s" % tmpdir)
@@ -247,7 +243,7 @@ def main():
         sys.exit(0)
 
     if not (enable_wallet and enable_utils and enable_bitcoind):
-        print("No functional tests to run. Wallet, utils, and ucrd must all be enabled")
+        print("No functional tests to run. Wallet, utils, and ultracleard must all be enabled")
         print("Rerun `configure` with -enable-wallet, -with-utils and -with-daemon and rerun make")
         sys.exit(0)
 
@@ -311,10 +307,10 @@ def main():
               args.keepcache)
 
 def run_tests(test_list, src_dir, build_dir, exeext, tmpdir, jobs=1, enable_coverage=False, args=[], combined_logs_len=0, keep_cache=False):
-    # Warn if ucrd is already running (unix only)
+    # Warn if ultracleard is already running (unix only)
     try:
-        if subprocess.check_output(["pidof", "ucrd"]) is not None:
-            print("%sWARNING!%s There is already a ucrd process running on this system. Tests may fail unexpectedly due to resource contention!" % (BOLD[1], BOLD[0]))
+        if subprocess.check_output(["pidof", "ultracleard"]) is not None:
+            print("%sWARNING!%s There is already a ultracleard process running on this system. Tests may fail unexpectedly due to resource contention!" % (BOLD[1], BOLD[0]))
     except (OSError, subprocess.SubprocessError):
         pass
 
@@ -325,8 +321,8 @@ def run_tests(test_list, src_dir, build_dir, exeext, tmpdir, jobs=1, enable_cove
 
     #Set env vars
     if "BITCOIND" not in os.environ:
-        os.environ["BITCOIND"] = build_dir + '/src/ucrd' + exeext
-        os.environ["BITCOINCLI"] = build_dir + '/src/ucr-cli' + exeext
+        os.environ["BITCOIND"] = build_dir + '/src/ultracleard' + exeext
+        os.environ["BITCOINCLI"] = build_dir + '/src/ultraclear-cli' + exeext
 
     tests_dir = src_dir + '/test/functional/'
 
@@ -443,7 +439,7 @@ class TestHandler:
         self.test_list = test_list
         self.flags = flags
         self.num_running = 0
-        # In case there is a graveyard of zombie ucrds, we can apply a
+        # In case there is a graveyard of zombie ultracleards, we can apply a
         # pseudorandom offset to hopefully jump over them.
         # (625 is PORT_RANGE/MAX_NODES)
         self.portseed_offset = int(time.time() * 1000) % 625
@@ -540,7 +536,7 @@ def check_script_prefixes():
     # convention don't immediately cause the tests to fail.
     LEEWAY = 10
 
-    good_prefixes_re = re.compile("(example|feature|interface|mempool|mining|p2p|rpc|wallet|zerocoin|sapling)_")
+    good_prefixes_re = re.compile("(example|feature|interface|mempool|mining|p2p|rpc|wallet|zerocoin)_")
     bad_script_names = [script for script in ALL_SCRIPTS if good_prefixes_re.match(script) is None]
 
     if len(bad_script_names) > 0:
@@ -570,7 +566,7 @@ class RPCCoverage():
     Coverage calculation works by having each test script subprocess write
     coverage files into a particular directory. These files contain the RPC
     commands invoked during testing, as well as a complete listing of RPC
-    commands per `ucr-cli help` (`rpc_interface.txt`).
+    commands per `ultraclear-cli help` (`rpc_interface.txt`).
 
     After all tests complete, the commands run are combined and diff'd against
     the complete list to calculate uncovered RPC commands.

@@ -207,8 +207,8 @@ bool Intro::pickDataDirectory()
     }
 
     /* Only override -datadir if different from the default, to make it possible to
-     * override -datadir in the ucr.conf file in the default data directory
-     * (to be consistent with ucrd behavior)
+     * override -datadir in the ultraclear.conf file in the default data directory
+     * (to be consistent with ultracleard behavior)
      */
 
     if (dataDir != getDefaultDataDirectory())

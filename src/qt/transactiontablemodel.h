@@ -12,6 +12,13 @@
 #include <QAbstractTableModel>
 #include <QStringList>
 
+#define SINGLE_THREAD_MAX_TXES_SIZE 4000
+
+// Maximum amount of loaded records in ram in the first load.
+// If the user has more and want to load them:
+// TODO, add load on demand in pages (not every tx loaded all the time into the records list).
+#define MAX_AMOUNT_LOADED_RECORDS 100000
+
 class TransactionRecord;
 class TransactionTablePriv;
 class WalletModel;
@@ -79,7 +86,7 @@ public:
     bool processingQueuedTransactions() { return fProcessingQueuedTransactions; }
 
 Q_SIGNALS:
-    void txArrived(const QString& hash, const bool& isCoinStake, const bool& isCSAnyType);
+    void txArrived(const QString& hash, const bool& isCoinStake);
 
 private:
     CWallet* wallet;

@@ -51,8 +51,8 @@ static const int MAX_URI_LENGTH = 255;
 
 
 #define QAPP_ORG_NAME "Ultra Clear"
-#define QAPP_ORG_DOMAIN "ucr.org"
-#define QAPP_APP_NAME_DEFAULT "ucr-Qt"
-#define QAPP_APP_NAME_TESTNET "ucr-Qt-testnet"
+#define QAPP_ORG_DOMAIN "ultraclear.org"
+#define QAPP_APP_NAME_DEFAULT "ultraclear-Qt"
+#define QAPP_APP_NAME_TESTNET "ultraclear-Qt-testnet"
 
 #endif // BITCOIN_QT_GUICONSTANTS_H
