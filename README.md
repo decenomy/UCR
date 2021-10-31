@@ -1,4 +1,4 @@
-UltraClear integration/staging repository
+UltraClear wallet repository
 =====================================
 
 • PoW Algorithm: X13
