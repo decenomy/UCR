@@ -5,6 +5,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+
 #include "clientmodel.h"
 
 #include "bantablemodel.h"
@@ -28,6 +29,8 @@
 #include <QDateTime>
 #include <QDebug>
 #include <QTimer>
+
+using namespace boost::placeholders;
 
 static const int64_t nClientStartupTime = GetTime();
 // Last tip update notification
