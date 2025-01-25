@@ -376,8 +376,6 @@ static const CRPCCommand vRPCCommands[] =
         {"ultraclear", "listmasternodeconf", &listmasternodeconf, true },
         {"ultraclear", "getactivemasternodecount", &getactivemasternodecount, true },
         {"ultraclear", "getmasternodestatus", &getmasternodestatus, true },
-        {"ultraclear", "getmasternodewinners", &getmasternodewinners, true },
-        {"ultraclear", "getmasternodescores", &getmasternodescores, true },
         {"ultraclear", "mnsync", &mnsync, true },
         {"ultraclear", "spork", &spork, true },
         {"ultraclear", "mnping", &mnping, true },
